@@ -1,0 +1,16 @@
+# OS X
+.DS_Store
+
+# Node
+node_modules
+npm-debug.log*
+yarn.lock
+yarn-error.log
+
+# Build
+.gulp
+.idea
+.logs
+dist
+tsconfig.json
+__snapshots__

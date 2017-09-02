@@ -1,0 +1,7 @@
+@import '~bemify';
+
+@include block('section') {
+  display: block;
+  height: 50vh;
+  width: 100%;
+}

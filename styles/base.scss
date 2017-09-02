@@ -1,0 +1,14 @@
+@import '~normalize-scss';
+@import 'variables/colors';
+
+@include normalize();
+
+body {
+  background: $background-color;
+  color: $text-white;
+  font-style: italic;
+}
+
+svg {
+  display: none;
+}
