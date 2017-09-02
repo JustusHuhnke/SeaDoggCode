@@ -44,8 +44,8 @@ export const database = {
         server: { poolSize: 5, reconnectTries: Number.MAX_VALUE, reconnectInterval: 5000 },
         user: "",
     },
-    development: "mongodb://localhost/olympic",
-    production: "mongodb://localhost/olympic",
+    development: "mongodb://localhost/seadogg",
+    production: "mongodb://localhost/seadogg",
 };
 
 export const redisConfig = {

@@ -7,7 +7,7 @@ const BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
-const entry = {
+const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
     index: [
         "babel-polyfill",
         resolve(__dirname, '../server', 'index.ts'),
@@ -24,14 +24,14 @@ fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
 module.exports = {
     devtool: 'sourcemap',
     target: 'node',
-    watch: true,
+    watch: process.env.TEMP_NAME === undefined ? true : false,
     watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
     },
     entry: entry,
     output: {
-        path: resolve(__dirname, '../dist/server'),
+        path: resolve(__dirname, process.env.TEMP_DIR || '../dist/server'),
         filename: '[name].js',
         publicPath: '/',
         chunkFilename: '[name]-[id].js',

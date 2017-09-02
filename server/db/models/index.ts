@@ -1,4 +1,8 @@
-import Example from "./Example";
+import Boat from "./Boat";
+import Country from "./Country";
+import User from "./User";
 export {
-    Example,
+    Boat,
+    Country,
+    User,
 };
