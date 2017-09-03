@@ -1,15 +1,16 @@
 import { Document, Model, Schema, Types} from "mongoose";
 import connection from "../dBase";
-import {capitalize, clear} from "_helpers/string";
+import {capitalizeOnlyFirst, capitalize, clear} from "_helpers/string";
 import {ICountryModel} from "_server/db/models/Country";
-import {IBoatModel} from "_server/db/models/Boat";
+import {IPhoto} from "_models";
 
-export interface IUser {
+const DEFAULT_USER_PICTURE = "/image/user.jpg";
+
+interface IUser {
     email: string;
     password: string;
     firstName?: string;
     lastName?: string;
-    fullName: () => string;
     phoneNumber?: string;
     address?: {
         street?: string;
@@ -19,14 +20,13 @@ export interface IUser {
         location?: [number];
         country: ICountryModel
     },
-    boats: [IBoatModel]
+    avatar: IPhoto
+}
+export interface IUserModel extends IUser, Document {
+    fullName: () => string;
 }
 
-interface IUserModel extends IUser, Document {
-    fullName(): string;
-}
-
-const UserSchema: Schema = new Schema({
+export const UserSchema: Schema = new Schema({
     email: {
         type: String,
         index: { sparse: true, unique: true },
@@ -56,14 +56,14 @@ const UserSchema: Schema = new Schema({
         city: {
             type: String,
             trim: true,
-            get: (v: string): string => capitalize(v),
-            set: (v: string): string => capitalize(clear(v)),
+            get: (v: string): string => capitalizeOnlyFirst(v),
+            set: (v: string): string => capitalizeOnlyFirst(clear(v)),
         },
         state: {
             type: String,
             trim: true,
-            get: (v: string): string => capitalize(v),
-            set: (v: string): string => capitalize(clear(v)),
+            get: (v: string): string => capitalizeOnlyFirst(v),
+            set: (v: string): string => capitalizeOnlyFirst(clear(v)),
         },
         post: {
             type: String,
@@ -77,14 +77,28 @@ const UserSchema: Schema = new Schema({
             coordinates: { type: [Number], default: [0,0] }
         }
     },
-    boats: [{ type: Types.ObjectId, ref: "Boat" }]
+    avatar: {
+        src: {  type: String,  required: true, default: DEFAULT_USER_PICTURE  },
+        width: {  type: Number,  integer: true  },
+        height: {  type: Number,  integer: true  },
+        size: {  type: Number,  integer: true  },
+        type: {  type: String,  required: true,  },
+        name: {  type: String,  required: true,  },
+        title: {
+            type: String,
+            trim: true,
+            get: (v: string): string => capitalize(v),
+            set: (v: string): string => capitalize(clear(v)),
+        },
+        description: String
+    }
 }, {timestamps: true});
 
 UserSchema.methods.fullName = function(this: IUser): string {
     return this.firstName + " " + this.lastName;
 };
 
-UserSchema.index({location: '2dsphere'});
+UserSchema.index({"address.location": '2dsphere'});
 export const UserModel: Model<IUserModel> = connection.model<IUserModel>("User", UserSchema);
 
 export default UserModel;

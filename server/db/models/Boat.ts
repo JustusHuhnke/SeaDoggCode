@@ -1,11 +1,14 @@
 import { Document, Model, Schema, Types} from "mongoose";
 import connection from "../dBase";
-import {capitalize, clear} from "_helpers/string";
+import {capitalizeOnlyFirst, clear} from "_helpers/string";
 import {ICountryModel} from "_server/db/models/Country";
-import {IUser} from "_server/db/models/User";
+import {IUserModel} from "_server/db/models/User";
+import {IPhoto} from "_models";
+
+const DEFAULT_BOAT_PICTURE = "/image/boat.jpg";
 
 export interface IBoatModel extends Document {
-    owner: IUser,
+    owner: IUserModel,
     profile: {
         title: string;
         description?: string;
@@ -93,7 +96,9 @@ export interface IBoatModel extends Document {
         outriggers?: boolean;
         radio?: boolean;
         cabin?: boolean;
-    }
+    },
+    photos: [IPhoto],
+    price: Number
 }
 
 const BoatSchema: Schema = new Schema({
@@ -122,12 +127,16 @@ const BoatSchema: Schema = new Schema({
         city: {
             type: String,
             trim: true,
-            get: (v: string): string => capitalize(v),
-            set: (v: string): string => capitalize(clear(v)),
+            get: (v: string): string => capitalizeOnlyFirst(v),
+            set: (v: string): string => capitalizeOnlyFirst(clear(v)),
         },
         country: { type: Types.ObjectId, ref: "Country" },
         locationType: { type: String, trim: true, lowercase: true, enum: ["marina", "trailer", "mooring", "house"] },
-        slipType: { type: String, trim: true, lowercase: true, enum: ["dry", "wet"] }
+        slipType: { type: String, trim: true, lowercase: true, enum: ["dry", "wet"] },
+        location: {
+            type: { type: String, enum: ["Point", "Polygon", "LineString", "MultiLineString"], default: "Point", },
+            coordinates: { type: [Number], default: [0,0] }
+        }
     },
     specification: {
         length: Number,
@@ -190,11 +199,28 @@ const BoatSchema: Schema = new Schema({
         outriggers: { type: Boolean, default: false },
         radio: { type: Boolean, default: false },
         cabin: { type: Boolean, default: false },
-    }
+    },
+    photos: [{
+        src: { type: String,  required: true, default: DEFAULT_BOAT_PICTURE },
+        width: { type: Number, integer: true },
+        height: { type: Number, integer: true },
+        size: { type: Number, integer: true },
+        type: { type: String, required: true, },
+        name: { type: String, required: true, },
+        title: {
+            type: String,
+            trim: true,
+            get: (v: string): string => capitalizeOnlyFirst(v),
+            set: (v: string): string => capitalizeOnlyFirst(clear(v)),
+        },
+        description: String
+    }],
+    price: { type: Number, required: true, integer: true, index: true, min: 0 }
 
 }, {timestamps: true});
 
 
+BoatSchema.index({"location.location": '2dsphere'});
 export const BoatModel: Model<IBoatModel> = connection.model<IBoatModel>("Boat", BoatSchema);
 
 export default BoatModel;
