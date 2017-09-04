@@ -34,6 +34,12 @@ interface IConfig {
         port: number;
         host: string;
     } | string;
+    elastic : {
+        host: string
+        maxSockets: number;
+        sniffOnStart: boolean;
+        sniffInterval: number;
+    }
 }
 
 export const database = {
@@ -54,6 +60,13 @@ export const redisConfig = {
     port: 6379,          // Redis port
 };
 
+export const elasticConfig = {
+    host: 'https://jxc9e51pzd:zuonveadel@first-cluster-8718912079.us-east-1.bonsaisearch.net',
+    maxSockets: 2,
+    sniffOnStart: true,
+    sniffInterval: 60000
+};
+
 const config: IConfig = {
     database,
     hostname: "0.0.0.0",
@@ -62,6 +75,7 @@ const config: IConfig = {
     port: process.env.PORT && parseInt(String(process.env.PORT), 10) || 1337,
     pretty,
     redis: redisConfig,
+    elastic: elasticConfig
 };
 
 export const ASSETS: any = process.env.ASSETS;
