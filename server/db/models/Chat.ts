@@ -1,4 +1,4 @@
-import { Document, Model, Schema, Types} from "mongoose";
+import { Document, Model, Schema} from "mongoose";
 import connection, {esClient} from "../dBase";
 import {capitalizeOnlyFirst, clear} from "_helpers/string";
 import {IUserModel, UserSchema} from "_server/db/models/User";
