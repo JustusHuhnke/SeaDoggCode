@@ -19,9 +19,11 @@ const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
         'react-hot-loader',
         'react-router',
         'react-router-dom',
+        'react-router-redux',
 
         'redux',
-        'redux-saga',
+        'rxjs',
+        'redux-observable',
 
         "history",
         'immutable',
@@ -146,6 +148,7 @@ module.exports = {
             '_components': resolve(__dirname, '..', 'view/components'),
             '_containers': resolve(__dirname, '..', 'view/containers'),
             "_reducers": resolve(__dirname, '..', 'store/reducers/index.ts'),
+            "_reducer": resolve(__dirname, '..', 'store/reducers'),
             "_route": resolve(__dirname, '..', 'route/index.tsx'),
             "_store": resolve(__dirname, '..', 'store/index.ts'),
             "_static": resolve(__dirname, '..', 'static'),

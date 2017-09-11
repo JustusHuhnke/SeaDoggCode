@@ -1,28 +1,26 @@
 import {createBrowserHistory, History} from "history";
+import {Map} from "immutable";
+import {LOCATION_CHANGE} from "../constants";
 
-export const LOCATION_CHANGE = "router.LOCATION_CHANGE";
-export let history: History;
+export let history: History = process.env.BROWSER && createBrowserHistory();
 
-if (process.env.BROWSER) { history = createBrowserHistory(); }
-
-interface IRoute {
-    type: string;
+export interface IRoute {
+    type: typeof LOCATION_CHANGE;
     payload?: {
         location: string;
     };
     data?: any;
 }
 
-const route = (state = {location: "/"}, action: IRoute) => {
-    const {type, data} = action;
+const route = (state = Map({location: "/"}), action: IRoute) => {
+    const {type, payload} = action;
+    state = state instanceof Map && state || Map(state);
 
-    return (() => {
-        switch (type) {
-            case LOCATION_CHANGE:
-                return {...state, location: data.location};
-            default:
-                return state;
-        }
-    })();
+    switch (type) {
+        case LOCATION_CHANGE:
+            return state.set("location", payload.location);
+        default:
+            return state;
+    }
 };
 export default route;
