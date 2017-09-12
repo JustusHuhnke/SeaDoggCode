@@ -4,6 +4,7 @@ export interface IBlock {
 export interface IComponents {
   readonly "icon": string;
   readonly "icon--white": string;
+  readonly "icon--red": string;
 }
 export interface ISection {
   readonly "section": string;

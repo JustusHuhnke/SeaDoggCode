@@ -20,7 +20,8 @@ export class Test extends React.Component<IHelloProps, undefined> {
 
         const styleIcon = {
             [component.icon]: true,
-            [component["icon--white"]]: true,
+            [component["icon--white"]]: false,
+            [component["icon--red"]]: true,
         };
 
         return (
@@ -30,8 +31,11 @@ export class Test extends React.Component<IHelloProps, undefined> {
                     List of components
                 </PureComponent>
                 <PureComponent tag="section">
-                    Componetns:
+                    Icons:
                     <IconComponent name="download" className={styleIcon} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Selects: *
                 </PureComponent>
             </PureComponent>
         );

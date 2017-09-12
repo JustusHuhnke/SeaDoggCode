@@ -10,4 +10,8 @@
   @include modifier("white") {
     fill: $icon-color-white;
   }
+
+  @include modifier("red") {
+    fill: $icon-color-red;
+  }
 }
