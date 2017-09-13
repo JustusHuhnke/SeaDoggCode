@@ -187,6 +187,12 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-select@^1.0.55":
+  version "1.0.55"
+  resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-1.0.55.tgz#67bd75539b6464ec82af9dcc4a81e93ce7c76d0d"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.0.5":
   version "16.0.5"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.5.tgz#d713cf67cc211dea20463d2a0b66005c22070c4b"
