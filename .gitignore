@@ -13,3 +13,4 @@ yarn-error.log
 dist
 tsconfig.json
 __snapshots__
+/package-lock.json
