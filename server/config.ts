@@ -61,7 +61,7 @@ export const redisConfig = {
 };
 
 export const elasticConfig = {
-    host: "https://jxc9e51pzd:zuonveadel@first-cluster-8718912079.us-east-1.bonsaisearch.net",
+    host: "https://av9ummg3ew:zm83ok6w5b@first-cluster-4896716007.eu-central-1.bonsaisearch.net",
     maxSockets: 2,
     sniffInterval: 60000,
     sniffOnStart: true,
