@@ -1,10 +1,10 @@
+import {capitalize, clear} from "_utils/string";
 import { Document, Model, Schema} from "mongoose";
 import connection, {esClient} from "../dBase";
-import {capitalize, clear} from "_helpers/string";
 
 const mongoosastic: any = require("mongoosastic");
 
-export interface ICountryModel extends Document{
+export interface ICountryModel extends Document {
     code: string;
     label?: string;
     phoneCode?: string;
@@ -17,19 +17,19 @@ const CountrySchema: Schema = new Schema({
         lowercase: true,
         unique: true,
         trim: true,
-        required : true
+        required : true,
     },
     label: {
         type: String,
         required : true,
-        get: v => capitalize(v),
-        set: v => capitalize(clear(v)),
-        es_indexed: true
+        get: (v) => capitalize(v),
+        set: (v) => capitalize(clear(v)),
+        es_indexed: true,
     },
     phoneCode: {
         type: String,
-        es_indexed: true
-    }
+        es_indexed: true,
+    },
 });
 
 CountrySchema.plugin(mongoosastic, {esClient});

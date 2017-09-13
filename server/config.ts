@@ -34,12 +34,12 @@ interface IConfig {
         port: number;
         host: string;
     } | string;
-    elastic : {
+    elastic: {
         host: string
         maxSockets: number;
         sniffOnStart: boolean;
         sniffInterval: number;
-    }
+    };
 }
 
 export const database = {
@@ -61,21 +61,21 @@ export const redisConfig = {
 };
 
 export const elasticConfig = {
-    host: 'https://jxc9e51pzd:zuonveadel@first-cluster-8718912079.us-east-1.bonsaisearch.net',
+    host: "https://jxc9e51pzd:zuonveadel@first-cluster-8718912079.us-east-1.bonsaisearch.net",
     maxSockets: 2,
+    sniffInterval: 60000,
     sniffOnStart: true,
-    sniffInterval: 60000
 };
 
 const config: IConfig = {
     database,
+    elastic: elasticConfig,
     hostname: "0.0.0.0",
     logLevel: "debug",
     logSafe: true,
     port: process.env.PORT && parseInt(String(process.env.PORT), 10) || 1337,
     pretty,
     redis: redisConfig,
-    elastic: elasticConfig
 };
 
 export const ASSETS: any = process.env.ASSETS;

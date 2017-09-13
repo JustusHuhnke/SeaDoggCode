@@ -1,8 +1,8 @@
+import {IPhoto} from "_models";
+import {ICountryModel} from "_server/db/models/Country";
+import {capitalize, capitalizeOnlyFirst, clear} from "_utils/string";
 import { Document, Model, Schema, Types} from "mongoose";
 import connection from "../dBase";
-import {capitalizeOnlyFirst, capitalize, clear} from "_helpers/string";
-import {ICountryModel} from "_server/db/models/Country";
-import {IPhoto} from "_models";
 
 const DEFAULT_USER_PICTURE = "/image/user.jpg";
 
@@ -19,8 +19,8 @@ interface IUser {
         post?: string;
         location?: [number];
         country: ICountryModel
-    },
-    avatar: IPhoto
+    };
+    avatar: IPhoto;
 }
 export interface IUserModel extends IUser, Document {
     fullName: () => string;
@@ -33,7 +33,7 @@ export const UserSchema: Schema = new Schema({
         lowercase: true,
         unique: true,
         trim: true,
-        required : true
+        required : true,
     },
     password: String,
     firstName: {
@@ -49,7 +49,7 @@ export const UserSchema: Schema = new Schema({
     phoneNumber: {
         type: String,
         lowercase: true,
-        trim: true
+        trim: true,
     },
     address: {
         street: { type: String, trim: true },
@@ -73,32 +73,32 @@ export const UserSchema: Schema = new Schema({
         },
         country: { type: Types.ObjectId, ref: "Country" },
         location: {
-            type: { type: String, enum: ["Point", "Polygon", "LineString", "MultiLineString"], default: "Point", },
-            coordinates: { type: [Number], default: [0,0] }
-        }
+            type: { type: String, enum: ["Point", "Polygon", "LineString", "MultiLineString"], default: "Point" },
+            coordinates: { type: [Number], default: [0, 0] },
+        },
     },
     avatar: {
         src: {  type: String,  required: true, default: DEFAULT_USER_PICTURE  },
         width: {  type: Number,  integer: true  },
         height: {  type: Number,  integer: true  },
         size: {  type: Number,  integer: true  },
-        type: {  type: String,  required: true,  },
-        name: {  type: String,  required: true,  },
+        type: {  type: String,  required: true  },
+        name: {  type: String,  required: true  },
         title: {
             type: String,
             trim: true,
             get: (v: string): string => capitalize(v),
             set: (v: string): string => capitalize(clear(v)),
         },
-        description: String
-    }
+        description: String,
+    },
 }, {timestamps: true});
 
 UserSchema.methods.fullName = function(this: IUser): string {
     return this.firstName + " " + this.lastName;
 };
 
-UserSchema.index({"address.location": '2dsphere'});
+UserSchema.index({"address.location": "2dsphere"});
 export const UserModel: Model<IUserModel> = connection.model<IUserModel>("User", UserSchema);
 
 export default UserModel;

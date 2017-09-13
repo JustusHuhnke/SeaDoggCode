@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "private": true,
+  "pre-commit": [ "precommit-msg", "lint" ],
   "scripts": {
     "-----Development-----": "",
     "dev-server": "cp ./webpack/tsconfigFrontend.json tsconfig.json && ./node_modules/.bin/webpack-dev-server --colors --inline --watch --config ./webpack/webpack.config.dev.js",
@@ -26,15 +27,16 @@
     "kill": "./node_modules/.bin/pm2 kill",
     "logs": "./node_modules/.bin/pm2 logs",
     "-----Lints-----": "",
-    "lint-typescript": "./node_modules/.bin/tslint **/*.ts && tslint **/*.tsx",
-    "lint-typescript-fix": "./node_modules/.bin/tslint --fix ./**/*.ts && tslint --fix ./**/*.tsx",
+    "lint-typescript": "./node_modules/.bin/tslint -c tslint.json '**/*.ts' --exclude '**/node_modules/**' --exclude '**/__tests__/**' && ./node_modules/.bin/tslint -c tslint.json '**/*.tsx' --exclude '**/node_modules/**' --exclude '**/__tests__/**'",
+    "lint-typescript-fix": "./node_modules/.bin/tslint --fix '**/*.ts' && ./node_modules/.bin/tslint --fix '**/*.tsx'",
     "scss-lint": "./node_modules/.bin/sass-lint -c ./.scss-lint.yml styles/**/*.scss -v -q",
     "lint": "npm run scss-lint&&npm run lint-typescript",
     "-----Test-----": "",
     "test": "./node_modules/.bin/jest --config=jestconfig.json -u --notify",
     "-----Other-----": "",
     "clean-cache": "rm -rf ./.awcache/",
-    "clean-build": "rm -rf ./dist/"
+    "clean-build": "rm -rf ./dist/",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.1",
@@ -153,6 +155,7 @@
     "offline-plugin": "^4.8.3",
     "pm2": "^2.6.1",
     "postcss-loader": "^2.0.6",
+    "pre-commit": "^1.2.2",
     "prepack-webpack-plugin": "^1.1.0",
     "react-test-renderer": "^15.6.1",
     "redux-devtools": "^3.4.0",
