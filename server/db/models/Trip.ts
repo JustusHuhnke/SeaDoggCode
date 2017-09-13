@@ -1,10 +1,10 @@
+import {IBoatModel} from "_server/db/models/Boat";
+import {IUserModel} from "_server/db/models/User";
+import {capitalizeOnlyFirst, clear} from "_utils/string";
 import { Document, Model, Schema, Types} from "mongoose";
 import connection from "../dBase";
-import {capitalizeOnlyFirst, clear} from "_helpers/string";
-import {IUserModel} from "_server/db/models/User";
-import {IBoatModel} from "_server/db/models/Boat";
 
-interface ITripModel extends Document{
+interface ITripModel extends Document {
     owner: IUserModel;
     title: string;
     description: string;
@@ -24,7 +24,7 @@ interface ITripModel extends Document{
         message: string;
         yes: number;
         no: number;
-    }]
+    }];
 }
 
 export const TripSchema: Schema = new Schema({
@@ -45,7 +45,7 @@ export const TripSchema: Schema = new Schema({
         two: { type: Number, integer: true, default: 0 },
         three: { type: Number, integer: true, default: 0 },
         four: { type: Number, integer: true, default: 0 },
-        five: { type: Number, integer: true, default: 0 }
+        five: { type: Number, integer: true, default: 0 },
     },
     review: [{
         author: { type: Types.ObjectId, ref: "User" },
@@ -56,8 +56,8 @@ export const TripSchema: Schema = new Schema({
         },
         yes: { type: Number, integer: true, default: 0 },
         no: { type: Number, integer: true, default: 0 },
-    }]
-    
+    }],
+
 });
 
 export const TripModel: Model<ITripModel> = connection.model<ITripModel>("Trip", TripSchema);
