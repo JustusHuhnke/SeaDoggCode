@@ -5,6 +5,7 @@ const WebpackErrorNotificationPlugin = require('webpack-error-notification');
 const BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const vendorStyles = require("./vendor.style").default;
 
 const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
     bundle: [
@@ -87,6 +88,8 @@ fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
     }
 });
 
+entry['base'] = [entry['base'], ...vendorStyles];
+
 module.exports = {
     devtool: 'sourcemap',
     target: 'web',
@@ -146,10 +149,25 @@ module.exports = {
     },
     plugins: plugins,
     module: {
-        // loaders -> rules in webpack 2
         rules: [
             {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {
+                            loader: "css-loader", options: {
+                            sourceMap: true,
+                            modules: true,
+                            localIdentName: '[local]'
+                        }
+                        }
+                    ]
+                })
+            },
+            {
                 test: /\.scss$/,
+                exclude: /node_modules/,
                 use:
                     ExtractTextPlugin.extract({
                         fallback: "style-loader",
@@ -158,7 +176,7 @@ module.exports = {
                                 loader: "css-loader", options: {
                                 sourceMap: true,
                                 modules: true,
-                                importLoaders: 1,
+                                importLoaders: 3,
                                 localIdentName: '[local]---[hash:base64]'
                             }
                             },

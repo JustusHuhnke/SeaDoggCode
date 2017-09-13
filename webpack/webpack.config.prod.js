@@ -8,6 +8,7 @@ const BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin');
 const OfflinePlugin = require('offline-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const vendorStyles = require("./vendor.style").default;
 
 const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
     bundle: './client/index.tsx',
@@ -45,6 +46,7 @@ fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
         excludes_offline.push(name + ".js*")
     }
 });
+entry['base'] = [entry['base'], ...vendorStyles];
 
 const plugins = [
     new webpack.LoaderOptionsPlugin({
@@ -161,6 +163,43 @@ module.exports = {
     plugins: plugins,
     module: {
         rules: [
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {
+                            loader: "css-loader", options: {
+                            sourceMap: false,
+                            modules: true,
+                            minimize: true,
+                            localIdentName: '[local]',
+                            importLoaders: 1,
+                        }
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: false,
+                                plugins: (loader) => [
+                                    require('autoprefixer')({
+                                        browsers: [
+                                            'last 2 versions',
+                                            '> 1%',
+                                            'android 4',
+                                            'iOS 9',
+                                        ],
+                                        cascade: false
+                                    }),
+                                    require('cssnano')({
+                                        preset: 'advanced',
+                                    })
+                                ]
+                            }
+                        },
+                    ]
+                })
+            },
             {
                 test: /\.scss$/,
                 use:

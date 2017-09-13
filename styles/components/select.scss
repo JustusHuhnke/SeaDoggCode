@@ -1,0 +1,8 @@
+@import '~bemify';
+
+@include block('select') {
+  display: inline-block;
+  overflow: visible;
+  width: 250px;
+  height: 60px;
+}
