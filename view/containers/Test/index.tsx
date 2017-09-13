@@ -2,6 +2,7 @@ import {IconComponent} from "_components/Icon";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/Select";
 import {component, sectionStyle} from "_style";
+import {List} from "immutable";
 import * as React from "react";
 import {IHelloProps} from "./interface";
 
@@ -28,8 +29,8 @@ export class Test extends React.Component<IHelloProps, undefined> {
         const styleSelect = {
             [component.select]: true,
         };
-
-        const selectOptions = [
+        //
+        const selectOptions = List([
             {
                 label: "One",
                 value: "one",
@@ -38,7 +39,7 @@ export class Test extends React.Component<IHelloProps, undefined> {
                 label: "Two",
                 value: "two",
             },
-        ];
+        ]);
 
         return (
             <PureComponent>
@@ -51,13 +52,12 @@ export class Test extends React.Component<IHelloProps, undefined> {
                     <IconComponent name="download" className={styleIcon} />
                 </PureComponent>
                 <PureComponent tag="section">
-                    Selects:
-                    <SelectComponent
-                        name="test-select"
-                        className={styleSelect}
-                        defaultValue="one"
-                        options={selectOptions}
-                    />
+                    Selects default:
+                    <SelectComponent className={styleSelect} options={selectOptions} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Selects creatable:
+                    <SelectComponent className={styleSelect} options={selectOptions} creatable={true} />
                 </PureComponent>
             </PureComponent>
         );

@@ -1,41 +1,30 @@
 import {component} from "_style";
 import * as cx from "classnames";
+import {List} from "immutable";
 import * as React from "react";
-// import * as Select from "react-select";
-import {Creatable} from 'react-select';
-import {ISelect} from "./interface";
+import * as Select from "react-select";
+import {ISelectComponent} from "./interface";
 
-export class SelectComponent extends React.Component<ISelect, undefined> {
+export class SelectComponent extends React.Component<ISelectComponent, undefined> {
 
-    public static defaultProps: ISelect = {
+    public static defaultProps: ISelectComponent = {
         className: component.select,
-        defaultValue: "one",
-        name: null,
-        options: [
-            {
-                label: "One",
-                value: "one",
-            },
-            {
-                label: "Two",
-                value: "two",
-            },
-        ],
+        creatable: false,
     };
 
     public render() {
 
-        const {name, defaultValue, options, className, ...otherProps} = this.props;
+        const {className, creatable, options, ...otherProps} = this.props;
         const classes = cx(className);
+        const SelectElement: Select.Creatable | any = creatable === true ? Select.Creatable : (Select as any).default;
 
         return (
-            <Creatable
-                name={name}
-                value={defaultValue}
-                options={options}
+            <SelectElement
                 className={classes}
+                options={options instanceof List ? options.toArray() : options}
                 {...otherProps}
-            />);
+            />
+        );
 
     }
 }
