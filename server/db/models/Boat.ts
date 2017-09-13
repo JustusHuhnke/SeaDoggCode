@@ -1,19 +1,19 @@
-import { Document, Model, Schema, Types} from "mongoose";
-import connection from "../dBase";
-import {capitalizeOnlyFirst, clear} from "_helpers/string";
+import {IPhoto} from "_models";
 import {ICountryModel} from "_server/db/models/Country";
 import {IUserModel} from "_server/db/models/User";
-import {IPhoto} from "_models";
+import {capitalizeOnlyFirst, clear} from "_utils/string";
+import { Document, Model, Schema, Types} from "mongoose";
+import connection from "../dBase";
 
 const DEFAULT_BOAT_PICTURE = "/image/boat.jpg";
 
 export interface IBoatModel extends Document {
-    owner: IUserModel,
+    owner: IUserModel;
     profile: {
         title: string;
         description?: string;
         rules?: string;
-    },
+    };
     info: {
         name: string;
         maker: string;
@@ -21,20 +21,20 @@ export interface IBoatModel extends Document {
         year: string;
         market: string;
         type: string;
-    },
+    };
     registration: {
         indentNumber: number;
         guard: boolean;
         number: number;
         location: string;
-    },
+    };
     location: {
         street?: string;
         city?: string;
         country?: ICountryModel;
         locationType?: string;
         slipType?: string;
-    },
+    };
     specification: {
         length?: number;
         passengers?: number;
@@ -54,7 +54,7 @@ export interface IBoatModel extends Document {
         arneson?: string;
         shaft?: string;
         outdrive?: string;
-    },
+    };
     activities: {
         fishing?: boolean;
         sailing?: boolean;
@@ -96,9 +96,9 @@ export interface IBoatModel extends Document {
         outriggers?: boolean;
         radio?: boolean;
         cabin?: boolean;
-    },
-    photos: [IPhoto],
-    price: Number
+    };
+    photos: [IPhoto];
+    price: number;
 }
 
 const BoatSchema: Schema = new Schema({
@@ -106,7 +106,7 @@ const BoatSchema: Schema = new Schema({
     profile: {
         title: { type: String, trim: true, required : true },
         description: { type: String, trim: true },
-        rules: { type: String, trim: true }
+        rules: { type: String, trim: true },
     },
     info: {
         name: { type: String, trim: true, required : true },
@@ -114,13 +114,13 @@ const BoatSchema: Schema = new Schema({
         model: { type: String, trim: true, required : true },
         year: { type: Number, required : true },
         market: { type: String, trim: true, required : true },
-        type: { type: String, trim: true, required : true }
+        type: { type: String, trim: true, required : true },
     },
     registration: {
         indentNumber: { type: Number, required : true },
         guard: { type: Boolean, default: false },
         number: { type: Number, required : true },
-        location: { type: String, trim: true, required : true }
+        location: { type: String, trim: true, required : true },
     },
     location: {
         street: { type: String, trim: true },
@@ -134,9 +134,9 @@ const BoatSchema: Schema = new Schema({
         locationType: { type: String, trim: true, lowercase: true, enum: ["marina", "trailer", "mooring", "house"] },
         slipType: { type: String, trim: true, lowercase: true, enum: ["dry", "wet"] },
         location: {
-            type: { type: String, enum: ["Point", "Polygon", "LineString", "MultiLineString"], default: "Point", },
-            coordinates: { type: [Number], default: [0,0] }
-        }
+            type: { type: String, enum: ["Point", "Polygon", "LineString", "MultiLineString"], default: "Point" },
+            coordinates: { type: [Number], default: [0, 0] },
+        },
     },
     specification: {
         length: Number,
@@ -205,22 +205,21 @@ const BoatSchema: Schema = new Schema({
         width: { type: Number, integer: true },
         height: { type: Number, integer: true },
         size: { type: Number, integer: true },
-        type: { type: String, required: true, },
-        name: { type: String, required: true, },
+        type: { type: String, required: true },
+        name: { type: String, required: true },
         title: {
             type: String,
             trim: true,
             get: (v: string): string => capitalizeOnlyFirst(v),
             set: (v: string): string => capitalizeOnlyFirst(clear(v)),
         },
-        description: String
+        description: String,
     }],
-    price: { type: Number, required: true, integer: true, index: true, min: 0 }
+    price: { type: Number, required: true, integer: true, index: true, min: 0 },
 
 }, {timestamps: true});
 
-
-BoatSchema.index({"location.location": '2dsphere'});
+BoatSchema.index({"location.location": "2dsphere"});
 export const BoatModel: Model<IBoatModel> = connection.model<IBoatModel>("Boat", BoatSchema);
 
 export default BoatModel;

@@ -1,6 +1,6 @@
+import {IUserModel} from "_server/db/models/User";
 import { Document, Model, Schema, Types} from "mongoose";
 import connection from "../dBase";
-import {IUserModel} from "_server/db/models/User";
 
 export interface INotificationModel extends Document {
     message: string;
@@ -14,14 +14,14 @@ const NotificationSchema: Schema = new Schema({
     type: {
         type: String,
         enum: ["success", "info", "warning", "error"],
-        default: "info"
+        default: "info",
     },
     category: {
         type: String,
         enum: ["user", "payment", "boat", "trip"],
-        default: "user"
+        default: "user",
     },
-    owner: { type: Types.ObjectId, ref: "User" }
+    owner: { type: Types.ObjectId, ref: "User" },
 });
 
 export const NotificationModel: Model<INotificationModel> = connection.model<INotificationModel>("Notification", NotificationSchema);

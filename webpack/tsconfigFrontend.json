@@ -22,7 +22,7 @@
       "_blocks/*":        ["./view/block/*"],
       "_components/*":    ["./view/components/*"],
       "_containers/*":    ["./view/containers/*"],
-      "_helpers/*":       ["./helpers/*"],
+      "_utils/*":         ["./utils/*"],
       "_reducers":        ["./store/reducers/index"],
       "_reducer/*":       ["./store/reducers/*"],
       "_route":           ["./route/index"],

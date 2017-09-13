@@ -157,7 +157,7 @@ module.exports = {
             "_images": resolve(__dirname, '..', 'static/images'),
             "_stylesLoad": resolve(__dirname, '..', 'styles'),
             "_style": resolve(__dirname, '..', 'styles/index.ts'),
-            "_helpers": resolve(__dirname, '..', 'helpers')
+            "_utils": resolve(__dirname, '..', 'utils')
         }
     },
     plugins: plugins,
@@ -283,7 +283,7 @@ module.exports = {
                 exclude: /node_modules/,
                 include: [
                     resolve(__dirname, '..', 'client'),
-                    resolve(__dirname, '..', 'helpers'),
+                    resolve(__dirname, '..', 'utils'),
                     resolve(__dirname, '..', 'route'),
                     resolve(__dirname, '..', 'store'),
                     resolve(__dirname, '..', 'styles'),

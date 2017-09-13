@@ -1,7 +1,7 @@
+import * as elastic from "elasticsearch";
 import * as Mongoose from "mongoose";
 import * as pino from "pino";
-import * as elastic from "elasticsearch";
-import config, {database, logConfig, elasticConfig} from "./../config";
+import config, {database, elasticConfig, logConfig} from "./../config";
 
 const log = pino({...logConfig, name: "DataBase"}, config.pretty);
 

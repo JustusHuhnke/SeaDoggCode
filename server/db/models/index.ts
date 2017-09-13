@@ -1,5 +1,5 @@
 import Boat from "./Boat";
-import {ChatRoomModel as Room, ChatMessageModel as Message} from "./Chat";
+import {ChatMessageModel as Message, ChatRoomModel as Room} from "./Chat";
 import Country from "./Country";
 import Notification from "./Notification";
 import Trip from "./Trip";
