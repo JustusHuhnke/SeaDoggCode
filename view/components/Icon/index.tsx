@@ -2,11 +2,11 @@ import {component} from "_style";
 import request from "_utils/xhr";
 import * as cx from "classnames";
 import * as React from "react";
-import {IIcon} from "./interface";
+import {IIconComponent} from "./interface";
 
-export class IconComponent extends React.PureComponent<IIcon, undefined> {
+export class IconComponent extends React.PureComponent<IIconComponent, undefined> {
 
-    public static defaultProps: IIcon = {
+    public static defaultProps: IIconComponent = {
         className: component.icon,
         name: null,
         spriteName: "sprite",

@@ -15,7 +15,7 @@ test("Create user", async (done) => {
         const newUser = new User({
             email: "email",
             firstName: "firstName",
-            lastName: "lastName"
+            lastName: "lastName",
         });
         await newUser.save();
         user_id = newUser._id;
@@ -33,7 +33,7 @@ test("Create user with exist email", async (done) => {
         const newUser = new User({
             email: "email",
             firstName: "firstName",
-            lastName: "lastName"
+            lastName: "lastName",
         });
         await newUser.save();
         user_id = newUser._id;
@@ -52,7 +52,7 @@ test("Create user", async (done) => {
         const newUser = new User({
             // email: "email",
             firstName: "firstName",
-            lastName: "lastName"
+            lastName: "lastName",
         });
         await newUser.save();
         user_id = newUser._id;
@@ -60,7 +60,7 @@ test("Create user", async (done) => {
         done("Email must be required.");
     } catch (err) {
         expect(err).not.toBe(null);
-        done()
+        done();
     }
 }, 5000);
 
