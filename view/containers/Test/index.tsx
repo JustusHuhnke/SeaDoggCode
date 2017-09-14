@@ -1,8 +1,10 @@
 import {IconComponent} from "_components/Icon";
+import {ImageComponent} from "_components/Image";
+import {IImageParams} from "_components/Image/interface";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/Select";
 import {component} from "_style";
-import {List} from "immutable";
+import {List, Map} from "immutable";
 import * as React from "react";
 import {IHelloProps} from "./interface";
 
@@ -19,16 +21,17 @@ export class Test extends React.Component<IHelloProps, undefined> {
 
     public render() {
 
+        // Icon
         const styleIcon = {
             [component.icon]: true,
             [component["icon--white"]]: false,
             [component["icon--red"]]: true,
         };
 
+        // Select
         const styleSelect = {
             [component.select]: true,
         };
-        //
         const selectOptions = List([
             {
                 label: "One",
@@ -39,6 +42,16 @@ export class Test extends React.Component<IHelloProps, undefined> {
                 value: "two",
             },
         ]);
+
+        // Image
+        const imageSource: IImageParams = Map({
+            main: "http://via.placeholder.com/350x150?text=2K",
+            ultra: "http://via.placeholder.com/350x150?text=2K",
+            full: "http://via.placeholder.com/350x150?text=1920px",
+            hd: "http://via.placeholder.com/350x150?text=1366px",
+            wide: "http://via.placeholder.com/350x150?text=768px",
+            half: "http://via.placeholder.com/350x150?text=480px",
+        });
 
         return (
             <PureComponent>
@@ -57,6 +70,10 @@ export class Test extends React.Component<IHelloProps, undefined> {
                 <PureComponent tag="section">
                     Selects creatable:
                     <SelectComponent className={styleSelect} options={selectOptions} creatable={true} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Image:
+                    <ImageComponent src={imageSource} />
                 </PureComponent>
             </PureComponent>
         );
