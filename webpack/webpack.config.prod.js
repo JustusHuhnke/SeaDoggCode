@@ -9,31 +9,12 @@ const OfflinePlugin = require('offline-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const vendorStyles = require("./vendor.style").default;
+const vendorScripts = require("./vendor.scripts").default;
 
 const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
     bundle: './client/index.tsx',
-    vendor: [
-        'react',
-        'react-dom',
-        'react-helmet',
-        "react-redux",
-        'react-hot-loader',
-        'react-router',
-        'react-router-dom',
-        'react-router-redux',
-
-        'redux',
-        'rxjs',
-        'redux-observable',
-
-        "history",
-        'immutable',
-        'classnames',
-        "socket.io-client"
-    ],
-    style: [
-        './styles/index.ts',
-    ],
+    vendor: vendorScripts,
+    style: './styles/index.ts',
 };
 
 const excludes_offline = ['style/style.css*', 'style.css*'];

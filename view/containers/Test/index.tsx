@@ -1,12 +1,11 @@
 import {IconComponent} from "_components/Icon";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/Select";
-import {component, sectionStyle} from "_style";
+import {component} from "_style";
 import {List} from "immutable";
 import * as React from "react";
 import {IHelloProps} from "./interface";
 
-@sectionStyle
 export class Test extends React.Component<IHelloProps, undefined> {
 
     public static defaultProps: IHelloProps = {
