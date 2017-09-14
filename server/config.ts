@@ -43,15 +43,15 @@ interface IConfig {
 }
 
 export const database = {
-    // config: {
-    //     db: { native_parser: true },
-    //     pass: "",
-    //     replset: { rs_name: "rs0" },
-    //     server: { poolSize: 5, reconnectTries: Number.MAX_VALUE, reconnectInterval: 5000 },
-    //     user: "",
-    // },
-    development: "mongodb://seadogg:evS4ayzcspXTerpE@ds135384.mlab.com:35384/seadogg",
-    production: "mongodb://seadogg:evS4ayzcspXTerpE@ds135384.mlab.com:35384/seadogg",
+    config: {
+        db: { native_parser: true },
+        pass: "evS4ayzcspXTerpE",
+        // replset: { rs_name: "rs0" },
+        server: { poolSize: 5, reconnectTries: Number.MAX_VALUE, reconnectInterval: 5000 },
+        user: "seadogg",
+    },
+    development: "mongodb://ds135384.mlab.com:35384/seadogg",
+    production: "mongodb://ds135384.mlab.com:35384/seadogg",
 };
 
 export const redisConfig = {

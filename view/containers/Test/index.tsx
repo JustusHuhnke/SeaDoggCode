@@ -1,10 +1,9 @@
 import {IconComponent} from "_components/Icon";
 import {ImageComponent} from "_components/Image";
-import {IImageParams} from "_components/Image/interface";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/Select";
 import {component} from "_style";
-import {List, Map} from "immutable";
+import {List} from "immutable";
 import * as React from "react";
 import {IHelloProps} from "./interface";
 
@@ -44,14 +43,10 @@ export class Test extends React.Component<IHelloProps, undefined> {
         ]);
 
         // Image
-        const imageSource: IImageParams = Map({
-            main: "http://via.placeholder.com/350x150?text=2K",
-            ultra: "http://via.placeholder.com/350x150?text=2K",
-            full: "http://via.placeholder.com/350x150?text=1920px",
-            hd: "http://via.placeholder.com/350x150?text=1366px",
-            wide: "http://via.placeholder.com/350x150?text=768px",
-            half: "http://via.placeholder.com/350x150?text=480px",
-        });
+        const imageCustom = List([
+            {src: "http://via.placeholder.com/350x150?text=custom1", media: "(min-width: 1367px) and (max-width: 1920px)"},
+            {src: "http://via.placeholder.com/350x150?text=custom2", media: "(min-width: 769px) and (max-width: 1366px)"},
+        ]);
 
         return (
             <PureComponent>
@@ -72,8 +67,12 @@ export class Test extends React.Component<IHelloProps, undefined> {
                     <SelectComponent className={styleSelect} options={selectOptions} creatable={true} />
                 </PureComponent>
                 <PureComponent tag="section">
-                    Image:
-                    <ImageComponent src={imageSource} />
+                    Image default:
+                    <ImageComponent src={"http://via.placeholder.com/350x150?text="} alt={"Image Text"} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Image custom:
+                    <ImageComponent src={"http://via.placeholder.com/350x150?text=custom"} alt={"Image Text"} custom={imageCustom} />
                 </PureComponent>
             </PureComponent>
         );
