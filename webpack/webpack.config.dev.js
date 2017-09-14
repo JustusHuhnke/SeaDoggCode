@@ -6,6 +6,7 @@ const BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const vendorStyles = require("./vendor.style").default;
+const vendorScripts = require("./vendor.scripts").default;
 
 const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
     bundle: [
@@ -20,30 +21,8 @@ const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
         // Our app main entry
         './client/index.tsx'
     ],
-    vendor: [
-        'react',
-        'react-dom',
-        'react-helmet',
-        "react-redux",
-        'react-hot-loader',
-        'react-router',
-        'react-router-dom',
-        'react-router-redux',
-
-        'redux',
-        'rxjs',
-        'redux-observable',
-
-        "history",
-        'immutable',
-        'classnames',
-        "socket.io-client"
-    ],
-    style: [
-        './styles/index.ts',
-        './styles/block.tsx',
-        './styles/section.tsx',
-    ],
+    vendor: vendorScripts,
+    style: './styles/index.ts',
 };
 
 const plugins = [
