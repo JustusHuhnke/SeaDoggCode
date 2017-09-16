@@ -6,7 +6,7 @@ const nodemon = require('gulp-nodemon');
 const deletefile = require('gulp-delete-file');
 const svgo = require('gulp-svgo');
 const watch = require('gulp-watch');
-const tinypng = require('gulp-tinypng');
+const tinypng = require('gulp-tiny').default;
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -173,12 +173,17 @@ gulp.task('------Production------');
 
 
 gulp.task('tinypng', function () {
+    const exit_path = resolve('./static/images');
     gulp.src('./static/original_images/**/*.{png,jpg,jpeg}')
         .pipe(tinypng({
-            apiKey: ['RsN84oBjmXxPkCB5s_ZlfA1fRS1U32LY', 'bN4uZbaI06-ESRiKhD6yS3P4NF9zle7W', 'durCxw2lwQgJmxvwOnpyLrMdEsNEImOY'],
-            cached: true
+            apiKeys: ['RsN84oBjmXxPkCB5s_ZlfA1fRS1U32LY', 'bN4uZbaI06-ESRiKhD6yS3P4NF9zle7W', 'durCxw2lwQgJmxvwOnpyLrMdEsNEImOY'],
+            cached: true,
+            size: [
+                { name: "hd", method: "fit", width: 480, height: 320 }
+            ],
+            exit_path
         }))
-        .pipe(gulp.dest('./static/images'));
+        .pipe(gulp.dest(exit_path));
 });
 
 gulp.task('prebuild', ['tinypng'], (callback) => {

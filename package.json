@@ -151,7 +151,7 @@
     "gulp-delete-file": "^1.0.2",
     "gulp-nodemon": "^2.2.1",
     "gulp-svgo": "^1.2.5",
-    "gulp-tinypng": "https://github.com/iHaiduk/gulp-tinypng",
+    "gulp-tiny": "https://github.com/iHaiduk/gulp-tinypng",
     "gulp-watch": "^4.3.11",
     "jest": "^21.1.0",
     "jest-alias-preprocessor": "^1.1.1",

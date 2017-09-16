@@ -3337,7 +3337,7 @@ event-emitter@~0.3.5:
     d "1"
     es5-ext "~0.10.14"
 
-event-stream@^3.2.1, event-stream@~3.3.0, event-stream@~3.3.4:
+event-stream@^3.2.1, event-stream@^3.3.4, event-stream@~3.3.0:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/event-stream/-/event-stream-3.3.4.tgz#4ab4c9a0f5a54db9338b4c34d86bfce8f4b35571"
   dependencies:
@@ -4174,11 +4174,13 @@ gulp-svgo@^1.2.5:
   dependencies:
     svgo "^0.7.2"
 
-"gulp-tinypng@https://github.com/iHaiduk/gulp-tinypng":
+"gulp-tiny@https://github.com/iHaiduk/gulp-tinypng":
   version "1.0.2"
-  resolved "https://github.com/iHaiduk/gulp-tinypng#df1ac272a3db7275e2c2285e29fe36b106ce0fe9"
+  resolved "https://github.com/iHaiduk/gulp-tinypng#f911f6e11072e4d7d31b40fcca3cbe34258f4276"
   dependencies:
-    event-stream "~3.3.4"
+    babel-core "^6.26.0"
+    babel-runtime "^6.26.0"
+    event-stream "^3.3.4"
     gulp "^3.9.1"
     gulp-util "^3.0.8"
     md5 "^2.2.1"
@@ -4187,7 +4189,7 @@ gulp-svgo@^1.2.5:
     request "^2.81.0"
     rmdir "^1.2.0"
     through2 "^2.0.3"
-    vinyl "^2.0.2"
+    vinyl "^2.1.0"
 
 gulp-util@^3.0.0, gulp-util@^3.0.7, gulp-util@^3.0.8:
   version "3.0.8"
@@ -9866,7 +9868,7 @@ vinyl@^1.1.0, vinyl@^1.2.0:
     clone-stats "^0.0.1"
     replace-ext "0.0.1"
 
-vinyl@^2.0.2:
+vinyl@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-2.1.0.tgz#021f9c2cf951d6b939943c89eb5ee5add4fd924c"
   dependencies:
