@@ -1,3 +1,4 @@
+import {ButtonComponent} from "_components/ButtonComponent";
 import {IconComponent} from "_components/IconComponent";
 import {ImageComponent} from "_components/ImageComponent";
 import {LinkComponent} from "_components/LinkComponent";
@@ -86,6 +87,14 @@ export class Test extends React.Component<IHelloProps, undefined> {
                 <PureComponent tag="section">
                     Custom children in link:
                     <LinkComponent href={"/"}><ImageComponent src={"http://via.placeholder.com/350x150?text="} alt={"Image Text"} /></LinkComponent>
+                </PureComponent>
+                <PureComponent tag="section">
+                    Default button:
+                    <ButtonComponent title={"This is button"} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Button with icon:
+                    <ButtonComponent title={"This is button with icon"} icon={"download"} iconClass={styleIcon} />
                 </PureComponent>
             </PureComponent>
         );

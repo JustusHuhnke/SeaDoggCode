@@ -14,6 +14,6 @@ export interface IButtonComponent {
     icon?: string;
     iconClass?: classNames;
 
-    title?: string;
+    title: string;
     titleClass?: classNames;
 }
