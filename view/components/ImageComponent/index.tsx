@@ -1,4 +1,4 @@
-import {Source} from "_components/Image/source";
+import {Source} from "_components/ImageComponent/source";
 import {component} from "_style";
 import * as cx from "classnames";
 import {List} from "immutable";
@@ -41,7 +41,7 @@ export class ImageComponent extends React.PureComponent<IImageComponent, undefin
 
     public render() {
         const {className, custom, src, alt, ...otherProps} = this.props;
-        const classes = cx(className);
+        const classes = cx(component.image, className);
 
         if (List.isList(custom)) {
             return (

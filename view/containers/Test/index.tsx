@@ -1,7 +1,8 @@
-import {IconComponent} from "_components/Icon";
-import {ImageComponent} from "_components/Image";
+import {IconComponent} from "_components/IconComponent";
+import {ImageComponent} from "_components/ImageComponent";
+import {LinkComponent} from "_components/LinkComponent";
 import {PureComponent} from "_components/PureComponent";
-import {SelectComponent} from "_components/Select";
+import {SelectComponent} from "_components/SelectComponent";
 import {component} from "_style";
 import {List} from "immutable";
 import * as React from "react";
@@ -73,6 +74,18 @@ export class Test extends React.Component<IHelloProps, undefined> {
                 <PureComponent tag="section">
                     Image custom:
                     <ImageComponent src={"http://via.placeholder.com/350x150?text=custom"} alt={"Image Text"} custom={imageCustom} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Default Link:
+                    <LinkComponent href={"/"} title={"Home"} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Link with icon:
+                    <LinkComponent href={"/"} title={"Home"} icon={"download"} iconClass={styleIcon} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Custom children in link:
+                    <LinkComponent href={"/"}><ImageComponent src={"http://via.placeholder.com/350x150?text="} alt={"Image Text"} /></LinkComponent>
                 </PureComponent>
             </PureComponent>
         );

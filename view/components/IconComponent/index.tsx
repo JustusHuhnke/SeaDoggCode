@@ -31,7 +31,7 @@ export class IconComponent extends React.PureComponent<IIconComponent, undefined
     public render() {
 
         const {name, viewBox, className, spriteName, ...otherProps} = this.props;
-        const classes = cx(className);
+        const classes = cx(component.icon, className);
 
         return !!name && (
             <svg viewBox={viewBox} className={classes} {...otherProps}>
