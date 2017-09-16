@@ -15,7 +15,7 @@ export class SelectComponent extends React.Component<ISelectComponent, undefined
     public render() {
 
         const {className, creatable, options, ...otherProps} = this.props;
-        const classes = cx(className);
+        const classes = cx(component.select, className);
         const SelectElement: Select.Creatable | any = creatable === true ? Select.Creatable : (Select as any).default;
 
         return (

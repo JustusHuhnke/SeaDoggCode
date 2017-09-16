@@ -1,4 +1,4 @@
-import {IImageCustomParams} from "_components/Image/interface";
+import {IImageCustomParams} from "_components/ImageComponent/interface";
 import * as React from "react";
 
 export const Source: React.SFC<IImageCustomParams> = ({src, media}) => {
