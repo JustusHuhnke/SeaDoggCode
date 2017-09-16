@@ -1,0 +1,6 @@
+@import '~bemify';
+@import '../variables/colors';
+
+@include block('link') {
+  text-decoration: none;
+}

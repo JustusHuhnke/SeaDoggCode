@@ -1,6 +1,6 @@
 import {changeCount} from "_actions";
 import {Header} from "_blocks/Header";
-import {IconComponent} from "_components/Icon";
+import {IconComponent} from "_components/IconComponent";
 import {PureComponent} from "_components/PureComponent";
 import * as React from "react";
 import {connect} from "react-redux";
