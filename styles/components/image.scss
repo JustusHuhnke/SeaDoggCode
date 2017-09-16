@@ -1,6 +1,6 @@
 @import '~bemify';
-@import '../variables/colors';
+@import '../variables/index';
 
 @include block('image') {
-  border: 1px solid white;
+  border: $image-border-size solid $image-border-color;
 }

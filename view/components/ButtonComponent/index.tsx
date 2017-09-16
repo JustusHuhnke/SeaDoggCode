@@ -10,18 +10,18 @@ export class ButtonComponent extends React.PureComponent<IButtonComponent, undef
     public static defaultProps: IButtonComponent = {
         className: component.link,
         type: "button",
+        title: "",
     };
 
     public render() {
 
-        const {type, children, className, icon, iconClass, title, titleClass, ...otherProps} = this.props;
+        const {type, className, icon, iconClass, title, titleClass, ...otherProps} = this.props;
         const classes = cx(className);
 
         return (
             <button className={classes} type={type} {...otherProps}>
-                {!!children && children}
-                {!children && !!icon && <IconComponent name={icon} className={iconClass} />}
-                {!children && !!title && <PureComponent tag="span" className={titleClass}>{title}</PureComponent>}
+                {!!icon && <IconComponent name={icon} className={iconClass} />}
+                <PureComponent tag="span" className={titleClass}>{title}</PureComponent>
             </button>
         );
     }
