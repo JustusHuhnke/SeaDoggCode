@@ -4,6 +4,7 @@
 @include block('image') {
   border: $image-border-size solid $image-border-color;
   max-width: 300px;
+  display: inline-block;
 
   & img {
     max-width: inherit;
