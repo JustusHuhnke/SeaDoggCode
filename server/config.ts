@@ -45,19 +45,19 @@ interface IConfig {
 export const database = {
     config: {
         db: { native_parser: true },
-        pass: "",
-        replset: { rs_name: "rs0" },
+        pass: "evS4ayzcspXTerpE",
+        // replset: { rs_name: "rs0" },
         server: { poolSize: 5, reconnectTries: Number.MAX_VALUE, reconnectInterval: 5000 },
-        user: "",
+        user: "seadogg",
     },
-    development: "mongodb://localhost/seadogg",
-    production: "mongodb://localhost/seadogg",
+    development: "mongodb://ds135384.mlab.com:35384/seadogg",
+    production: "mongodb://ds135384.mlab.com:35384/seadogg",
 };
 
 export const redisConfig = {
     family: 4,
-    host: "127.0.0.1",   // Redis host
-    port: 6379,          // Redis port
+    host: "redis-15485.c2.eu-west-1-3.ec2.cloud.redislabs.com",   // Redis host
+    port: 15485,          // Redis port
 };
 
 export const elasticConfig = {
