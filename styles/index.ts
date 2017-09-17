@@ -10,4 +10,4 @@ export { block, component, section };
 interface IClassDictionary {
     [id: string]: boolean | undefined | null;
 }
-export type classNames = string | number | IClassDictionary | string[] | IClassDictionary[] | undefined | null | false;
+export type classNames = string | number | IClassDictionary | string[] | IClassDictionary[] | undefined | null | false | any[];
