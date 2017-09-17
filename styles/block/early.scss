@@ -1,0 +1,9 @@
+@import '~bemify';
+@import '../variables/index';
+
+@include block('early') {
+  background: $early-background-color;
+  height: 1000px;
+  width: 100%;
+
+}

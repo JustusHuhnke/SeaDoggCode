@@ -20,5 +20,6 @@ const vendor = [
     "socket.io-client",
 
     "react-select",
+    "react-custom-scrollbars",
 ];
 exports.default = vendor;

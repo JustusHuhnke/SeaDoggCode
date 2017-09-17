@@ -1,0 +1,7 @@
+@import '~bemify';
+@import '../variables/index';
+
+@include block('logo') {
+  display: inline-block;
+
+}

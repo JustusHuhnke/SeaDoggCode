@@ -24,6 +24,7 @@ export const HTML = ({html = "", context = {}}: IHTMLRender): React.ReactElement
         <html manifest="/appcache/manifest.appcache">
         <head>
             {helmet.title.toComponent()}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
             {helmet.meta.toComponent()}
             <link href={`/${ASSETS["base.css"] || "style/base.css"}`} media="all" rel="stylesheet" />
             <link href={`/${ASSETS["section.css"] || "style/section.css"}`} media="all" rel="stylesheet" />

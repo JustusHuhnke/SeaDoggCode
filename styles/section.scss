@@ -2,6 +2,10 @@
 
 @include block('section') {
   display: block;
-  height: 50vh;
+  min-height: 50px;
   width: 100%;
+
+  @include element('windowScroll'){
+    height: 100vh;
+  }
 }

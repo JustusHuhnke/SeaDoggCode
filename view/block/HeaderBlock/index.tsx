@@ -1,17 +1,18 @@
+import {LogoComponent} from "_components/LogoComponent";
 import {PureComponent} from "_components/PureComponent";
-import {block, section} from "_style";
+import {block} from "_style";
 import * as React from "react";
 import {IHeader} from "./interface";
 
-export class Header extends React.Component<IHeader, undefined> {
+export class HeaderBlock extends React.Component<IHeader, undefined> {
 
     public render() {
-        const styleList = [section.section, block.header];
+        const styleList = [block.header];
         return (
             <PureComponent tag="header" className={styleList}>
-                {this.props.children}
-                Header
+                <LogoComponent />
             </PureComponent>
         );
     }
 }
+export default HeaderBlock;
