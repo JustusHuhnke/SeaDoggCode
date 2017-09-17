@@ -21,6 +21,9 @@ fs.readdirSync(resolve(__dirname, "styles")).forEach(file => {
     }
 });
 
+const onlyUnique = (value, index, self) => {
+    return self.indexOf(value) === index;
+}
 
 gulp.task('------Development------');
 
@@ -142,7 +145,7 @@ gulp.task('autoTypedStyle', (callback) => {
             const str = fs.readFileSync(resolve(__dirname, '.gulp/style', name + '.css'), 'utf8');
             const regex = /(\.([\w-_]+))/gi;
             let m;
-            let clases = []
+            let clases = [];
 
             let _template = `export interface I${name[0].toUpperCase() + name.slice(1)} {\n`;
             while ((m = regex.exec(str)) !== null) {
@@ -152,6 +155,7 @@ gulp.task('autoTypedStyle', (callback) => {
                 }
                 clases.push(m[2])
             }
+            clases = (clases.filter(onlyUnique));
             if(clases.length) {
                 clases.forEach((name) => {
                     _template += `  readonly "${name}": string;\n`
@@ -172,14 +176,20 @@ gulp.task('autoTypedStyle', (callback) => {
 gulp.task('------Production------');
 
 
-gulp.task('tinypng', function () {
+gulp.task('tinypng', ['autoTypedStyle'], function () {
     const exit_path = resolve('./static/images');
     gulp.src('./static/original_images/**/*.{png,jpg,jpeg}')
         .pipe(tinypng({
             apiKeys: ['RsN84oBjmXxPkCB5s_ZlfA1fRS1U32LY', 'bN4uZbaI06-ESRiKhD6yS3P4NF9zle7W', 'durCxw2lwQgJmxvwOnpyLrMdEsNEImOY'],
             cached: true,
             size: [
-                { name: "hd", method: "fit", width: 480, height: 320 }
+                { name: "2k", method: "fit", width: 2560, height: 1440 },
+                { name: "full", method: "fit", width: 1920, height: 1080 },
+                { name: "plus", method: "fit", width: 1600, height: 900 },
+                { name: "hd", method: "fit", width: 1366, height: 768 },
+                { name: "xga", method: "fit", width: 1024, height: 768 },
+                { name: "wide", method: "fit", width: 768, height: 480 },
+                { name: "half", method: "fit", width: 480, height: 320 }
             ],
             exit_path
         }))

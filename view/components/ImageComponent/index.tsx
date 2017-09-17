@@ -11,10 +11,16 @@ const defaultSizes = [
         media: "(min-width: 1921px)",
     }, {
         name: "full",
-        media: "(min-width: 1367px) and (max-width: 1920px)",
+        media: "(min-width: 1601px) and (max-width: 1920px)",
+    }, {
+        name: "plus",
+        media: "(min-width: 1367px) and (max-width: 1600px)",
     }, {
         name: "hd",
-        media: "(min-width: 769px) and (max-width: 1366px)",
+        media: "(min-width: 1025px) and (max-width: 1366px)",
+    }, {
+        name: "xga",
+        media: "(min-width: 769px) and (max-width: 1024px)",
     }, {
         name: "wide",
         media: "(min-width: 481px) and (max-width: 768px)",
@@ -40,21 +46,24 @@ export class ImageComponent extends React.PureComponent<IImageComponent, undefin
     }
 
     public render() {
-        const {className, custom, src, alt, ...otherProps} = this.props;
+        const {className, custom, src, imgSrc, alt, ones, ...otherProps} = this.props;
         const classes = cx(component.image, className);
 
-        if (List.isList(custom)) {
+        const img = imgSrc || src && require(`_images/${src}`);
+        const images = ones !== true && src && defaultSizes.map((prop) => ({...prop, link: require(`_images/${prop.name}/${src}`)})) || [];
+
+        if (imgSrc) {
             return (
                 <picture className={classes} {...otherProps}>
-                    {custom.map((props, key) => <Source key={key} {...props} />).toArray()}
-                    <img srcSet={src} alt={alt}/>
+                    {List.isList(custom) && custom.map((props, key) => <Source key={key} {...props} />).toArray()}
+                    <img srcSet={img} alt={alt}/>
                 </picture>
             );
         } else {
-            return (
+            return !!src && (
                 <picture className={classes} {...otherProps}>
-                    {defaultSizes.map(({media, name}, key) => <Source key={key} src={`${src}${name}`} media={media}/>)}
-                    <img srcSet={src} alt={alt}/>
+                    {ones !== true && images.map(({media, name, link}, key) => <Source key={key} src={link} media={media}/>)}
+                    <img srcSet={img} alt={alt}/>
                 </picture>
             );
         }
