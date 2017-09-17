@@ -138,10 +138,10 @@ gulp.task('autoTypedStyle', (callback) => {
         plugins: [
             new ExtractTextPlugin("[name].css")
         ]
-    }, function(err, stats) {
+    }, function (err, stats) {
         let template = "";
         style_js_remove.forEach((name) => {
-            if(name === "base") return;
+            if (name === "base") return;
             const str = fs.readFileSync(resolve(__dirname, '.gulp/style', name + '.css'), 'utf8');
             const regex = /(\.([\w-_]+))/gi;
             let m;
@@ -156,7 +156,7 @@ gulp.task('autoTypedStyle', (callback) => {
                 clases.push(m[2])
             }
             clases = (clases.filter(onlyUnique));
-            if(clases.length) {
+            if (clases.length) {
                 clases.forEach((name) => {
                     _template += `  readonly "${name}": string;\n`
                 });
@@ -183,13 +183,13 @@ gulp.task('tinypng', ['autoTypedStyle'], function () {
             apiKeys: ['RsN84oBjmXxPkCB5s_ZlfA1fRS1U32LY', 'bN4uZbaI06-ESRiKhD6yS3P4NF9zle7W', 'durCxw2lwQgJmxvwOnpyLrMdEsNEImOY'],
             cached: true,
             size: [
-                { name: "2k", method: "fit", width: 2560, height: 1440 },
-                { name: "full", method: "fit", width: 1920, height: 1080 },
-                { name: "plus", method: "fit", width: 1600, height: 900 },
-                { name: "hd", method: "fit", width: 1366, height: 768 },
-                { name: "xga", method: "fit", width: 1024, height: 768 },
-                { name: "wide", method: "fit", width: 768, height: 480 },
-                { name: "half", method: "fit", width: 480, height: 320 }
+                {name: "2k", method: "fit", width: 2560, height: 1440},
+                {name: "full", method: "fit", width: 1920, height: 1080},
+                {name: "plus", method: "fit", width: 1600, height: 900},
+                {name: "hd", method: "fit", width: 1366, height: 768},
+                {name: "xga", method: "fit", width: 1024, height: 768},
+                {name: "wide", method: "fit", width: 768, height: 480},
+                {name: "half", method: "fit", width: 480, height: 320}
             ],
             exit_path
         }))
@@ -222,7 +222,14 @@ gulp.task('prebuild', ['tinypng'], (callback) => {
     }
 });
 
-gulp.task('cleanServer', ['prebuild'], () => {
+gulp.task('fixManifest', ['prebuild'], (cb) => {
+    const path = resolve("dist", "public", "appcache", "manifest.appcache");
+    const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '');
+    fs.writeFileSync(path, content);
+    cb()
+});
+
+gulp.task('cleanServer', ['fixManifest'], () => {
     gulp.src(['./dist/server/**/*.js',
         './dist/server/**/*.map',
         './dist/server/**/*.css'
@@ -245,7 +252,6 @@ gulp.task('cleanStyle', ['cleanPublic'], () => {
         deleteMatch: false
     }))
 });
-
 
 gulp.task('svgo', ['cleanStyle'], () => {
 
