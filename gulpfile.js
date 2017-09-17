@@ -255,27 +255,7 @@ gulp.task('cleanStyle', ['cleanPublic'], () => {
 
 gulp.task('svgo', ['cleanStyle'], () => {
 
-    return gulp.src(['./dist/public/*.svg'])
-        .pipe(svgo({
-            plugins: [
-                {removeAttrs: {attrs: ['class', 'fill', 'viewBox']}},
-                {removeUselessDefs: true},
-                {removeDoctype: true},
-                {removeStyleElement: true},
-                {removeComments: true},
-                {cleanupIDs: false},
-                {removeViewBox: true},
-                {removeRasterImages: true},
-                {sortAttrs: true},
-                {mergePaths: true},
-                {removeTitle: true},
-                {removeDesc: true},
-                {removeScriptElement: true},
-                {cleanupNumericValues: {floatPrecision: 3}},
-                {addAttributesToSVGElement: {attribute: ['viewBox="0 0 24 24"']}}
-            ]
-        }))
-        .pipe(gulp.dest('./dist/public'));
+    return gulp.run("svgoDev");
 });
 
 gulp.task('build', ['svgo']);

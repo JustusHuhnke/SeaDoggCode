@@ -248,7 +248,6 @@ module.exports = {
                         options: {
                             name: '[sha512:hash:base64:7].[ext]',
                             publicPath: function(url) {
-                                console.log(url)
                                 return url.replace('../public/images/', '/images/')
                             },
                             outputPath: '../public/images/'
