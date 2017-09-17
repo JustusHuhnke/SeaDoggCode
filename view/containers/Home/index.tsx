@@ -1,14 +1,13 @@
-import {changeCount} from "_actions";
-import {Header} from "_blocks/Header";
-import {IconComponent} from "_components/IconComponent";
+import {EarlyAccessBlock} from "_blocks/EarlyAccessBlock";
+import {HeaderBlock} from "_blocks/HeaderBlock";
 import {PureComponent} from "_components/PureComponent";
+// import {section} from "_style";
 import * as React from "react";
+import * as Scrollbar from "react-custom-scrollbars";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import {IHelloProps} from "./interface";
 
-// Example image load
-// const img = require('_images/log.png');
+const {Scrollbars} = Scrollbar as any;
 
 class HomeComponent extends React.Component<IHelloProps, undefined> {
 
@@ -23,23 +22,12 @@ class HomeComponent extends React.Component<IHelloProps, undefined> {
     }
 
     public render() {
-        const {children, count} = this.props;
         return (
-            <PureComponent>
-                {children}
-                <Header/>
-                <PureComponent tag="main">
-                    Main
-                    <div>
-                        <button onClick={changeCount}>Count click: {count.get("number")}</button>
-                    </div>
-                    <IconComponent name="download" />
-                    <Link to={"/"}>Home</Link>
-                    <Link to={"/test"}>test</Link>
-                </PureComponent>
-                <PureComponent tag="footer">
-                    Footer
-                </PureComponent>
+            <PureComponent tag={"main"}>
+                <HeaderBlock/>
+                <Scrollbars autoHeight={true} universal={true} autoHeightMax={"100vh"}>
+                    <EarlyAccessBlock />
+                </Scrollbars>
             </PureComponent>
         );
     }
