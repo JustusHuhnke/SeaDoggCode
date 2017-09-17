@@ -2,7 +2,7 @@
 @import '../variables/index';
 
 @include block('header') {
-  background: transparent;
+  background: $header-background-color;
   height: 60px;
   left: 0;
   padding: 5px 20px;
@@ -11,7 +11,8 @@
   width: 100%;
   z-index: 1;
 
-  @include modifier("visible") {
-    background: $header-background-color;
+  @include modifier('transparent') {
+    background: transparent;
   }
+
 }

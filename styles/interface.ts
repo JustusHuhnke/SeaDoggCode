@@ -1,7 +1,7 @@
 export interface IBlock {
   readonly "early": string;
   readonly "header": string;
-  readonly "header--visible": string;
+  readonly "header--transparent": string;
 }
 export interface IComponents {
   readonly "icon": string;
@@ -11,6 +11,7 @@ export interface IComponents {
   readonly "image": string;
   readonly "link": string;
   readonly "logo": string;
+  readonly "navigation": string;
   readonly "select": string;
 }
 export interface ISection {

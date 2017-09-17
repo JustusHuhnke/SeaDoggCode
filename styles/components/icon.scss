@@ -21,9 +21,9 @@
   }
 
   @include element('logo') {
+    fill: $icon-color-logo;
     height: $icon-logo-size;
     width: $icon-logo-size;
-    fill: white;
   }
 
 }
