@@ -18,7 +18,9 @@ export interface IImageCustomParams {
 export interface IImageComponent {
     children?: ReactNode;
     className?: classNames;
-    src: string;
+    src?: string;
+    imgSrc?: string;
     alt: string;
-    custom?: List<IImageCustomParams>;
+    custom?: List<IImageCustomParams> | null;
+    ones?: true;
 }

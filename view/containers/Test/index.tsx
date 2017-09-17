@@ -70,11 +70,19 @@ export class Test extends React.Component<IHelloProps, undefined> {
                 </PureComponent>
                 <PureComponent tag="section">
                     Image default:
-                    <ImageComponent src={"http://via.placeholder.com/350x150?text="} alt={"Image Text"} />
+                    <ImageComponent src={"image1.jpg"} alt={"Image Text"} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    On image default:
+                    <ImageComponent src={"image1.jpg"} alt={"Image Text"} ones={true} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    One image custom:
+                    <ImageComponent imgSrc={"http://via.placeholder.com/350x150?text=oneimage"} alt={"Image Text"} />
                 </PureComponent>
                 <PureComponent tag="section">
                     Image custom:
-                    <ImageComponent src={"http://via.placeholder.com/350x150?text=custom"} alt={"Image Text"} custom={imageCustom} />
+                    <ImageComponent imgSrc={"http://via.placeholder.com/350x150?text=custom"} alt={"Image Text"} custom={imageCustom} />
                 </PureComponent>
                 <PureComponent tag="section">
                     Default Link:
@@ -86,7 +94,7 @@ export class Test extends React.Component<IHelloProps, undefined> {
                 </PureComponent>
                 <PureComponent tag="section">
                     Custom children in link:
-                    <LinkComponent href={"/"}><ImageComponent src={"http://via.placeholder.com/350x150?text="} alt={"Image Text"} /></LinkComponent>
+                    <LinkComponent href={"/"}><ImageComponent src={"image1.jpg"} alt={"Image Text"} /></LinkComponent>
                 </PureComponent>
                 <PureComponent tag="section">
                     Default button:
