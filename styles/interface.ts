@@ -19,5 +19,6 @@ export interface IComponents {
 }
 export interface ISection {
   readonly "section": string;
+  readonly "section__name": string;
   readonly "section__windowScroll": string;
 }

@@ -4,6 +4,13 @@
   display: block;
   min-height: 50px;
   width: 100%;
+  @include element('name') {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
 
   @include element('windowScroll'){
     height: 100vh;

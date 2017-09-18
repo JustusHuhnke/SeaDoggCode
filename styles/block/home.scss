@@ -12,10 +12,9 @@
 
 @include block('about') {
   background: $background-color;
-  height: 500px;
+  height: 100vh;
+  padding: 55px 15px;
+  box-sizing: border-box;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: $text-black;
 }
