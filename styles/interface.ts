@@ -1,5 +1,6 @@
 export interface IBlock {
   readonly "early": string;
+  readonly "about": string;
   readonly "header": string;
   readonly "header--transparent": string;
 }

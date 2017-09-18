@@ -49,7 +49,7 @@ module.exports = {
         moduleExtensions: ['-loader'],
         alias: {
             "_actions": resolve(__dirname, '..', 'store/actions/index.ts'),
-            "_blocks": resolve(__dirname, '..', 'view/block'),
+            "_blocks": resolve(__dirname, '..', 'view/block/index.ts'),
             "_config": resolve(__dirname, '..', 'server/config.ts'),
             '_components': resolve(__dirname, '..', 'view/components'),
             '_containers': resolve(__dirname, '..', 'view/containers'),

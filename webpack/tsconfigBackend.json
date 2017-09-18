@@ -17,7 +17,7 @@
     "noUnusedParameters": false,
     "paths": {
       "_actions":           [ "./store/actions/index" ],
-      "_blocks/*":          [ "./view/block/*" ],
+      "_blocks":            [ "./view/block/index" ],
       "_config":            [ "./server/config" ],
       "_utils/*":           [ "./utils/*" ],
       "_components/*":      [ "./view/components/*" ],

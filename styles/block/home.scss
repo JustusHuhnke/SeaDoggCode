@@ -1,0 +1,21 @@
+@import '~bemify';
+@import '../variables/index';
+
+@include block('early') {
+  background: $early-background-color;
+  height: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@include block('about') {
+  background: $background-color;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $text-black;
+}

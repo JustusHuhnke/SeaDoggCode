@@ -1,10 +1,10 @@
+import {ErrorComponent} from "_components/ErrorComponent";
+import {LoadingComponent} from "_components/LoadingComponent";
 import * as React from "react";
 import createLazyContainer from "react-lazy-import";
 import {Route, Switch} from "react-router";
-const Loading: React.SFC<{}> = () => <div>Loading...</div>;
-const Error: React.SFC<{}> = () => <div>Error!</div>;
-const Home = createLazyContainer(() => import("_containers/Home"), Loading, Error);
-const Test = createLazyContainer(() => import("_containers/Test"), Loading, Error);
+const Home = createLazyContainer(() => import("_containers/Home"), LoadingComponent, ErrorComponent);
+const Test = createLazyContainer(() => import("_containers/Test"), LoadingComponent, ErrorComponent);
 export const Routes = () => (
    <Switch>
        <Route exact={true} path="/" component={Home}/>
