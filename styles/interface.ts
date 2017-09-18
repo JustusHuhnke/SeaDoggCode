@@ -13,6 +13,8 @@ export interface IComponents {
   readonly "link": string;
   readonly "logo": string;
   readonly "navigation": string;
+  readonly "navigation__list": string;
+  readonly "navigation__list__item": string;
   readonly "select": string;
 }
 export interface ISection {
