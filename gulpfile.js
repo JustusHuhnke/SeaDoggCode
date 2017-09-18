@@ -173,6 +173,94 @@ gulp.task('autoTypedStyle', (callback) => {
     });
 });
 
+gulp.task("routeGenerate", () => {
+    const route = JSON.parse(fs.readFileSync(resolve("route/Route.json")));
+    let importBackend = '';
+    let routeBackend = '';
+    let routeFrontend = '';
+    let routeIndex = '';
+
+    route.routes.forEach(({path, container, exact}) => {
+        importBackend += 'import {'+container+'} from "_containers/'+container+'";\n';
+        routeBackend += '       <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={'+container+'}/>\n';
+
+        routeFrontend += 'const '+container+' = createLazyContainer(() => import("_containers/'+container+'"), Loading, Error);\n';
+
+        routeIndex += '         <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={require("_containers/'+container+'").'+container+'}/>\n';
+
+    });
+
+    const backendTemplate = importBackend +
+        'import {IApp} from "_route";\n' +
+        'import * as React from "react";\n' +
+        'import {Route, StaticRouter, Switch} from "react-router";\n\n' +
+        'const Routes = () => (\n' +
+        '    <Switch>\n' +
+        routeBackend +
+        '   </Switch>);\n\n' +
+        'const App: React.StatelessComponent<IApp> = (props) => {\n' +
+        '    return React.createElement(\n' +
+        '        StaticRouter,\n' +
+        '        props,\n' +
+        '        React.createElement(Routes, null),\n' +
+        '    );\n' +
+        '};\n' +
+        'export const AppComponent = process.env.BROWSER ? App : App;\n' +
+        'export default AppComponent;\n';
+
+    const clientTemplate = 'import * as React from "react";\n' +
+        'import createLazyContainer from "react-lazy-import";\n' +
+        'import {Route, Switch} from "react-router";\n' +
+        'const Loading: React.SFC<{}> = () => <div>Loading...</div>;\n' +
+        'const Error: React.SFC<{}> = () => <div>Error!</div>;\n' +
+        routeFrontend +
+        'export const Routes = () => (\n' +
+        '   <Switch>\n' +
+        routeBackend +
+        '   </Switch>);\n\n' +
+        'export default Routes;\n';
+
+    const indeTemplate = 'import * as React from "react";\n' +
+        'import {Router} from "react-router-dom";\n' +
+        'export interface IApp {\n' +
+        '   action: any;\n' +
+        '   listen: (location: any) => any;\n' +
+        '   location: string;\n' +
+        '   children?: React.ReactNode;\n' +
+        '}\n' +
+        'let AppComponent: any;\n' +
+        'if (process.env.NODE_ENV === "production") {\n' +
+        '    const App: React.StatelessComponent<IApp> = (props) => {\n' +
+        '        return React.createElement(\n' +
+        '            Router,\n' +
+        '            props as any,\n' +
+        '            React.createElement(require("./clientRoute").default, null),\n' +
+        '        );\n' +
+        '    };\n' +
+        '    AppComponent = App;\n' +
+        '} else {\n' +
+        '    const {Route, Switch} = require("react-router");\n' +
+        '    const Routes = () => (\n' +
+        '        <Switch>\n' +
+        routeIndex +
+        '        </Switch>\n' +
+        '    );\n' +
+        '    const App: React.StatelessComponent<IApp> = (props) => {\n' +
+        '        return React.createElement(\n' +
+        '            Router,\n' +
+        '            props as any,\n' +
+        '            React.createElement(Routes, null),\n' +
+        '        );\n' +
+        '    };\n' +
+        '    AppComponent = App;\n' +
+        '}\n' +
+        'export default AppComponent;\n';
+
+    fs.writeFileSync(resolve("route/backendRoute.tsx"), backendTemplate);
+    fs.writeFileSync(resolve("route/clientRoute.tsx"), clientTemplate);
+    fs.writeFileSync(resolve("route/index.tsx"), indeTemplate);
+});
+
 gulp.task('------Production------');
 
 
