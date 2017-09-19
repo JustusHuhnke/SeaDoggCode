@@ -315,9 +315,22 @@ gulp.task('tinypng', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], funct
         .pipe(gulp.dest(exit_path));
 });
 
-gulp.task('prebuild', ['tinypng'], (callback) => {
+gulp.task('prebuildFrontend', ['tinypng'], (callback) => {
+    exec('npm run productionFrontend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
+        if (err != null) {
+            callback(err);
+            console.error(err);
+            return
+        }
+        console.info(stdout);
+        console.error(stderr);
+        callback(err);
+    });
+});
+gulp.task('prebuild', ['prebuildFrontend'], (callback) => {
     try {
-        exec('npm run productionFrontend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
+
+        exec('npm run productionBackend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
             if (err != null) {
                 callback(err);
                 console.error(err);
@@ -325,16 +338,7 @@ gulp.task('prebuild', ['tinypng'], (callback) => {
             }
             console.info(stdout);
             console.error(stderr);
-            exec('npm run productionBackend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
-                if (err != null) {
-                    callback(err);
-                    console.error(err);
-                    return
-                }
-                console.info(stdout);
-                console.error(stderr);
-                callback(err);
-            });
+            callback(err);
         });
     } catch (err) {
         console.error(err)
@@ -380,3 +384,6 @@ gulp.task('svgo', ['cleanStyle'], () => {
 });
 
 gulp.task('build', ['svgo']);
+
+
+gulp.task('------Manual------');
