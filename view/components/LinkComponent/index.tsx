@@ -6,7 +6,7 @@ import * as React from "react";
 import {Link} from "react-router-dom";
 import {ILinkComponent} from "./interface";
 
-export class LinkComponent extends React.PureComponent<ILinkComponent, undefined> {
+export class LinkComponent extends React.PureComponent<ILinkComponent, {}> {
 
     public static defaultProps: ILinkComponent = {
         href: "/",

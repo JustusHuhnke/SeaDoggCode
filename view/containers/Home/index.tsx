@@ -9,7 +9,7 @@ import {IHelloProps} from "./interface";
 
 const {Scrollbars} = Scrollbar as any;
 
-class HomeComponent extends React.Component<IHelloProps, undefined> {
+class HomeComponent extends React.Component<IHelloProps, {}> {
 
     public static defaultProps: IHelloProps = {
         compiler: "Test",
