@@ -1,0 +1,16 @@
+@import '~bemify';
+@import '../variables/index';
+
+@include block('footer') {
+  background-color: $background-color;
+  display: inline-block;
+  padding: 55px 20px;
+  width: 100%;
+
+  @include element('text') {
+    color: $footer-gray-color;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+}

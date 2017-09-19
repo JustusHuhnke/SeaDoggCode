@@ -8,8 +8,13 @@ export interface IBlock {
   readonly "about": string;
   readonly "about__text": string;
   readonly "8": string;
+  readonly "features": string;
+  readonly "features__text": string;
+  readonly "features__button": string;
   readonly "header": string;
   readonly "header--transparent": string;
+  readonly "footer": string;
+  readonly "footer__text": string;
 }
 export interface IComponents {
   readonly "icon": string;
