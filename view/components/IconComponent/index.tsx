@@ -1,6 +1,6 @@
 import {component} from "_style";
+import classnames from "_utils/classnames";
 import request from "_utils/xhr";
-import * as cx from "classnames";
 import * as React from "react";
 import {IIconComponent} from "./interface";
 
@@ -31,7 +31,7 @@ export class IconComponent extends React.PureComponent<IIconComponent, undefined
     public render() {
 
         const {name, viewBox, className, spriteName, ...otherProps} = this.props;
-        const classes = cx(component.icon, className);
+        const classes = classnames(component.icon, className);
 
         return !!name && (
             <span  className={classes} {...otherProps}>

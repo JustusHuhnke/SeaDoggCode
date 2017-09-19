@@ -3,7 +3,7 @@ import {PureComponent} from "_components/PureComponent";
 import {INavigationElement} from "_reducer/navigation";
 import {IState} from "_reducers";
 import {component} from "_style";
-import * as cx from "classnames";
+import classnames from "_utils/classnames";
 import {List} from "immutable";
 import * as React from "react";
 import {connect} from "react-redux";
@@ -25,7 +25,7 @@ class Navigation extends React.PureComponent<INavigationComponent, undefined> {
     public render() {
 
         const {className, list, dispatch, ...otherProps} = this.props;
-        const classes = cx(component.navigation, className);
+        const classes = classnames(component.navigation, className);
 
         return (
             <nav className={classes} {...otherProps}>

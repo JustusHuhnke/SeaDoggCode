@@ -1,4 +1,4 @@
-import * as cx from "classnames";
+import classnames from "_utils/classnames";
 import * as React from "react";
 import {IPureComponent} from "./interface";
 
@@ -24,7 +24,7 @@ export class PureComponent extends React.PureComponent<IPureComponent, undefined
             delete props.inputRef;
         }
         Reflect.deleteProperty(props, "inputRef");
-        props.className = className && cx(className);
+        props.className = className && classnames(className);
         return <Tag ref={inputRef} {...props}>{children}</Tag>;
     }
 }

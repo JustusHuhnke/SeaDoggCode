@@ -1,17 +1,19 @@
 import {ErrorComponent} from "_components/ErrorComponent";
+import LazyLoadComponent from "_components/LazyLoadComponent";
 import {LoadingComponent} from "_components/LoadingComponent";
-import createLazyContainer from "react-lazy-import";
 
-const EarlyAccessBlock = process.env.NODE_ENV === "production" &&
-    createLazyContainer(() => import("./EarlyAccessBlock"), LoadingComponent, ErrorComponent) ||
+declare const System: { import: (path: string) => Promise<any>; };
+
+const EarlyAccessBlock = process.env.BROWSER &&
+    LazyLoadComponent(() => System.import("./EarlyAccessBlock"), LoadingComponent, ErrorComponent) ||
     require("./EarlyAccessBlock").default;
 
-const HeaderBlock = process.env.NODE_ENV === "production" &&
-    createLazyContainer(() => import("./HeaderBlock"), LoadingComponent, ErrorComponent) ||
+const HeaderBlock = process.env.BROWSER &&
+    LazyLoadComponent(() => System.import("./HeaderBlock"), LoadingComponent, ErrorComponent) ||
     require("./HeaderBlock").default;
 
-const HomeAboutBlock = process.env.NODE_ENV === "production" &&
-    createLazyContainer(() => import("./HomeAboutBlock"), LoadingComponent, ErrorComponent) ||
+const HomeAboutBlock = process.env.BROWSER &&
+    LazyLoadComponent(() => System.import("./HomeAboutBlock"), LoadingComponent, ErrorComponent) ||
     require("./HomeAboutBlock").default;
 
 export {
