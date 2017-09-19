@@ -3,5 +3,19 @@
 
 @include block('navigation') {
   display: inline-block;
+  margin: 0px 20px;
+  height: 60px;
+  vertical-align: top;
 
+  @include element('list') {
+    display: inline-block;
+    height: 60px;
+    margin: 0;
+
+    @include element('item') {
+      display: inline-block;
+      line-height: 60px;
+      margin: 0px 8px;
+    }
+  }
 }

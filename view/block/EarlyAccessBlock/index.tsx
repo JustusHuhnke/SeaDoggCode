@@ -1,3 +1,4 @@
+import {ButtonComponent} from "_components/ButtonComponent";
 import {PureComponent} from "_components/PureComponent";
 import {block, section} from "_style";
 import * as React from "react";
@@ -10,6 +11,7 @@ export class EarlyAccessBlock extends React.Component<IEarlyAccess, undefined> {
         return (
             <PureComponent tag="section" className={styleList}>
                 Text Early Access
+                <ButtonComponent title={"Get early access"} />
             </PureComponent>
         );
     }

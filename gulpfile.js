@@ -184,7 +184,7 @@ gulp.task("routeGenerate", () => {
         importBackend += 'import {'+container+'} from "_containers/'+container+'";\n';
         routeBackend += '       <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={'+container+'}/>\n';
 
-        routeFrontend += 'const '+container+' = createLazyContainer(() => import("_containers/'+container+'"), Loading, Error);\n';
+        routeFrontend += 'const '+container+' = createLazyContainer(() => import("_containers/'+container+'"), LoadingComponent, ErrorComponent);\n';
 
         routeIndex += '         <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={require("_containers/'+container+'").'+container+'}/>\n';
 
@@ -208,11 +208,11 @@ gulp.task("routeGenerate", () => {
         'export const AppComponent = process.env.BROWSER ? App : App;\n' +
         'export default AppComponent;\n';
 
-    const clientTemplate = 'import * as React from "react";\n' +
+    const clientTemplate = 'import {ErrorComponent} from "_components/ErrorComponent";\n' +
+        'import {LoadingComponent} from "_components/LoadingComponent";\n' +
+        'import * as React from "react";\n' +
         'import createLazyContainer from "react-lazy-import";\n' +
         'import {Route, Switch} from "react-router";\n' +
-        'const Loading: React.SFC<{}> = () => <div>Loading...</div>;\n' +
-        'const Error: React.SFC<{}> = () => <div>Error!</div>;\n' +
         routeFrontend +
         'export const Routes = () => (\n' +
         '   <Switch>\n' +

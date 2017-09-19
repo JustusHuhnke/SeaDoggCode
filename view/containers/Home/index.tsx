@@ -1,6 +1,5 @@
 import {setTransparent} from "_actions";
-import {EarlyAccessBlock} from "_blocks/EarlyAccessBlock";
-import {HeaderBlock} from "_blocks/HeaderBlock";
+import {EarlyAccessBlock, HeaderBlock, HomeAboutBlock} from "_blocks";
 import {PureComponent} from "_components/PureComponent";
 import {IState} from "_reducers";
 import * as React from "react";
@@ -34,12 +33,13 @@ class HomeComponent extends React.Component<IHelloProps, undefined> {
                     onScrollFrame={this.scrollUpadte}
                 >
                     <EarlyAccessBlock />
+                    <HomeAboutBlock />
                 </Scrollbars>
             </PureComponent>
         );
     }
 
-    private scrollUpadte({data}: any) {
+    private scrollUpadte(data: any) {
         const {homeTransparent} = this.props;
         const {scrollTop} = data as any;
         setTransparent({scrollTop, transparent: homeTransparent});

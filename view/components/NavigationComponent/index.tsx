@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import {INavigationComponent} from "./interface";
 
 const NavElement: React.StatelessComponent<INavigationElement> = ({title, link}, key) => (
-    <li key={key}>
+    <li key={key} className={component.navigation__list__item}>
         <LinkComponent href={link} title={title} />
     </li>
 );
@@ -29,7 +29,7 @@ class Navigation extends React.PureComponent<INavigationComponent, undefined> {
 
         return (
             <nav className={classes} {...otherProps}>
-                <PureComponent tag={"ul"}>
+                <PureComponent tag={"ul"} className={component.navigation__list}>
                     {list.map(NavElement).toArray()}
                 </PureComponent>
             </nav>
