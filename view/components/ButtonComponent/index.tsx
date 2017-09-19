@@ -8,7 +8,7 @@ import {IButtonComponent} from "./interface";
 export class ButtonComponent extends React.PureComponent<IButtonComponent, undefined> {
 
     public static defaultProps: IButtonComponent = {
-        className: component.link,
+        className: component.button,
         type: "button",
         title: "",
     };
@@ -16,7 +16,7 @@ export class ButtonComponent extends React.PureComponent<IButtonComponent, undef
     public render() {
 
         const {type, className, icon, iconClass, title, titleClass, ...otherProps} = this.props;
-        const classes = classnames(className);
+        const classes = classnames(className, component.button);
 
         return (
             <button className={classes} type={type} {...otherProps}>

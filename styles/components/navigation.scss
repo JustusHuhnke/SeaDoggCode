@@ -3,19 +3,28 @@
 
 @include block('navigation') {
   display: inline-block;
-  margin: 0px 20px;
-  height: 60px;
+  float: right;
+  height: 100px;
   vertical-align: top;
 
   @include element('list') {
     display: inline-block;
-    height: 60px;
+    height: 100px;
     margin: 0;
 
     @include element('item') {
       display: inline-block;
-      line-height: 60px;
-      margin: 0px 8px;
+      line-height: 100px;
+      margin: 0 8px;
+
+      @include element('link') {
+        color: $text-black;
+        display: inline-block;
+        font-size: 17px;
+        line-height: 100px;
+        margin: 0 8px;
+        text-decoration: none;
+      }
     }
   }
 }

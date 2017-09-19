@@ -10,8 +10,9 @@ export class EarlyAccessBlock extends React.Component<IEarlyAccess, undefined> {
         const styleList = [section.section, block.early];
         return (
             <PureComponent tag="section" className={styleList}>
-                Text Early Access
-                <ButtonComponent title={"Get early access"} />
+                <h2 className={block.early__heading}>The best experience from renting boats</h2>
+                <p className={block.early__text}>We will open soon... <br/> If you want to know when we will open - subscribe to our news.</p>
+                <ButtonComponent className={block.early__button} title={"Get early access"} />
             </PureComponent>
         );
     }

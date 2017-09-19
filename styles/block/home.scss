@@ -4,17 +4,75 @@
 @include block('early') {
   background: $early-background-color;
   height: 1000px;
+  text-align: center;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  @include element('heading') {
+    color: $text-black;
+    display: inline-block;
+    font-size: 45px;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    margin-top: 280px;
+    max-width: 720px;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  @include element('text') {
+    color: $text-black;
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.7;
+    margin: 20px auto;
+    max-width: 720px;
+    width: 100%;
+  }
+
+  @include element('button') {
+    display: block;
+    margin: 30px auto;
+  }
 }
 
 @include block('about') {
   background: $background-color;
-  height: 100vh;
-  padding: 55px 15px;
   box-sizing: border-box;
-  width: 100%;
   color: $text-black;
+  padding: 95px 15px;
+  text-align: center;
+  width: 100%;
+
+  @include element('text') {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 900px;
+    width: 100%;
+  }
+}
+
+@include block('features') {
+  background: $background-color;
+  box-sizing: border-box;
+  color: $text-black;
+  padding: 95px 15px;
+  text-align: center;
+  width: 100%;
+
+  @include element('text') {
+    color: $text-black;
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 20px auto;
+    width: 100%;
+  }
+
+  @include element('button') {
+    display: block;
+    margin: 30px auto;
+  }
 }

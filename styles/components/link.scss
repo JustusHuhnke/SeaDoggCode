@@ -4,3 +4,18 @@
 @include block('link') {
   text-decoration: none;
 }
+
+@include block('button') {
+  appearance: none;
+  background: #4E4E4E;
+  border: 0;
+  border-radius: 30px;
+  box-shadow: none;
+  color: $text-white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 300;
+  outline: none;
+  padding: 18px 36px;
+  text-decoration: none;
+}
