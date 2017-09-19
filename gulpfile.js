@@ -292,11 +292,10 @@ gulp.task("blockGenerate", () => {
 });
 
 
+gulp.task('------Production------');
 
-    gulp.task('------Production------');
 
-
-gulp.task('tinypng', ['autoTypedStyle'], function () {
+gulp.task('tinypng', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], function () {
     const exit_path = resolve('./static/images');
     gulp.src('./static/original_images/**/*.{png,jpg,jpeg}')
         .pipe(tinypng({
