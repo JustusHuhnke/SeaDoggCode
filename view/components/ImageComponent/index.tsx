@@ -1,6 +1,6 @@
 import {Source} from "_components/ImageComponent/source";
 import {component} from "_style";
-import * as cx from "classnames";
+import classnames from "_utils/classnames";
 import {List} from "immutable";
 import * as React from "react";
 import {IImageComponent} from "./interface";
@@ -47,7 +47,7 @@ export class ImageComponent extends React.PureComponent<IImageComponent, undefin
 
     public render() {
         const {className, custom, src, imgSrc, alt, ones, ...otherProps} = this.props;
-        const classes = cx(component.image, className);
+        const classes = classnames(component.image, className);
 
         const img = imgSrc || src && require(`_images/${src}`);
         const images = ones !== true && src && defaultSizes.map((prop) => ({...prop, link: require(`_images/${prop.name}/${src}`)})) || [];

@@ -184,7 +184,7 @@ gulp.task("routeGenerate", () => {
         importBackend += 'import {'+container+'} from "_containers/'+container+'";\n';
         routeBackend += '       <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={'+container+'}/>\n';
 
-        routeFrontend += 'const '+container+' = createLazyContainer(() => import("_containers/'+container+'"), LoadingComponent, ErrorComponent);\n';
+        routeFrontend += 'const '+container+' = createLazyContainer(() => System.import("_containers/'+container+'"), LoadingComponent, ErrorComponent);\n';
 
         routeIndex += '         <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={require("_containers/'+container+'").'+container+'}/>\n';
 
@@ -213,6 +213,7 @@ gulp.task("routeGenerate", () => {
         'import * as React from "react";\n' +
         'import createLazyContainer from "react-lazy-import";\n' +
         'import {Route, Switch} from "react-router";\n' +
+        'declare const System: { import: (path: string) => Promise<any>; };\n' +
         routeFrontend +
         'export const Routes = () => (\n' +
         '   <Switch>\n' +
@@ -312,8 +313,10 @@ gulp.task('prebuild', ['tinypng'], (callback) => {
 
 gulp.task('fixManifest', ['prebuild'], (cb) => {
     const path = resolve("dist", "public", "appcache", "manifest.appcache");
-    const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '');
-    fs.writeFileSync(path, content);
+    if (fs.existsSync(path)) {
+        const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '');
+        fs.writeFileSync(path, content);
+    }
     cb()
 });
 

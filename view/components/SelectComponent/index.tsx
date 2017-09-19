@@ -1,5 +1,5 @@
 import {component} from "_style";
-import * as cx from "classnames";
+import classnames from "_utils/classnames";
 import {List} from "immutable";
 import * as React from "react";
 import * as Select from "react-select";
@@ -15,7 +15,7 @@ export class SelectComponent extends React.Component<ISelectComponent, undefined
     public render() {
 
         const {className, creatable, options, ...otherProps} = this.props;
-        const classes = cx(component.select, className);
+        const classes = classnames(component.select, className);
         const SelectElement: Select.Creatable | any = creatable === true ? Select.Creatable : (Select as any).default;
 
         return (
