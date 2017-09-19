@@ -3,7 +3,7 @@
 
 @include block('early') {
   background: $early-background-color;
-  height: 1000px;
+  min-height: 100vh;
   text-align: center;
   width: 100%;
 
