@@ -143,7 +143,7 @@ gulp.task('autoTypedStyle', (callback) => {
         style_js_remove.forEach((name) => {
             if (name === "base") return;
             const str = fs.readFileSync(resolve(__dirname, '.gulp/style', name + '.css'), 'utf8');
-            const regex = /(\.([\w-_]+))/gi;
+            const regex = /(\.([\w-_]+)){/gi;
             let m;
             let clases = [];
 

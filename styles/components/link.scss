@@ -6,16 +6,16 @@
 }
 
 @include block('button') {
-  text-decoration: none;
+  appearance: none;
   background: #4E4E4E;
-  color: $text-white;
-  padding: 18px 36px;
-  font-size: 15px;
-  font-weight: 300;
+  border: 0;
   border-radius: 30px;
   box-shadow: none;
-  border: none;
+  color: $text-white;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 300;
   outline: none;
-  appearance: none;
+  padding: 18px 36px;
+  text-decoration: none;
 }

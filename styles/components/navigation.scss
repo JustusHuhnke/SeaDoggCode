@@ -15,15 +15,15 @@
     @include element('item') {
       display: inline-block;
       line-height: 100px;
-      margin: 0px 8px;
+      margin: 0 8px;
 
       @include element('link') {
-        display: inline-block;
-        line-height: 100px;
-        margin: 0px 8px;
         color: $text-black;
-        text-decoration: none;
+        display: inline-block;
         font-size: 17px;
+        line-height: 100px;
+        margin: 0 8px;
+        text-decoration: none;
       }
     }
   }
