@@ -3,9 +3,9 @@
 
 @include block('header') {
   background: $header-background-color;
-  height: 60px;
+  height: 100px;
   left: 0;
-  padding: 5px 20px;
+  padding: 0px 55px;
   position: fixed;
   top: 0;
   width: 100%;

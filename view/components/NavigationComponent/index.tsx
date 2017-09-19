@@ -11,7 +11,7 @@ import {INavigationComponent} from "./interface";
 
 const NavElement: React.StatelessComponent<INavigationElement> = ({title, link}, key) => (
     <li key={key} className={component.navigation__list__item}>
-        <LinkComponent href={link} title={title} />
+        <LinkComponent href={link} title={title} className={component.navigation__list__item__link} />
     </li>
 );
 

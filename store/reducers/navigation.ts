@@ -20,8 +20,8 @@ type Nav = INav | IActive;
 
 export default (state = Map({
     home: List([
-            {link: "/#about", title: "About"},
             {link: "/#features", title: "Features"},
+            {link: "/#about", title: "About"},
             {link: "/#works", title: "How it works"},
         ]),
     homeTransparent: true,

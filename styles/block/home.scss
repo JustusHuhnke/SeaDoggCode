@@ -5,16 +5,51 @@
   background: $early-background-color;
   height: 1000px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+
+  @include element('heading') {
+    display: inline-block;
+    font-size: 45px;
+    margin-top: 280px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 720px;
+    line-height: 1.25;
+    font-weight: 300;
+    color: $text-black;
+    text-transform: uppercase;
+  }
+
+  @include element('text') {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    margin: 20px auto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: $text-black;
+  }
+
+  @include element('button') {
+    display: block;
+    margin: 30px auto
+  }
 }
 
 @include block('about') {
   background: $background-color;
-  height: 100vh;
-  padding: 55px 15px;
+  padding: 95px 15px;
   box-sizing: border-box;
   width: 100%;
   color: $text-black;
+  text-align: center;
+
+  @include element('text') {
+    display: inline-block;
+    width: 100%;
+    max-width: 900px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
 }

@@ -3,10 +3,14 @@
 
 @include normalize();
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: $background-color;
   color: $text-white;
-  font-style: italic;
+  font-family: Verdana;
 }
 
 svg {
