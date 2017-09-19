@@ -7,7 +7,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {IHeader} from "./interface";
 
-class Header extends React.Component<IHeader, undefined> {
+class Header extends React.Component<IHeader, {}> {
 
     public render() {
         const {homeTransparent = true, dispatch, ...oterProps} = this.props;

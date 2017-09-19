@@ -4,8 +4,8 @@ import {block, section} from "_style";
 import * as React from "react";
 import {IFeatures} from "./interface";
 
-export class FeaturesBlock extends React.Component<IFeatures, undefined> {
-    /* tslint:disable:max-line-length */
+export class FeaturesBlock extends React.Component<IFeatures, {}> {
+
     public render() {
         const styleList = [section.section, block.features];
         return (
@@ -14,11 +14,11 @@ export class FeaturesBlock extends React.Component<IFeatures, undefined> {
 
                 <p className={block.features__text}>Get early access and get a bonuses</p>
 
-                <ButtonComponent className={block.features__button} title={"Subscribe"} />
+                <ButtonComponent className={block.features__button} title={"Subscribe"}/>
 
-               </PureComponent>
+            </PureComponent>
         );
     }
-    /* tslint:enable:max-line-length */
 }
+
 export default FeaturesBlock;

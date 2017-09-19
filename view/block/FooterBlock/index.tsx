@@ -2,8 +2,8 @@ import {PureComponent} from "_components/PureComponent";
 import {block} from "_style";
 import * as React from "react";
 
-export class FooterBlock extends React.Component<null, undefined> {
-    /* tslint:disable:max-line-length */
+export class FooterBlock extends React.Component<{}, {}> {
+
     public render() {
         const styleList = [block.footer];
         return (
@@ -12,6 +12,6 @@ export class FooterBlock extends React.Component<null, undefined> {
             </PureComponent>
         );
     }
-    /* tslint:enable:max-line-length */
+
 }
 export default FooterBlock;

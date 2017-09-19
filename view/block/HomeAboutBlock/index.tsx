@@ -3,7 +3,7 @@ import {block, section} from "_style";
 import * as React from "react";
 import {IHomeAbout} from "./interface";
 
-export class HomeAboutBlock extends React.Component<IHomeAbout, undefined> {
+export class HomeAboutBlock extends React.Component<IHomeAbout, {}> {
     /* tslint:disable:max-line-length */
     public render() {
         const styleList = [section.section, block.about];
