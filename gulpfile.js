@@ -262,7 +262,38 @@ gulp.task("routeGenerate", () => {
     fs.writeFileSync(resolve("route/index.tsx"), indeTemplate);
 });
 
-gulp.task('------Production------');
+gulp.task("blockGenerate", () => {
+    const _path = resolve('./view/block');
+    const foldres = fs.readdirSync(_path).filter(function (file) {
+        return fs.statSync(_path+'/'+file).isDirectory();
+    });
+
+    let importBlock = '';
+    let exportBlock = '';
+
+    foldres.forEach((name) => {
+        importBlock += 'const ' + name + ' = process.env.BROWSER &&\n' +
+            '   LazyLoadComponent(() => System.import("./' + name + '"), LoadingComponent, ErrorComponent) ||\n' +
+            '   require("./EarlyAccessBlock").default;\n\n';
+        exportBlock += '    ' + name + ',\n';
+    });
+
+
+    const blockTemplate = 'import {ErrorComponent} from "_components/ErrorComponent";\n' +
+        'import LazyLoadComponent from "_components/LazyLoadComponent";\n' +
+        'import {LoadingComponent} from "_components/LoadingComponent";\n' +
+        'declare const System: { import: (path: string) => Promise<any>; };\n\n' +
+        importBlock +
+        'export {\n' +
+        exportBlock +
+        '};\n';
+
+    fs.writeFileSync(resolve(_path, "index.ts"), blockTemplate);
+});
+
+
+
+    gulp.task('------Production------');
 
 
 gulp.task('tinypng', ['autoTypedStyle'], function () {
