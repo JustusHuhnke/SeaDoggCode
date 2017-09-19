@@ -21,5 +21,6 @@ const vendor = [
 
     "react-select",
     "react-custom-scrollbars",
+    "react-modal",
 ];
 exports.default = vendor;

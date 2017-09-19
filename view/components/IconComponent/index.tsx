@@ -4,7 +4,7 @@ import request from "_utils/xhr";
 import * as React from "react";
 import {IIconComponent} from "./interface";
 
-export class IconComponent extends React.PureComponent<IIconComponent, undefined> {
+export class IconComponent extends React.PureComponent<IIconComponent, {}> {
 
     public static defaultProps: IIconComponent = {
         className: component.icon,

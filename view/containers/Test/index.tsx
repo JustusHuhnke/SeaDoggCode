@@ -9,7 +9,7 @@ import {List} from "immutable";
 import * as React from "react";
 import {IHelloProps} from "./interface";
 
-export class Test extends React.Component<IHelloProps, undefined> {
+export class Test extends React.Component<IHelloProps, {}> {
 
     public static defaultProps: IHelloProps = {
         compiler: "Test",

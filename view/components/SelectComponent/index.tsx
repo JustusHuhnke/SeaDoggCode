@@ -5,7 +5,7 @@ import * as React from "react";
 import * as Select from "react-select";
 import {ISelectComponent} from "./interface";
 
-export class SelectComponent extends React.Component<ISelectComponent, undefined> {
+export class SelectComponent extends React.Component<ISelectComponent, {}> {
 
     public static defaultProps: ISelectComponent = {
         className: component.select,

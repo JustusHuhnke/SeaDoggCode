@@ -30,7 +30,7 @@ const defaultSizes = [
     },
 ];
 
-export class ImageComponent extends React.PureComponent<IImageComponent, undefined> {
+export class ImageComponent extends React.PureComponent<IImageComponent, {}> {
 
     public static defaultProps: IImageComponent = {
         className: component.image,

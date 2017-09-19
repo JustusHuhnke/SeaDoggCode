@@ -15,7 +15,7 @@ const NavElement: React.StatelessComponent<INavigationElement> = ({title, link},
     </li>
 );
 
-class Navigation extends React.PureComponent<INavigationComponent, undefined> {
+class Navigation extends React.PureComponent<INavigationComponent, {}> {
 
     public static defaultProps: INavigationComponent = {
         className: component.navigation,

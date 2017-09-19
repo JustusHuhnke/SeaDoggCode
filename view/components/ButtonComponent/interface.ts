@@ -16,4 +16,6 @@ export interface IButtonComponent {
 
     title: string;
     titleClass?: classNames;
+
+    onClick?: (props?: any) => void;
 }
