@@ -143,7 +143,7 @@ gulp.task('autoTypedStyle', (callback) => {
         style_js_remove.forEach((name) => {
             if (name === "base") return;
             const str = fs.readFileSync(resolve(__dirname, '.gulp/style', name + '.css'), 'utf8');
-            const regex = /(\.([\w-_]+)){/gi;
+            const regex = /(\.([\w-_]+))(,|{)/gi;
             let m;
             let clases = [];
 
@@ -292,11 +292,10 @@ gulp.task("blockGenerate", () => {
 });
 
 
+gulp.task('------Production------');
 
-    gulp.task('------Production------');
 
-
-gulp.task('tinypng', ['autoTypedStyle'], function () {
+gulp.task('tinypng', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], function () {
     const exit_path = resolve('./static/images');
     gulp.src('./static/original_images/**/*.{png,jpg,jpeg}')
         .pipe(tinypng({
