@@ -2,7 +2,7 @@ import classnames from "_utils/classnames";
 import * as React from "react";
 import {IPureComponent} from "./interface";
 
-export class PureComponent extends React.PureComponent<IPureComponent, undefined> {
+export class PureComponent extends React.PureComponent<IPureComponent, {}> {
 
     public static defaultProps: IPureComponent = {
         tag: "div",

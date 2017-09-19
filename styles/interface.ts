@@ -22,6 +22,7 @@ export interface IComponents {
   readonly "button": string;
   readonly "link": string;
   readonly "logo": string;
+  readonly "modal__overlay": string;
   readonly "navigation": string;
   readonly "navigation__list": string;
   readonly "navigation__list__item": string;

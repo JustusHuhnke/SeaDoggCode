@@ -5,7 +5,7 @@ import classnames from "_utils/classnames";
 import * as React from "react";
 import {IButtonComponent} from "./interface";
 
-export class ButtonComponent extends React.PureComponent<IButtonComponent, undefined> {
+export class ButtonComponent extends React.PureComponent<IButtonComponent, {}> {
 
     public static defaultProps: IButtonComponent = {
         className: component.button,

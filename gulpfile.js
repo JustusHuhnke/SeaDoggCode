@@ -274,7 +274,7 @@ gulp.task("blockGenerate", () => {
     foldres.forEach((name) => {
         importBlock += 'const ' + name + ' = process.env.BROWSER &&\n' +
             '   LazyLoadComponent(() => System.import("./' + name + '"), LoadingComponent, ErrorComponent) ||\n' +
-            '   require("./EarlyAccessBlock").default;\n\n';
+            '   require("./' + name + '").default;\n\n';
         exportBlock += '    ' + name + ',\n';
     });
 
