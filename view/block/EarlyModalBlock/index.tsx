@@ -6,7 +6,7 @@ import {IEarlyModal} from "./interface";
 const overlayStyle = {
     base: component.modal__overlay,
 };
-const ModalBlock = Modal as any;
+const ModalBlock = (Modal as any).default || Modal;
 
 export class EarlyModalBlock extends React.Component<IEarlyModal | any, {}> {
 

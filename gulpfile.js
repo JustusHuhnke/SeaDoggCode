@@ -315,22 +315,9 @@ gulp.task('tinypng', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], funct
         .pipe(gulp.dest(exit_path));
 });
 
-gulp.task('prebuildFrontend', ['tinypng'], (callback) => {
-    exec('npm run productionFrontend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
-        if (err != null) {
-            callback(err);
-            console.error(err);
-            return
-        }
-        console.info(stdout);
-        console.error(stderr);
-        callback(err);
-    });
-});
-gulp.task('prebuild', ['prebuildFrontend'], (callback) => {
+gulp.task('prebuild', ['tinypng'], (callback) => {
     try {
-
-        exec('npm run productionBackend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
+        exec('npm run productionFrontend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
             if (err != null) {
                 callback(err);
                 console.error(err);
@@ -338,14 +325,23 @@ gulp.task('prebuild', ['prebuildFrontend'], (callback) => {
             }
             console.info(stdout);
             console.error(stderr);
-            callback(err);
+            exec('npm run productionBackend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
+                if (err != null) {
+                    callback(err);
+                    console.error(err);
+                    return
+                }
+                console.info(stdout);
+                console.error(stderr);
+                callback(err);
+            });
         });
     } catch (err) {
         console.error(err)
     }
 });
 
-gulp.task('fixManifest', (cb) => {
+gulp.task('fixManifest', ['prebuild'], (cb) => {
     const path = resolve("dist", "public", "appcache", "manifest.appcache");
     if (fs.existsSync(path)) {
         const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '');
@@ -385,5 +381,3 @@ gulp.task('svgo', ['cleanStyle'], () => {
 
 gulp.task('build', ['svgo']);
 
-
-gulp.task('------Manual------');
