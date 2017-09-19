@@ -19,11 +19,12 @@ export interface IComponents {
   readonly "icon--red": string;
   readonly "icon__logo": string;
   readonly "image": string;
-  readonly "link": string;
   readonly "button": string;
+  readonly "link": string;
   readonly "logo": string;
   readonly "navigation": string;
   readonly "navigation__list": string;
+  readonly "navigation__list__item": string;
   readonly "navigation__list__item__link": string;
   readonly "select": string;
 }
