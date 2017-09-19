@@ -345,7 +345,7 @@ gulp.task('prebuild', ['prebuildFrontend'], (callback) => {
     }
 });
 
-gulp.task('fixManifest', ['prebuild'], (cb) => {
+gulp.task('fixManifest', (cb) => {
     const path = resolve("dist", "public", "appcache", "manifest.appcache");
     if (fs.existsSync(path)) {
         const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '');
