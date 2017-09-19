@@ -184,7 +184,7 @@ gulp.task("routeGenerate", () => {
         importBackend += 'import {'+container+'} from "_containers/'+container+'";\n';
         routeBackend += '       <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={'+container+'}/>\n';
 
-        routeFrontend += 'const '+container+' = createLazyContainer(() => System.import("_containers/'+container+'"), LoadingComponent, ErrorComponent);\n';
+        routeFrontend += 'const '+container+' = LazyLoadComponent(() => System.import("_containers/'+container+'"), LoadingComponent, ErrorComponent);\n';
 
         routeIndex += '         <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={require("_containers/'+container+'").'+container+'}/>\n';
 
@@ -209,9 +209,9 @@ gulp.task("routeGenerate", () => {
         'export default AppComponent;\n';
 
     const clientTemplate = 'import {ErrorComponent} from "_components/ErrorComponent";\n' +
+        'import LazyLoadComponent from "_components/LazyLoadComponent";\n' +
         'import {LoadingComponent} from "_components/LoadingComponent";\n' +
         'import * as React from "react";\n' +
-        'import createLazyContainer from "react-lazy-import";\n' +
         'import {Route, Switch} from "react-router";\n' +
         'declare const System: { import: (path: string) => Promise<any>; };\n' +
         routeFrontend +
