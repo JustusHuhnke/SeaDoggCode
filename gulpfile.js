@@ -9,6 +9,7 @@ const watch = require('gulp-watch');
 const tinypng = require('gulp-tiny').default;
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const cssnano = require('gulp-cssnano');
 
 let style_js_remove = [];
 let styles_entry = {};
@@ -379,9 +380,14 @@ gulp.task('cleanStyle', ['cleanPublic'], () => {
 });
 
 gulp.task('svgo', ['cleanStyle'], () => {
-
     return gulp.run("svgoDev");
 });
 
-gulp.task('build', ['svgo']);
+gulp.task('cssnano', ['svgo'], () => {
+    return gulp.src(['./dist/public/style/*.css', '!./dist/public/style/font.css'])
+        .pipe(cssnano())
+        .pipe(gulp.dest('./dist/public/style'));
+});
+
+gulp.task('build', ['cssnano']);
 
