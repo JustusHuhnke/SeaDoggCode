@@ -26,3 +26,13 @@ const renderApplication = (Component: any) => {
 renderApplication(App);
 
 history.listen(({pathname}: any) => changeRoute({location: pathname}));
+
+document.addEventListener("DOMContentLoaded", () => {
+    const head  = document.getElementsByTagName("head")[0];
+    const link  = document.createElement("link");
+    link.rel  = "stylesheet";
+    link.type = "text/css";
+    link.href = "/style/font.css";
+    link.media = "all";
+    head.appendChild(link);
+});

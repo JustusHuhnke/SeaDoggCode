@@ -142,6 +142,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-optimize": "^1.0.1",
     "babel-preset-stage-0": "^6.24.1",
+    "base64-font-loader": "^0.0.4",
     "bell-on-bundler-error-plugin": "^2.0.0",
     "bemify": "^0.1.2",
     "clean-webpack-plugin": "^0.1.16",
