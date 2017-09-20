@@ -201,8 +201,7 @@ module.exports = {
                                 loader: 'postcss-loader',
                                 options: {
                                     sourceMap: false,
-                                    plugins: (loader) => [
-                                        require('autoprefixer')({
+                                    plugins: () => [require('autoprefixer')({
                                             browsers: [
                                                 'last 2 versions',
                                                 '> 1%',
@@ -210,11 +209,7 @@ module.exports = {
                                                 'iOS 9',
                                             ],
                                             cascade: false
-                                        }),
-                                        require('cssnano')({
-                                            preset: 'advanced',
-                                        })
-                                    ]
+                                        })]
                                 }
                             },
                             {

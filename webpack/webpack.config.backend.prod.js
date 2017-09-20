@@ -147,20 +147,15 @@ module.exports = {
                                 loader: 'postcss-loader',
                                 options: {
                                     sourceMap: false,
-                                    plugins: (loader) => [
-                                        require('autoprefixer')({
-                                            browsers: [
-                                                'last 2 versions',
-                                                '> 1%',
-                                                'android 4',
-                                                'iOS 9',
-                                            ],
-                                            cascade: false
-                                        }),
-                                        require('cssnano')({
-                                            preset: 'advanced',
-                                        })
-                                    ]
+                                    plugins: () => [require('autoprefixer')({
+                                        browsers: [
+                                            'last 2 versions',
+                                            '> 1%',
+                                            'android 4',
+                                            'iOS 9',
+                                        ],
+                                        cascade: false
+                                    })]
                                 }
                             },
                             {
