@@ -133,7 +133,11 @@ gulp.task('autoTypedStyle', (callback) => {
                             ]
                         })
 
-                }]
+                },
+                {
+                    test: /\.(woff|ttf|eot|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                    loader: 'base64-font-loader'
+                },]
         },
         plugins: [
             new ExtractTextPlugin("[name].css")

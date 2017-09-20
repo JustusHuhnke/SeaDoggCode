@@ -175,6 +175,10 @@ module.exports = {
 
             },
             {
+                test: /\.(woff|ttf|eot|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'base64-font-loader'
+            },
+            {
                 test: /\.svg$/,
                 use: [
                     {
