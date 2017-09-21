@@ -1,6 +1,6 @@
 import App from "_route";
 import store, {history} from "_store";
-import * as OfflinePluginRuntime from "offline-plugin/runtime";
+import * as runtime from "offline-plugin/runtime";
 import * as React from "react";
 import {render} from "react-dom";
 import {AppContainer} from "react-hot-loader";
@@ -10,9 +10,11 @@ import {changeRoute} from "_actions";
 import "./socket";
 
 if (process.env.NODE_ENV === "production") {
-    OfflinePluginRuntime.install({
-        onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
-        onUpdated: () => location.reload(),
+    runtime.install({
+        onUpdating: () => {  (console as any).info("SW Event:", "onUpdating"); },
+        onUpdateReady: () => runtime.applyUpdate(),
+        onUpdated: () => window.location.reload(),
+        onUpdateFailed: () => { (console as any).error("SW Event:", "onUpdateFailed"); },
     });
 }
 
