@@ -94,7 +94,11 @@ if (process.env.TEMP_NAME === undefined) {
     plugins.push(new OfflinePlugin({
         excludes: excludes_offline,
         // responseStrategy: 'network-first',
-        caches: 'all',
+        caches: {
+            main: [':rest:'],
+            additional: [':externals:'],
+            optional: ['*.svg']
+        },
         autoUpdate: true,
         ServiceWorker: {
             minify: true,

@@ -349,7 +349,7 @@ gulp.task('prebuild', ['tinypng'], (callback) => {
 gulp.task('fixManifest', ['prebuild'], (cb) => {
     const path = resolve("dist", "public", "appcache", "manifest.appcache");
     if (fs.existsSync(path)) {
-        const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '');
+        const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '').replace("CACHE:", "CACHE:\n/sprite.svg");
         fs.writeFileSync(path, content);
     }
     cb()
