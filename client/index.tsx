@@ -35,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const link  = document.createElement("link");
     link.rel  = "stylesheet";
     link.type = "text/css";
-    link.href = "/" + ((window as any).ASSETS["font.css"] || "style/font.css");
+    link.href = "/" + (process.env.NODE_ENV === "production" ? (window as any).ASSETS["font.css"] : "style/font.css");
     link.media = "all";
+    (console as any).log((window as any).ASSETS["font.css"]);
     head.appendChild(link);
 });
