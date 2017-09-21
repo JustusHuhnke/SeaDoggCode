@@ -165,7 +165,6 @@
     "jest-webpack-alias": "^3.3.3",
     "node-sass": "^4.5.3",
     "nodemon": "^1.12.1",
-    "normalize-scss": "^7.0.0",
     "offline-plugin": "^4.8.3",
     "pm2": "^2.7.0",
     "postcss-loader": "^2.0.6",
