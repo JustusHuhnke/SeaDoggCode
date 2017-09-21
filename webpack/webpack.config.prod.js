@@ -23,11 +23,11 @@ fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
     if(/scss$/i.test(file)) {
         const name = file.replace(/\.scss$/i, '');
         entry[name] = resolve(__dirname, '../styles', name + '.scss');
-        // entry.style.push('./styles/' + name + '.tsx');
-        excludes_offline.push(name + ".js*")
+        excludes_offline.push(name+".*.js")
     }
 });
 entry['base'] = [entry['base'], ...vendorStyles];
+console.log(entry, excludes_offline);
 
 const plugins = [
     new webpack.LoaderOptionsPlugin({
