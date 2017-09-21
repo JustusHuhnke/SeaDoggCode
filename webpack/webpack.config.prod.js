@@ -74,7 +74,7 @@ const plugins = [
         }
     }),
 
-    new ExtractTextPlugin("style/[name].css?[hash]")
+    new ExtractTextPlugin("style/[name].[hash:4].css")
 ];
 
 if(process.env.TEMP_NAME === undefined) {
