@@ -399,10 +399,10 @@ gulp.task('svgo', ['cleanStyle'], () => {
 });
 
 gulp.task('cssnano', ['svgo'], () => {
-    return gulp.src(['./dist/public/style/*.css', '!./dist/public/style/font.css'])
+    return gulp.src(['./dist/public/style/*.css', '!./dist/public/style/font.*.css'])
         .pipe(cssnano())
         .pipe(gulp.dest('./dist/public/style'));
 });
 
-gulp.task('build', ['cssnano']);
+gulp.task('build', ['svgo']);
 
