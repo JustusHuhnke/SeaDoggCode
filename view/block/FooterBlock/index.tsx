@@ -1,5 +1,5 @@
 import {PureComponent} from "_components/PureComponent";
-import {block} from "_style";
+import {block, section} from "_style";
 import * as React from "react";
 
 export class FooterBlock extends React.Component<{}, {}> {
@@ -8,8 +8,8 @@ export class FooterBlock extends React.Component<{}, {}> {
         const styleList = [block.footer];
         return (
             <PureComponent tag="footer" className={styleList}>
-                <div className="container">
-                    <div className="row">
+                <div className={section.container}>
+                    <div className={section.row}>
                         <p className={block.footer__text}>SeaDogg, 2017. All rights reserved</p>
                     </div>
                 </div>
