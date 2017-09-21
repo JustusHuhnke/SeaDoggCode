@@ -27,7 +27,6 @@ fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
     }
 });
 entry['base'] = [entry['base'], ...vendorStyles];
-console.log(entry, excludes_offline);
 
 const plugins = [
     new webpack.LoaderOptionsPlugin({
@@ -94,11 +93,7 @@ if (process.env.TEMP_NAME === undefined) {
     plugins.push(new OfflinePlugin({
         excludes: excludes_offline,
         responseStrategy: 'network-first',
-        caches: {
-            main: [':rest:'],
-            additional: [':externals:'],
-            optional: ['*.svg']
-        },
+        caches: true,
         autoUpdate: true,
         ServiceWorker: {
             minify: true,
