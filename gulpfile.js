@@ -327,7 +327,7 @@ gulp.task('tinypng', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], funct
         .pipe(gulp.dest(exit_path));
 });
 
-gulp.task('prebuild', ['tinypng'], (callback) => {
+gulp.task('buildFrontend', ['tinypng'], (callback) => {
     try {
         exec('npm run productionFrontend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
             if (err != null) {
@@ -337,23 +337,31 @@ gulp.task('prebuild', ['tinypng'], (callback) => {
             }
             console.info(stdout);
             console.error(stderr);
-            exec('npm run productionBackend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
-                if (err != null) {
-                    callback(err);
-                    console.error(err);
-                    return
-                }
-                console.info(stdout);
-                console.error(stderr);
-                callback(err);
-            });
+            callback(err);
         });
     } catch (err) {
         console.error(err)
     }
 });
 
-gulp.task('fixManifest', ['prebuild'], (cb) => {
+gulp.task('buildBackend', ['buildFrontend'], (callback) => {
+    try {
+        exec('npm run productionBackend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
+            if (err != null) {
+                callback(err);
+                console.error(err);
+                return
+            }
+            console.info(stdout);
+            console.error(stderr);
+            callback(err);
+        });
+    } catch (err) {
+        console.error(err)
+    }
+});
+
+gulp.task('fixManifest', ['buildBackend'], (cb) => {
     const path = resolve("dist", "public", "appcache", "manifest.appcache");
     if (fs.existsSync(path)) {
         const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '').replace("CACHE:", "CACHE:\n/sprite.svg");
