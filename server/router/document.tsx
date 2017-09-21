@@ -39,7 +39,6 @@ export const HTML = ({html = "", context = {}}: IHTMLRender): React.ReactElement
         <script src={`/${ASSETS["vendor.js"] || "vendor.js"}`} type="text/javascript"/>
         <script src={`/${ASSETS["style.js"] || "style.js"}`} type="text/javascript"/>
         <script src={`/${ASSETS["bundle.js"] || "bundle.js"}`} type="text/javascript"/>
-        <script src={`/sw.js`} type="text/javascript"/>
         </body>
         </html>);
 };
