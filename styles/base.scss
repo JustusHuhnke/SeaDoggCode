@@ -1,7 +1,32 @@
-@import '~normalize-scss';
+@import 'reset';
 @import 'variables/colors';
+@import 'libs/bourbon/app/assets/stylesheets/bourbon';
+@import 'libs/sass-mediaqueries/media-queries';
 
-@include normalize();
+
+// Bootstrap 4 Grid only
+//
+// Includes relevant variables and mixins for the regular (non-flexbox) grid
+// system, as well as the generated predefined classes (e.g., `.col-4-sm`).
+
+
+//
+// Variables
+//
+
+@import 'bootstrap-grid/custom';
+@import 'bootstrap-grid/variables';
+
+//
+// Grid mixins
+//
+
+@import 'bootstrap-grid/mixins/clearfix';
+@import 'bootstrap-grid/mixins/breakpoints';
+@import 'bootstrap-grid/mixins/grid-framework';
+@import 'bootstrap-grid/mixins/grid';
+@import 'bootstrap-grid/grid';
+
 
 * {
   box-sizing: border-box;
@@ -10,7 +35,7 @@
 body {
   background: $background-color;
   color: $text-black;
-  font-family: Verdana;
+  font-family: 'OpenSansLight', sans-serif;
 }
 
 svg {
