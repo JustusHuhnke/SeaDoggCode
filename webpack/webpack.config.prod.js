@@ -112,7 +112,7 @@ module.exports = {
         path: resolve(__dirname, '../dist/public'),
         publicPath: '/',
         libraryTarget: 'umd',
-        filename: '[name].js?v=[hash]',
+        filename: '[name].[hash:4].js',
         sourceMapFilename: '[name].js.map?v=[hash]',
         chunkFilename: '[name].[hash:4].js',
         jsonpFunction: '$'
