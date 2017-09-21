@@ -307,7 +307,7 @@ gulp.task("blockGenerate", () => {
 gulp.task('------Production------');
 
 
-gulp.task('tinypng', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], function () {
+gulp.task('prebuild', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], function () {
     const exit_path = resolve('./static/images');
     gulp.src('./static/original_images/**/*.{png,jpg,jpeg}')
         .pipe(tinypng({
@@ -327,7 +327,7 @@ gulp.task('tinypng', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], funct
         .pipe(gulp.dest(exit_path));
 });
 
-gulp.task('buildFrontend', ['tinypng'], (callback) => {
+gulp.task('buildFrontend', (callback) => {
     try {
         exec('npm run productionFrontend', {maxBuffer: 1024 * 500}, (err, stdout, stderr) => {
             if (err != null) {
@@ -361,7 +361,7 @@ gulp.task('buildBackend', ['buildFrontend'], (callback) => {
     }
 });
 
-gulp.task('fixManifest', ['buildBackend'], (cb) => {
+gulp.task('fixManifest', (cb) => {
     const path = resolve("dist", "public", "appcache", "manifest.appcache");
     if (fs.existsSync(path)) {
         const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '').replace("CACHE:", "CACHE:\n/sprite.svg");
