@@ -20,10 +20,10 @@ const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
 const excludes_offline = ['/', 'style/style.css*', 'style.css*'];
 
 fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
-    if(/scss$/i.test(file)) {
+    if (/scss$/i.test(file)) {
         const name = file.replace(/\.scss$/i, '');
         entry[name] = resolve(__dirname, '../styles', name + '.scss');
-        excludes_offline.push(name+".*.js")
+        excludes_offline.push(name + ".*.js")
     }
 });
 entry['base'] = [entry['base'], ...vendorStyles];
@@ -77,7 +77,7 @@ const plugins = [
     new ExtractTextPlugin("style/[name].[hash:4].css")
 ];
 
-if(process.env.TEMP_NAME === undefined) {
+if (process.env.TEMP_NAME === undefined) {
     plugins.push(new CleanWebpackPlugin(['./dist/public/'], {
         root: resolve(__dirname, '..'),
         verbose: true,
@@ -97,7 +97,11 @@ if(process.env.TEMP_NAME === undefined) {
         caches: 'all',
         autoUpdate: true,
         ServiceWorker: {
-            minify: true
+            minify: true,
+            events: true
+        },
+        AppCache: {
+            events: true
         }
     }));
     plugins.push(new ManifestPlugin({
@@ -204,21 +208,21 @@ module.exports = {
                                 options: {
                                     sourceMap: false,
                                     plugins: () => [require('autoprefixer')({
-                                            browsers: [
-                                                'last 2 versions',
-                                                '> 1%',
-                                                'android 4',
-                                                'iOS 9',
-                                            ],
-                                            cascade: false
-                                        })]
+                                        browsers: [
+                                            'last 2 versions',
+                                            '> 1%',
+                                            'android 4',
+                                            'iOS 9',
+                                        ],
+                                        cascade: false
+                                    })]
                                 }
                             },
                             {
                                 loader: "sass-loader", options: {
-                                    sourceMap: false,
-                                    modules: true,
-                                }
+                                sourceMap: false,
+                                modules: true,
+                            }
                             }
                         ]
                     })
@@ -248,7 +252,7 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: '[sha512:hash:base64:7].[ext]',
-                            publicPath: function(url) {
+                            publicPath: function (url) {
                                 return url.replace('../public/images/', '/images/')
                             },
                             outputPath: '../public/images/'

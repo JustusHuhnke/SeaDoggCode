@@ -10,7 +10,10 @@ import {changeRoute} from "_actions";
 import "./socket";
 
 if (process.env.NODE_ENV === "production") {
-    OfflinePluginRuntime.install();
+    OfflinePluginRuntime.install({
+        onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
+        onUpdated: () => location.reload(),
+    });
 }
 
 const renderApplication = (Component: any) => {
