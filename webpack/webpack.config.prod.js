@@ -17,7 +17,7 @@ const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
     style: './styles/index.ts',
 };
 
-const excludes_offline = ['style/style.css*', 'style.css*'];
+const excludes_offline = ['/', 'style/style.css*', 'style.css*'];
 
 fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
     if(/scss$/i.test(file)) {
