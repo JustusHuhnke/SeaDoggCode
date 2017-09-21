@@ -95,6 +95,7 @@ if(process.env.TEMP_NAME === undefined) {
         excludes: excludes_offline,
         // responseStrategy: 'network-first',
         caches: 'all',
+        autoUpdate: true,
         ServiceWorker: {
             minify: true
         }
