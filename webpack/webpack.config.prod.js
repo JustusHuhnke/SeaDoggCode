@@ -87,7 +87,7 @@ if(process.env.TEMP_NAME === undefined) {
     plugins.push(new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: Infinity,
-        filename: 'vendor.js?[hash]'
+        filename: 'vendor.[hash:4].js'
     }));
     plugins.push(new WebpackErrorNotificationPlugin());
     plugins.push(new BellOnBundlerErrorPlugin());
