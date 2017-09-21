@@ -1,4 +1,7 @@
 @import '~bemify';
+@import '~sass-mediaqueries/media-queries';
+@import '~bootstrap/scss/bootstrap-grid';
+
 
 @include block('section') {
   display: block;
@@ -6,13 +9,12 @@
   width: 100%;
   @include element('name') {
     display: inline-block;
-    width: 100%;
-    text-align: center;
     font-size: 45px;
     font-weight: 300;
-    text-transform: uppercase;
-    margin-top: 0;
     margin-bottom: 55px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
   }
 
   @include element('windowScroll'){

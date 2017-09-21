@@ -103,7 +103,7 @@ gulp.task('autoTypedStyle', (callback) => {
         },
         resolve: {
             modules: ['node_modules'],
-            extensions: ['.scss', '.css'],
+            extensions: ['.js', '.jsx', '.scss', '.css'],
             descriptionFiles: ['package.json'],
             moduleExtensions: ['-loader']
         },
@@ -144,37 +144,44 @@ gulp.task('autoTypedStyle', (callback) => {
             new ExtractTextPlugin("[name].css")
         ]
     }, function (err, stats) {
-        let template = "";
-        style_js_remove.forEach((name) => {
-            if (name === "base") return;
-            const str = fs.readFileSync(resolve(__dirname, '.gulp/style', name + '.css'), 'utf8');
-            const regex = /(\.([\w-_]+))(,|{)/gi;
-            let m;
-            let clases = [];
+        try {
+            (stats.compilation.errors || []).forEach((error) => {
+                console.error(error);
+            });
+            let template = "";
+            style_js_remove.forEach((name) => {
+                if (name === "base") return;
+                const str = fs.readFileSync(resolve(__dirname, '.gulp/style', name + '.css'), 'utf8');
+                const regex = /(\.([\w-_]+))(,|{)/gi;
+                let m;
+                let clases = [];
 
-            let _template = `export interface I${name[0].toUpperCase() + name.slice(1)} {\n`;
-            while ((m = regex.exec(str)) !== null) {
-                // This is necessary to avoid infinite loops with zero-width matches
-                if (m.index === regex.lastIndex) {
-                    regex.lastIndex++;
+                let _template = `export interface I${name[0].toUpperCase() + name.slice(1)} {\n`;
+                while ((m = regex.exec(str)) !== null) {
+                    // This is necessary to avoid infinite loops with zero-width matches
+                    if (m.index === regex.lastIndex) {
+                        regex.lastIndex++;
+                    }
+                    clases.push(m[2])
                 }
-                clases.push(m[2])
-            }
-            clases = (clases.filter(onlyUnique));
-            if (clases.length) {
-                clases.forEach((name) => {
-                    _template += `  readonly "${name}": string;\n`
-                });
-                _template += "}\n";
-                template += _template;
-            }
-        });
-        fs.writeFile(resolve('styles/interface.ts'), template, function (err) {
-            if (err)
-                return console.log(err);
+                clases = (clases.filter(onlyUnique));
+                if (clases.length) {
+                    clases.forEach((name) => {
+                        _template += `  readonly "${name}": string;\n`
+                    });
+                    _template += "}\n";
+                    template += _template;
+                }
+            });
+            fs.writeFile(resolve('styles/interface.ts'), template, function (err) {
+                if (err)
+                    return console.log(err);
 
-            callback();
-        });
+                callback();
+            });
+        } catch (error) {
+            console.error(error);
+        }
     });
 });
 
@@ -186,12 +193,12 @@ gulp.task("routeGenerate", () => {
     let routeIndex = '';
 
     route.routes.forEach(({path, container, exact}) => {
-        importBackend += 'import {'+container+'} from "_containers/'+container+'";\n';
-        routeBackend += '       <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={'+container+'}/>\n';
+        importBackend += 'import {' + container + '} from "_containers/' + container + '";\n';
+        routeBackend += '       <Route' + (exact === true ? ' exact={true}' : '') + ' path="' + path + '" component={' + container + '}/>\n';
 
-        routeFrontend += 'const '+container+' = LazyLoadComponent(() => System.import("_containers/'+container+'"), LoadingComponent, ErrorComponent);\n';
+        routeFrontend += 'const ' + container + ' = LazyLoadComponent(() => System.import("_containers/' + container + '"), LoadingComponent, ErrorComponent);\n';
 
-        routeIndex += '         <Route'+(exact === true ? ' exact={true}' : '')+' path="'+path+'" component={require("_containers/'+container+'").'+container+'}/>\n';
+        routeIndex += '         <Route' + (exact === true ? ' exact={true}' : '') + ' path="' + path + '" component={require("_containers/' + container + '").' + container + '}/>\n';
 
     });
 
@@ -270,7 +277,7 @@ gulp.task("routeGenerate", () => {
 gulp.task("blockGenerate", () => {
     const _path = resolve('./view/block');
     const foldres = fs.readdirSync(_path).filter(function (file) {
-        return fs.statSync(_path+'/'+file).isDirectory();
+        return fs.statSync(_path + '/' + file).isDirectory();
     });
 
     let importBlock = '';

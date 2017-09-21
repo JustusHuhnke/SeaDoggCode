@@ -1,16 +1,16 @@
-@import '~normalize-scss';
+// Reset and dependencies
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/print';
 @import 'variables/colors';
-
-@include normalize();
 
 * {
   box-sizing: border-box;
 }
 
-body {
+html, body {
   background: $background-color;
   color: $text-black;
-  font-family: Verdana;
+  font-family: 'OpenSansLight', sans-serif;
 }
 
 svg {
