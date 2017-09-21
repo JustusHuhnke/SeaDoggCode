@@ -93,7 +93,7 @@ if (process.env.TEMP_NAME === undefined) {
     plugins.push(new BellOnBundlerErrorPlugin());
     plugins.push(new OfflinePlugin({
         excludes: excludes_offline,
-        // responseStrategy: 'network-first',
+        responseStrategy: 'network-first',
         caches: {
             main: [':rest:'],
             additional: [':externals:'],
