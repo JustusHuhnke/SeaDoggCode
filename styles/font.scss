@@ -1,12 +1,3 @@
-//@font-face {
-//  font-family: 'open_sanslight';
-//  src: url('./fonts/opensans_light/OpenSans-Light-webfont.eot');
-//  src: url('./fonts/opensans_light/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
-//    //url('./fonts/opensans_light/OpenSans-Light-webfont.woff2') format('woff2'),
-//  url('./fonts/opensans_light/OpenSans-Light-webfont.woff') format('woff'),
-//  url('./fonts/opensans_light/OpenSans-Light-webfont.ttf') format('truetype');
-//  font-weight: normal;
-//  font-style: normal;
-//}
+@import '~bourbon/app/assets/stylesheets/bourbon';
 
-@include font-face('OpenSansLight', './fonts/opensans_light/OpenSans-Light-webfont', normal, normal);
+@include font-face('OpenSansLight', './fonts/opensans_light/OpenSans-Light-webfont', normal, normal, $file-formats: eot woff ttf woff2);

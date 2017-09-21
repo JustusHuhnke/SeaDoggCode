@@ -18,6 +18,10 @@
     max-width: 720px;
     text-transform: uppercase;
     width: 100%;
+
+    @include max-screen(768px) {
+      font-size: 32px;
+    }
   }
 
   @include element('text') {

@@ -1,4 +1,5 @@
 @import '~bemify';
+@import '~sass-mediaqueries/media-queries';
 
 @include block('section') {
   display: block;

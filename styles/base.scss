@@ -1,31 +1,22 @@
 @import 'reset';
 @import 'variables/colors';
-@import 'libs/bourbon/app/assets/stylesheets/bourbon';
-@import 'libs/sass-mediaqueries/media-queries';
 
 
 // Bootstrap 4 Grid only
-//
 // Includes relevant variables and mixins for the regular (non-flexbox) grid
 // system, as well as the generated predefined classes (e.g., `.col-4-sm`).
 
+// Core variables and mixins
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/variables';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/mixins';
 
-//
-// Variables
-//
+// Core CSS
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/grid';
 
-@import 'bootstrap-grid/custom';
-@import 'bootstrap-grid/variables';
+// Utility classes
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/utilities';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities';
 
-//
-// Grid mixins
-//
-
-@import 'bootstrap-grid/mixins/clearfix';
-@import 'bootstrap-grid/mixins/breakpoints';
-@import 'bootstrap-grid/mixins/grid-framework';
-@import 'bootstrap-grid/mixins/grid';
-@import 'bootstrap-grid/grid';
 
 
 * {
