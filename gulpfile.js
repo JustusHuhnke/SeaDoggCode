@@ -149,6 +149,7 @@ gulp.task('autoTypedStyle', (callback) => {
                 console.error(error);
             });
             let template = "";
+            let valueStyles = [];
             style_js_remove.forEach((name) => {
                 if (name === "base") return;
                 const str = fs.readFileSync(resolve(__dirname, '.gulp/style', name + '.css'), 'utf8');
@@ -166,6 +167,7 @@ gulp.task('autoTypedStyle', (callback) => {
                 }
                 clases = (clases.filter(onlyUnique));
                 if (clases.length) {
+                    valueStyles = [...valueStyles, ...clases];
                     clases.forEach((name) => {
                         _template += `  readonly "${name}": string;\n`
                     });
@@ -173,6 +175,35 @@ gulp.task('autoTypedStyle', (callback) => {
                     template += _template;
                 }
             });
+            const regexBlock = /^(([a-z0-9]+)(-|_){0,1})+([a-z0-9]+)/i;
+            const regexElement = /__([a-z0-9]+)/gi;
+            const regexMod = /--([a-z0-9]+)/gi;
+            let m;
+            let valueBlocks = [];
+            let valueElements = [];
+            let valueMods = [];
+
+            valueStyles.forEach((str) => {
+                if ((m = regexBlock.exec(str)) !== null) {
+                    valueBlocks = [...valueBlocks, '"' + m[0] + '"'];
+                }
+                while ((m = regexElement.exec(str)) !== null) {
+                    valueElements = [...valueElements, '"' + m[1] + '"'];
+                }
+                while ((m = regexMod.exec(str)) !== null) {
+                    valueMods = [...valueMods, '"' + m[1] + '"'];
+                }
+            });
+            valueBlocks = (valueBlocks.filter(onlyUnique));
+            valueElements = (valueElements.filter(onlyUnique));
+            valueMods = (valueMods.filter(onlyUnique));
+
+            template += "/* tslint:disable:max-line-length */\n";
+            template += "export type IValueBlocks = " + valueBlocks.join(" | ") + ";\n";
+            template += "export type IValueElements = " + valueElements.join(" | ") + ";\n";
+            template += "export type IValueMods = " + valueMods.join(" | ") + ";\n";
+            template += "/* tslint:enable:max-line-length */\n";
+
             fs.writeFile(resolve('styles/interface.ts'), template, function (err) {
                 if (err)
                     return console.log(err);
