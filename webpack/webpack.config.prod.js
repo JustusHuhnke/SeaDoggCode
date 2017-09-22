@@ -10,6 +10,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const vendorStyles = require("./vendor.style").default;
 const vendorScripts = require("./vendor.scripts").default;
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');;
 
 const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
     bundle: './client/index.tsx',
@@ -29,6 +30,7 @@ fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
 entry['base'] = [entry['base'], ...vendorStyles];
 
 const plugins = [
+    new LodashModuleReplacementPlugin,
     new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false,
@@ -41,6 +43,8 @@ const plugins = [
             WEB: JSON.stringify('production')
         }
     }),
+
+    new ExtractTextPlugin("style/[name].[hash:4].css"),
 
     new webpack.optimize.UglifyJsPlugin({
         minimize: true,
@@ -72,8 +76,6 @@ const plugins = [
             screw_ie8: true
         }
     }),
-
-    new ExtractTextPlugin("style/[name].[hash:4].css")
 ];
 
 if (process.env.TEMP_NAME === undefined) {
