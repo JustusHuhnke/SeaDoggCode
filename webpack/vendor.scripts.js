@@ -24,5 +24,7 @@ const vendor = [
     "react-modal",
 
     "lodash",
+    "leaflet",
+    "react-leaflet",
 ];
 exports.default = vendor;

@@ -8,6 +8,7 @@ export interface IBlock {
   readonly "features": string;
   readonly "features__text": string;
   readonly "features__button": string;
+  readonly "contact": string;
   readonly "header": string;
   readonly "header--transparent": string;
   readonly "footer": string;
@@ -22,6 +23,7 @@ export interface IComponents {
   readonly "button": string;
   readonly "link": string;
   readonly "logo": string;
+  readonly "map": string;
   readonly "modal__overlay": string;
   readonly "navigation": string;
   readonly "navigation__list": string;

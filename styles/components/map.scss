@@ -1,0 +1,8 @@
+@import '~bemify';
+@import '../variables/index';
+
+@include block('map') {
+  display: inline-block;
+  height: 500px;
+  width: 500px;
+}
