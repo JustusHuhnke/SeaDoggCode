@@ -1,0 +1,14 @@
+@import '~bemify';
+@import '../variables/index';
+
+@include block('input-block') {
+  display: inline-block;
+
+  @include element('input') {
+    color: red;
+  }
+
+  @include element('textarea') {
+    color: red;
+  }
+}

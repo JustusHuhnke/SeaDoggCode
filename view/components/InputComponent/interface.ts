@@ -6,4 +6,9 @@ export interface IInputComponent {
     children?: ReactNode;
     className?: classNames;
 
+    type?: "input" | "textarea";
+    autosize?: boolean;
+
+    [key: string]: any;
+
 }

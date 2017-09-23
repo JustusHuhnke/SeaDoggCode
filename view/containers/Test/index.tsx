@@ -1,6 +1,7 @@
 import {ButtonComponent} from "_components/ButtonComponent";
 import {IconComponent} from "_components/IconComponent";
 import {ImageComponent} from "_components/ImageComponent";
+import InputComponent from "_components/InputComponent";
 import {LinkComponent} from "_components/LinkComponent";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/SelectComponent";
@@ -9,7 +10,11 @@ import {List} from "immutable";
 import * as React from "react";
 import {IHelloProps} from "./interface";
 
-export class Test extends React.Component<IHelloProps, {}> {
+interface ITempTestComponent {
+    valueForInput: string;
+}
+
+export class Test extends React.Component<IHelloProps, ITempTestComponent> {
 
     public static defaultProps: IHelloProps = {
         compiler: "Test",
@@ -18,6 +23,10 @@ export class Test extends React.Component<IHelloProps, {}> {
 
     constructor(props: IHelloProps) {
         super(props);
+        this.changeInputValue = this.changeInputValue.bind(this);
+        this.state = {
+            valueForInput: "Change me!",
+        };
     }
 
     public render() {
@@ -104,8 +113,25 @@ export class Test extends React.Component<IHelloProps, {}> {
                     Button with icon:
                     <ButtonComponent title={"This is button with icon"} icon={"download"} iconClass={styleIcon} />
                 </PureComponent>
+                <PureComponent tag="section">
+                    Input default:
+                    <InputComponent />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input autosize:
+                    <InputComponent autosize={true} value={this.state.valueForInput} onChange={this.changeInputValue} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Textarea autosize:
+                    <InputComponent type={"textarea"} autosize={true} />
+                </PureComponent>
             </PureComponent>
         );
+    }
+
+    private changeInputValue(event: Event) {
+        const target = event.target as HTMLInputElement;
+        this.setState({valueForInput: target.value});
     }
 }
 
