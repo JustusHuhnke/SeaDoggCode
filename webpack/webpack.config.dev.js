@@ -219,7 +219,10 @@ module.exports = {
                         }
                     }
                 ],
-                include: resolve('./static/images')
+                include: [
+                    resolve('./static/images'),
+                    resolve(__dirname, "..", "node_modules", "leaflet/dist"),
+                ]
             },
             {
                 enforce: 'pre',

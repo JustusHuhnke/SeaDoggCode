@@ -22,5 +22,7 @@ const vendor = [
     "react-select",
     "react-custom-scrollbars",
     "react-modal",
+    "leaflet",
+    "react-leaflet",
 ];
 exports.default = vendor;

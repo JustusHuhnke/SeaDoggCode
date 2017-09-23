@@ -80,3 +80,12 @@
     margin: 30px auto;
   }
 }
+
+@include block('contact') {
+  background: $background-color;
+  box-sizing: border-box;
+  color: $text-black;
+  padding: 95px 15px;
+  text-align: center;
+  width: 100%;
+}
