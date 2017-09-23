@@ -1,6 +1,7 @@
 import {PureComponent} from "_components/PureComponent";
 import {component} from "_style";
 import classnames from "_utils/classnames";
+import makeId from "_utils/makeid";
 import Rbem from "_utils/rbem";
 import * as React from "react";
 import {IInputComponent} from "./interface";
@@ -21,12 +22,17 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
         const {className, type, autosize, ...otherProps} = this.props;
         const classes = classnames(inputBlock.element(type).get(), className);
         const classesLayout = classnames(inputBlock.get(), className);
+        const id = type + makeId();
 ​
         return (
             <PureComponent tag={"span"} className={classesLayout}>
-                {type === "input" && autosize === true && <AutosizeInput inputClassName={classes} {...otherProps} />}
-                {type === "textarea" && autosize === true && <AutosizeTextarea className={classes} {...otherProps} />}
-                {type === "input" && autosize !== true && <input className={classes} {...otherProps} />}
+                <label htmlFor={id} className={inputBlock.element("label").get()}>Text</label>
+
+                {type === "input" && autosize === true && <AutosizeInput id={id} inputClassName={classes} {...otherProps} />}
+                {type === "textarea" && autosize === true && <AutosizeTextarea id={id} className={classes} {...otherProps} />}
+                {type === "input" && autosize !== true && <input id={id} className={classes} {...otherProps} />}
+
+                <div className={inputBlock.element("error").get()}>Error message!</div>
             </PureComponent>
         );
     }

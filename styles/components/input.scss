@@ -11,4 +11,12 @@
   @include element('textarea') {
     color: red;
   }
+
+  @include element('label') {
+    display: block;
+  }
+
+  @include element('error') {
+    display: block;
+  }
 }
