@@ -43,7 +43,7 @@ module.exports = {
     externals: [nodeExternals()],
     context: resolve(__dirname, '../'),
     resolve: {
-        modules: ['node_modules'],
+        modules: ['./', 'node_modules'],
         extensions: [".ts", ".tsx", ".js", '.scss', '.css'],
         descriptionFiles: ['package.json'],
         moduleExtensions: ['-loader'],
@@ -106,7 +106,6 @@ module.exports = {
                             {
                                 loader: "css-loader", options: {
                                 sourceMap: true,
-                                modules: true,
                                 localIdentName: '[local]'
                             }
                             }
@@ -114,7 +113,7 @@ module.exports = {
                     })
             },
             {
-                test: /\.scss$/,
+                test: /\.s[ac]ss$/,
                 exclude: /node_modules/,
                 include: resolve('./styles'),
                 use: ExtractTextPlugin.extract({
@@ -179,7 +178,7 @@ module.exports = {
                 include: resolve('./static/icon')
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|jpeg|gif)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -191,8 +190,7 @@ module.exports = {
                             outputPath: '../public/images/'
                         }
                     }
-                ],
-                include: resolve('./static/images')
+                ]
             },
             {
                 enforce: 'pre',

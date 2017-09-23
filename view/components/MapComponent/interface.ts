@@ -1,5 +1,5 @@
 import {classNames} from "_style";
-import {Map} from "immutable";
+import {ImmutableMap} from "_utils/interface";
 
 interface IMapPosition {
     lat: number;
@@ -8,5 +8,5 @@ interface IMapPosition {
 
 export interface IMapComponent {
     className?: classNames;
-    position?: Map<IMapPosition>;
+    position?: ImmutableMap<IMapPosition>;
 }
