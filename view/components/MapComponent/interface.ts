@@ -1,12 +1,12 @@
 import {classNames} from "_style";
-// import {Map} from "immutable";
+import {Map} from "immutable";
 
-// interface IMapPosition {
-//     lat: number;
-//     lng: number;
-// }
+interface IMapPosition {
+    lat: number;
+    lng: number;
+}
 
 export interface IMapComponent {
     className?: classNames;
-    position?: any;
+    position?: Map<IMapPosition>;
 }

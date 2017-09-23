@@ -27,7 +27,7 @@ export class MapComponent extends React.Component<IMapComponent, {}> {
 
         return Map && TileLayer && (
             <Map
-                center={position}
+                center={position.toJS()}
                 className={classes}
                 scrollWheelZoom={false}
                 zoom={5}

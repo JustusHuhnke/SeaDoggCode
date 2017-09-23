@@ -1,17 +1,18 @@
+import {MapComponent} from "_components/MapComponent";
 import {PureComponent} from "_components/PureComponent";
 import {block, section} from "_style";
+import {Map} from "immutable";
 import * as React from "react";
 import {IContact} from "./interface";
-import {MapComponent} from "_components/MapComponent";
 
 export class ContactBlock extends React.Component<IContact, {}> {
     public render() {
         const styleList = [section.section, block.contact];
 
-        const mapPosition = {
+        const mapPosition = Map({
             lat: 49,
             lng: 32,
-        };
+        });
 
         return (
             <PureComponent tag="section" className={styleList}>
