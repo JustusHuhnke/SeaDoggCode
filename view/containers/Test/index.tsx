@@ -163,6 +163,18 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                     Input mask variant 4:
                     <InputComponent mask="99/99/9999" placeholder="Enter birthdate" />
                 </PureComponent>
+                <PureComponent tag="section">
+                    Input only number:
+                    <InputComponent type="number" />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input currency:
+                    <InputComponent type="number" decimalPrecision={2} prefix={"$"} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input only number with mask:
+                    <InputComponent type="number" decimalPrecision={2} format={"# ###.##"} />
+                </PureComponent>
             </PureComponent>
         );
     }

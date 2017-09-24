@@ -8,6 +8,7 @@ import InputMask from "react-input-mask";
 import {IInputComponent} from "./interface";
 const AutosizeInput = require("react-input-autosize").default;
 const AutosizeTextarea = require("react-textarea-autosize").default;
+const InputNumber = require("react-number-format");
 
 const inputBlock = new Rbem(component, "input-block");
 
@@ -31,7 +32,7 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
     public render() {
 
         const {className, classNameLayout, type, autosize, label, disabled, mask, error, ...otherProps} = this.props;
-        const classes = classnames(inputBlock.get(type), className);
+        const classes = classnames(inputBlock.get(type === "number" ? "input" : type), className);
         const classesLayout = classnames({
             [inputBlock.get()]: true,
             [inputBlock.get(null, "error")]: !!error,
@@ -45,8 +46,10 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
 
         children.push((() => {
             switch (false) {
+                case !(type === "number"):
+                    return <InputNumber key={this.IdInput} id={this.IdInput} {...otherProps} />;
                 case !(typeof mask === "string"):
-                    return <InputMask mask={mask} {...otherProps} />;
+                    return <InputMask key={this.IdInput} id={this.IdInput} mask={mask} {...otherProps} />;
                 case !(type === "input" && autosize === true):
                     return <AutosizeInput key={this.IdInput} id={this.IdInput} inputClassName={classes} disabled={disabled} {...otherProps} />;
                 case !(type === "textarea" && process.env.BROWSER && autosize === true):
@@ -63,7 +66,7 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
         }
 
         return (
-            <PureComponent tag={"span"} className={classesLayout} children={children} {...otherProps} />
+            <PureComponent tag={"span"} className={classesLayout} children={children} />
         );
 
     }

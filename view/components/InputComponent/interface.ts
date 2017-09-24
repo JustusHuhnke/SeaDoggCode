@@ -7,7 +7,7 @@ export interface IInputComponent {
     className?: classNames;
     classNameLayout?: classNames;
 
-    type?: "input" | "textarea";
+    type?: "input" | "textarea" | "number";
     autosize?: boolean;
 
     label?: string;

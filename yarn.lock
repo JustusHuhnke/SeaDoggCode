@@ -7849,6 +7849,12 @@ react-modal@^2.3.2:
     prop-types "^15.5.10"
     react-dom-factories "^1.0.0"
 
+react-number-format@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-2.0.4.tgz#90cd7a44a4181305bc4c6aa66380205adf5e158b"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-proxy@^3.0.0-alpha.0:
   version "3.0.0-alpha.1"
   resolved "https://registry.yarnpkg.com/react-proxy/-/react-proxy-3.0.0-alpha.1.tgz#4400426bcfa80caa6724c7755695315209fa4b07"
