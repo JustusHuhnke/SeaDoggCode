@@ -4,11 +4,11 @@ import classnames from "_utils/classnames";
 import makeId from "_utils/makeid";
 import Rbem from "_utils/rbem";
 import * as React from "react";
-import InputMask from "react-input-mask";
 import {IInputComponent} from "./interface";
 const AutosizeInput = require("react-input-autosize").default;
 const AutosizeTextarea = require("react-textarea-autosize").default;
 const InputNumber = require("react-number-format");
+const InputMask = require("react-input-mask").default;
 
 const inputBlock = new Rbem(component, "input-block");
 
@@ -48,7 +48,7 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
             switch (false) {
                 case !(type === "number"):
                     return <InputNumber key={this.IdInput} id={this.IdInput} {...otherProps} />;
-                case !(typeof mask === "string"):
+                case !(typeof mask === "string" && process.env.BROWSER):
                     return <InputMask key={this.IdInput} id={this.IdInput} mask={mask} {...otherProps} />;
                 case !(type === "input" && autosize === true):
                     return <AutosizeInput key={this.IdInput} id={this.IdInput} inputClassName={classes} disabled={disabled} {...otherProps} />;

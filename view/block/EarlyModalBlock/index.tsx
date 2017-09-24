@@ -6,7 +6,7 @@ import {IEarlyModal} from "./interface";
 const overlayStyle = {
     base: component.modal__overlay,
 };
-const ModalBlock = (Modal as any).default || Modal;
+const ModalBlock = process.env.BROWSER && ((Modal as any).default || Modal);
 
 export class EarlyModalBlock extends React.Component<IEarlyModal | any, {}> {
 
@@ -16,7 +16,7 @@ export class EarlyModalBlock extends React.Component<IEarlyModal | any, {}> {
 
     public render() {
         const {open, ...otherProps} = this.props;
-        return (
+        return ModalBlock && (
             <div>
                 <ModalBlock
                     isOpen={open}

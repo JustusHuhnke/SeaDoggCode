@@ -43,7 +43,7 @@ module.exports = {
     externals: [nodeExternals()],
     context: resolve(__dirname, '../'),
     resolve: {
-        modules: ['./', 'node_modules'],
+        modules: ['node_modules'],
         extensions: [".ts", ".tsx", ".js", '.scss', '.css'],
         descriptionFiles: ['package.json'],
         moduleExtensions: ['-loader'],

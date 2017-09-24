@@ -45,19 +45,11 @@ const plugins = [
     }),
 
     new ExtractTextPlugin("style/[name].[hash:4].css"),
-
     new webpack.optimize.UglifyJsPlugin({
         minimize: true,
         beautify: false,
         sourcemap: false,
         comments: false,
-        mangle: {
-            except: [
-                '$', 'webpackJsonp'
-            ],
-            screw_ie8: true,
-            keep_fnames: true
-        },
         compress: {
             warnings: false,
             screw_ie8: true,
@@ -72,8 +64,7 @@ const plugins = [
             drop_console: true
         },
         output: {
-            comments: false,
-            screw_ie8: true
+            comments: false
         }
     }),
 ];
@@ -127,7 +118,7 @@ module.exports = {
 
     context: resolve(__dirname, '../'),
     resolve: {
-        modules: ['./', 'node_modules'],
+        modules: ['node_modules'],
         extensions: [".ts", ".tsx", ".js", '.scss', '.css'],
         descriptionFiles: ['package.json'],
         moduleExtensions: ['-loader'],
