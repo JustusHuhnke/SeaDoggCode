@@ -1,18 +1,15 @@
-// import * as io from "socket.io-client";
+import * as io from "socket.io-client";
+export const ss = require("socket.io-stream");
 
-// type socketDataType = string | ClassArray | undefined | null | false;
-// interface ClassArray extends Array<socketDataType> { }
-//
-// interface SocketData {
-//     data: socketDataType
-// }
+export const socket = io(process.env.NODE_ENV === "production" ? (window as any).location.origin : "http://localhost:1337", {
+    reconnection: true,
+    reconnectionAttempts: 10,
+    reconnectionDelay: 1000,
+    transports: ["websocket", "polling", "flashsocket"],
+});
 
-// const socket = io("http://localhost:1337", {
-//     reconnection: true,
-//     reconnectionAttempts: 10,
-//     reconnectionDelay: 1000,
-//     transports: ["websocket", "polling", "flashsocket"],
-// });
+export const streamConnect = ss(socket);
+
 //
 // socket.on("connect", () => {
 //     socket.emit("chat message", (+new Date()).toString());

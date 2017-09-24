@@ -31,7 +31,7 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
 
     public render() {
 
-        const {className, classNameLayout, type, autosize, label, disabled, mask, error, ...otherProps} = this.props;
+        const {className, classNameLayout, type, autosize, label, disabled, mask, error, maskChar, ...otherProps} = this.props;
         const classes = classnames(inputBlock.get(type === "number" ? "input" : type), className);
         const classesLayout = classnames({
             [inputBlock.get()]: true,
@@ -49,7 +49,7 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
                 case !(type === "number"):
                     return <InputNumber key={this.IdInput} id={this.IdInput} {...otherProps} />;
                 case !(typeof mask === "string" && process.env.BROWSER):
-                    return <InputMask key={this.IdInput} id={this.IdInput} mask={mask} {...otherProps} />;
+                    return <InputMask key={this.IdInput} id={this.IdInput} mask={mask} maskChar={maskChar} {...otherProps} />;
                 case !(type === "input" && autosize === true):
                     return <AutosizeInput key={this.IdInput} id={this.IdInput} inputClassName={classes} disabled={disabled} {...otherProps} />;
                 case !(type === "textarea" && process.env.BROWSER && autosize === true):

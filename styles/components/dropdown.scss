@@ -1,0 +1,8 @@
+@import '../variables/index';
+
+@include block('dropdown') {
+  border: 2px dotted black;
+  display: inline-block;
+  height: 80px;
+  width: 100px;
+}

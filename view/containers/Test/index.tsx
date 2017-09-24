@@ -5,6 +5,7 @@ import InputComponent from "_components/InputComponent";
 import {LinkComponent} from "_components/LinkComponent";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/SelectComponent";
+import UploadComponent from "_components/UploadComponent";
 import {component} from "_style";
 import Rbem from "_utils/rbem";
 import {List} from "immutable";
@@ -174,6 +175,14 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                 <PureComponent tag="section">
                     Input only number with mask:
                     <InputComponent type="number" decimalPrecision={2} format={"# ###.##"} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    DropZone default:
+                    <UploadComponent />
+                </PureComponent>
+                <PureComponent tag="section">
+                    DropZone with child:
+                    <UploadComponent>Drop your file</UploadComponent>
                 </PureComponent>
             </PureComponent>
         );
