@@ -56,6 +56,10 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
+"@types/geojson@*":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.3.tgz#fbcf7fa5eb6dd108d51385cc6987ec1f24214523"
+
 "@types/history@*", "@types/history@^4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.0.tgz#093d67ed780d889c9543f6dca24ebee0b6b9fc45"
@@ -70,9 +74,9 @@
   dependencies:
     "@types/node" "*"
 
-"@types/jest@^20.0.8":
-  version "20.0.8"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.8.tgz#7f8c97f73d20d3bf5448fbe33661a342002b5954"
+"@types/jest@^21.1.0":
+  version "21.1.0"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-21.1.0.tgz#cacaa3822b548d8faa7130cf847b6f5417c32ddf"
 
 "@types/jsonwebtoken@^7.2.3":
   version "7.2.3"
@@ -111,6 +115,12 @@
     "@types/koa-compose" "*"
     "@types/node" "*"
 
+"@types/leaflet@*":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/leaflet/-/leaflet-1.2.0.tgz#5f15f5012b24d30507f3c4dc3271c88acbe4be49"
+  dependencies:
+    "@types/geojson" "*"
+
 "@types/lodash@^4.14.74":
   version "4.14.74"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.74.tgz#ac3bd8db988e7f7038e5d22bd76a7ba13f876168"
@@ -126,9 +136,9 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^4.7.21":
-  version "4.7.21"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-4.7.21.tgz#aea0363e01a64c33fda5a9e592d5d25734eca3ec"
+"@types/mongoose@^4.7.23":
+  version "4.7.23"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-4.7.23.tgz#ce665da40a0e20384c2d892622dbfbdd5fc2bdde"
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
@@ -137,9 +147,9 @@
   version "8.0.28"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.28.tgz#86206716f8d9251cf41692e384264cbd7058ad60"
 
-"@types/node@^8.0.29":
-  version "8.0.29"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.29.tgz#4d6b33df66b15611b40452a581c40d9c94341ba1"
+"@types/node@^8.0.30":
+  version "8.0.30"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.30.tgz#aa3c42946fc6357737eb215349fe728b38679d05"
 
 "@types/picturefill@^3.0.0":
   version "3.0.0"
@@ -173,6 +183,19 @@
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/react-hot-loader/-/react-hot-loader-3.0.4.tgz#7fc081509830c64218d8a99a865e2fb4a94572ad"
   dependencies:
+    "@types/react" "*"
+
+"@types/react-input-mask@^0.7.7":
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/@types/react-input-mask/-/react-input-mask-0.7.7.tgz#320b6fa3424184b0a3e6bdc7256ba6811e3a40c6"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-leaflet@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@types/react-leaflet/-/react-leaflet-1.1.4.tgz#75b46ae80282883614962be5d59d1774e90cab25"
+  dependencies:
+    "@types/leaflet" "*"
     "@types/react" "*"
 
 "@types/react-modal@^2.2.1":
@@ -214,6 +237,12 @@
 "@types/react-select@^1.0.57":
   version "1.0.57"
   resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-1.0.57.tgz#13ddd443becc9b3d34640a19fd6f2f78fdd7a735"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-textarea-autosize@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@types/react-textarea-autosize/-/react-textarea-autosize-4.3.1.tgz#3b1de74e4113a648891f765a62e0e7f5c6ed0124"
   dependencies:
     "@types/react" "*"
 
@@ -1758,10 +1787,6 @@ beeper@^1.0.0:
 bell-on-bundler-error-plugin@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/bell-on-bundler-error-plugin/-/bell-on-bundler-error-plugin-2.0.0.tgz#0c790d6bdc74679011190d85e459e08c096c2311"
-
-bemify@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/bemify/-/bemify-0.1.2.tgz#59d81e8b4311cbd8be64d33e3c8a01f05c189d07"
 
 better-assert@~1.0.0:
   version "1.0.2"
@@ -5664,6 +5689,10 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+leaflet@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.2.0.tgz#fd5d93d9cb00091f5f8a69206d0d6744c1c82697"
+
 leven@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/leven/-/leven-2.1.0.tgz#c2e7a9f772094dee9d34202ae8acce4687875580"
@@ -5749,7 +5778,7 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash-es@^4.2.0, lodash-es@^4.2.1:
+lodash-es@^4.0.0, lodash-es@^4.2.0, lodash-es@^4.2.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
 
@@ -6762,9 +6791,9 @@ obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/obuf/-/obuf-1.1.1.tgz#104124b6c602c6796881a042541d36db43a5264e"
 
-offline-plugin@^4.8.3:
-  version "4.8.3"
-  resolved "https://registry.yarnpkg.com/offline-plugin/-/offline-plugin-4.8.3.tgz#9e95bd342ea2ac836b001b81f204c40638694d6c"
+offline-plugin@^4.8.4:
+  version "4.8.4"
+  resolved "https://registry.yarnpkg.com/offline-plugin/-/offline-plugin-4.8.4.tgz#1084c59f6606bded5ee5a6bf6208e2b9f5bdd339"
   dependencies:
     deep-extend "^0.4.0"
     ejs "^2.3.4"
@@ -7159,9 +7188,9 @@ pm2-multimeter@^0.1.2:
   dependencies:
     charm "~0.1.1"
 
-pm2@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/pm2/-/pm2-2.7.0.tgz#5c0d7b304588d0542686d32fd6bd1f8fa22621ca"
+pm2@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/pm2/-/pm2-2.7.1.tgz#b7b8404d8bec587526fd58bc21feffea351bec15"
   dependencies:
     async "^2.5"
     blessed "^0.1.81"
@@ -7800,6 +7829,18 @@ react-input-autosize@^2.0.1:
     create-react-class "^15.5.2"
     prop-types "^15.5.8"
 
+react-input-mask@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-input-mask/-/react-input-mask-1.0.7.tgz#690d2189a1206972aeb82f332336be337fddf280"
+
+react-leaflet@^1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.6.6.tgz#e388544ff0e49e05d8fdc2f5cd56e29c7613600d"
+  dependencies:
+    lodash "^4.0.0"
+    lodash-es "^4.0.0"
+    warning "^3.0.0"
+
 react-modal@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-2.3.2.tgz#af9d625da218461de3e87551609dfca12d8d4946"
@@ -7807,6 +7848,12 @@ react-modal@^2.3.2:
     exenv "^1.2.0"
     prop-types "^15.5.10"
     react-dom-factories "^1.0.0"
+
+react-number-format@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-2.0.4.tgz#90cd7a44a4181305bc4c6aa66380205adf5e158b"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-proxy@^3.0.0-alpha.0:
   version "3.0.0-alpha.1"
@@ -7877,6 +7924,12 @@ react-test-renderer@^15.6.1:
   dependencies:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
+
+react-textarea-autosize@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-5.1.0.tgz#ffbf8164fce217c79443c1c17dedf730592df224"
+  dependencies:
+    prop-types "^15.5.10"
 
 react@^15.6.1:
   version "15.6.1"

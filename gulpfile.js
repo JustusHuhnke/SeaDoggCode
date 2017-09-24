@@ -118,7 +118,7 @@ gulp.task('autoTypedStyle', (callback) => {
                                 {
                                     loader: "css-loader", options: {
                                     sourceMap: false,
-                                    modules: true,
+                                    modules: false,
                                     importLoaders: 1,
                                     localIdentName: '[local]',
                                     minimize: true

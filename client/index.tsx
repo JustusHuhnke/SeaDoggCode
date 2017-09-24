@@ -39,6 +39,5 @@ document.addEventListener("DOMContentLoaded", () => {
     link.type = "text/css";
     link.href = "/" + (process.env.NODE_ENV === "production" ? (window as any).ASSETS["font.css"] : "style/font.css");
     link.media = "all";
-    (console as any).log((window as any).ASSETS["font.css"]);
     head.appendChild(link);
 });

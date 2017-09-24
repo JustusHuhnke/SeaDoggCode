@@ -3,6 +3,10 @@ import LazyLoadComponent from "_components/LazyLoadComponent";
 import {LoadingComponent} from "_components/LoadingComponent";
 declare const System: { import: (path: string) => Promise<any>; };
 
+const ContactBlock = process.env.BROWSER &&
+   LazyLoadComponent(() => System.import("./ContactBlock"), LoadingComponent, ErrorComponent) ||
+   require("./ContactBlock").default;
+
 const EarlyAccessBlock = process.env.BROWSER &&
    LazyLoadComponent(() => System.import("./EarlyAccessBlock"), LoadingComponent, ErrorComponent) ||
    require("./EarlyAccessBlock").default;
@@ -28,6 +32,7 @@ const HomeAboutBlock = process.env.BROWSER &&
    require("./HomeAboutBlock").default;
 
 export {
+    ContactBlock,
     EarlyAccessBlock,
     EarlyModalBlock,
     FeaturesBlock,
