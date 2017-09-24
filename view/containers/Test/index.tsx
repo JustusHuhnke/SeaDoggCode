@@ -6,10 +6,10 @@ import {LinkComponent} from "_components/LinkComponent";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/SelectComponent";
 import {component} from "_style";
+import Rbem from "_utils/rbem";
 import {List} from "immutable";
 import * as React from "react";
 import {IHelloProps} from "./interface";
-import Rbem from "_utils/rbem";
 
 interface ITempTestComponent {
     valueForInput: string;
