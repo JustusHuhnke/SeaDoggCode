@@ -4,6 +4,7 @@ import classnames from "_utils/classnames";
 import makeId from "_utils/makeid";
 import Rbem from "_utils/rbem";
 import * as React from "react";
+import InputMask from "react-input-mask";
 import {IInputComponent} from "./interface";
 const AutosizeInput = require("react-input-autosize").default;
 const AutosizeTextarea = require("react-textarea-autosize").default;
@@ -16,29 +17,55 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
         className: inputBlock.get("input"),
         type: "input",
     };
+    private IdLabel: string;
+    private IdInput: string;
+    private IdError: string;
+
+    public componentWillMount() {
+        const {type} = this.props;
+        this.IdLabel = type + makeId();
+        this.IdInput = type + makeId();
+        this.IdError = type + makeId();
+    }
 
     public render() {
 
-        const {className, classNameLayout, type, autosize, label, error, ...otherProps} = this.props;
+        const {className, classNameLayout, type, autosize, label, disabled, mask, error, ...otherProps} = this.props;
         const classes = classnames(inputBlock.get(type), className);
         const classesLayout = classnames({
             [inputBlock.get()]: true,
             [inputBlock.get(null, "error")]: !!error,
+            [inputBlock.get(null, "disabled")]: !!disabled,
         }, classNameLayout);
-        const id = type + makeId();
-​
+        const children: any[] = [];
+
+        if (typeof label === "string") {
+            children.push(<label key={this.IdLabel} htmlFor={this.IdInput} className={inputBlock.get("label")}>{label}</label>);
+        }
+
+        children.push((() => {
+            switch (false) {
+                case !(typeof mask === "string"):
+                    return <InputMask mask={mask} {...otherProps} />;
+                case !(type === "input" && autosize === true):
+                    return <AutosizeInput key={this.IdInput} id={this.IdInput} inputClassName={classes} disabled={disabled} {...otherProps} />;
+                case !(type === "textarea" && process.env.BROWSER && autosize === true):
+                    return <AutosizeTextarea key={this.IdInput} id={this.IdInput} className={classes} disabled={disabled} {...otherProps} />;
+                case !(type === "textarea" && (!process.env.BROWSER || autosize !== true)):
+                    return <textarea key={this.IdInput} id={this.IdInput} className={classes} disabled={disabled} {...otherProps} />;
+                default:
+                    return <input key={this.IdInput} id={this.IdInput} className={classes} disabled={disabled} {...otherProps} />;
+            }
+        })());
+
+        if (typeof error === "string") {
+            children.push(<div key={this.IdError} className={inputBlock.get(null, "error")}>{error}</div>);
+        }
+
         return (
-            <PureComponent tag={"span"} className={classesLayout}>
-                {typeof label === "string" && <label htmlFor={id} className={inputBlock.get("label")}>{label}</label>}
-
-                {type === "input" && autosize === true && <AutosizeInput id={id} inputClassName={classes} {...otherProps} />}
-                {type === "textarea" && autosize === true && <AutosizeTextarea id={id} className={classes} {...otherProps} />}
-                {type === "input" && autosize !== true && <input id={id} className={classes} {...otherProps} />}
-                {type === "textarea" && autosize !== true && <textarea id={id} className={classes} {...otherProps} />}
-
-                {typeof error === "string" && <div className={inputBlock.get(null, "error")}>{error}</div>}
-            </PureComponent>
+            <PureComponent tag={"span"} className={classesLayout} children={children} {...otherProps} />
         );
+
     }
 }
 

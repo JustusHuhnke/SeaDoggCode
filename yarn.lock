@@ -185,6 +185,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-input-mask@^0.7.7":
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/@types/react-input-mask/-/react-input-mask-0.7.7.tgz#320b6fa3424184b0a3e6bdc7256ba6811e3a40c6"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-leaflet@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@types/react-leaflet/-/react-leaflet-1.1.4.tgz#75b46ae80282883614962be5d59d1774e90cab25"
@@ -7822,6 +7828,10 @@ react-input-autosize@^2.0.1:
   dependencies:
     create-react-class "^15.5.2"
     prop-types "^15.5.8"
+
+react-input-mask@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-input-mask/-/react-input-mask-1.0.7.tgz#690d2189a1206972aeb82f332336be337fddf280"
 
 react-leaflet@^1.6.6:
   version "1.6.6"

@@ -5,6 +5,19 @@
 
   @include modifier('error') {
     color: red;
+
+    @include element('input') {
+      border-color: red;
+    }
+
+    @include element('textarea') {
+      border-color: red;
+    }
+  }
+  @include modifier('disabled') {
+    color: black;
+    opacity: .7;
+    pointer-events: none;
   }
 
   @include element('input') {

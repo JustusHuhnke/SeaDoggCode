@@ -143,6 +143,26 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                     Input with label and error text:
                     <InputComponent label={"Login"} error={"Login can't be empty!"}/>
                 </PureComponent>
+                <PureComponent tag="section">
+                    Input disabled:
+                    <InputComponent disabled={true}/>
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input mask variant 1:
+                    <InputComponent mask="+4\9 99 999 99" maskChar={null} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input mask variant 2:
+                    <InputComponent mask={"+380 99 999 99 99"}/>
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input mask variant 3:
+                    <InputComponent mask={"99-99-9999"} defaultValue="24-09-2017" />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input mask variant 4:
+                    <InputComponent mask="99/99/9999" placeholder="Enter birthdate" />
+                </PureComponent>
             </PureComponent>
         );
     }
