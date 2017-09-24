@@ -4,14 +4,17 @@ import {INavigationElement} from "_reducer/navigation";
 import {IState} from "_reducers";
 import {component} from "_style";
 import classnames from "_utils/classnames";
+import Rbem from "_utils/rbem";
 import {List} from "immutable";
 import * as React from "react";
 import {connect} from "react-redux";
 import {INavigationComponent} from "./interface";
 
+const navigationStyle = new Rbem(component, "navigation");
+
 const NavElement: React.StatelessComponent<INavigationElement> = ({title, link}, key) => (
-    <li key={key} className={component.navigation__list__item}>
-        <LinkComponent href={link} title={title} className={component.navigation__list__item__link} />
+    <li key={key} className={navigationStyle.get("item")}>
+        <LinkComponent href={link} title={title} className={navigationStyle.get("link")} />
     </li>
 );
 
@@ -25,11 +28,11 @@ class Navigation extends React.PureComponent<INavigationComponent, {}> {
     public render() {
 
         const {className, list, dispatch, ...otherProps} = this.props;
-        const classes = classnames(component.navigation, className);
+        const classes = classnames(navigationStyle.get(), className);
 
         return (
             <nav className={classes} {...otherProps}>
-                <PureComponent tag={"ul"} className={component.navigation__list}>
+                <PureComponent tag={"ul"} className={navigationStyle.get("list")}>
                     {list.map(NavElement).toArray()}
                 </PureComponent>
             </nav>

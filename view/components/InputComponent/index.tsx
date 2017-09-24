@@ -13,26 +13,30 @@ const inputBlock = new Rbem(component, "input-block");
 export class InputComponent extends React.PureComponent<IInputComponent, {}> {
 
     public static defaultProps: IInputComponent = {
-        className: inputBlock.element("input").get(),
+        className: inputBlock.get("input"),
         type: "input",
     };
 
     public render() {
 
-        const {className, type, autosize, ...otherProps} = this.props;
-        const classes = classnames(inputBlock.element(type).get(), className);
-        const classesLayout = classnames(inputBlock.get(), className);
+        const {className, classNameLayout, type, autosize, label, error, ...otherProps} = this.props;
+        const classes = classnames(inputBlock.get(type), className);
+        const classesLayout = classnames({
+            [inputBlock.get()]: true,
+            [inputBlock.get(null, "error")]: !!error,
+        }, classNameLayout);
         const id = type + makeId();
 ​
         return (
             <PureComponent tag={"span"} className={classesLayout}>
-                <label htmlFor={id} className={inputBlock.element("label").get()}>Text</label>
+                {typeof label === "string" && <label htmlFor={id} className={inputBlock.get("label")}>{label}</label>}
 
                 {type === "input" && autosize === true && <AutosizeInput id={id} inputClassName={classes} {...otherProps} />}
                 {type === "textarea" && autosize === true && <AutosizeTextarea id={id} className={classes} {...otherProps} />}
                 {type === "input" && autosize !== true && <input id={id} className={classes} {...otherProps} />}
+                {type === "textarea" && autosize !== true && <textarea id={id} className={classes} {...otherProps} />}
 
-                <div className={inputBlock.element("error").get()}>Error message!</div>
+                {typeof error === "string" && <div className={inputBlock.get(null, "error")}>{error}</div>}
             </PureComponent>
         );
     }

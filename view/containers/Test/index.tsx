@@ -9,6 +9,7 @@ import {component} from "_style";
 import {List} from "immutable";
 import * as React from "react";
 import {IHelloProps} from "./interface";
+import Rbem from "_utils/rbem";
 
 interface ITempTestComponent {
     valueForInput: string;
@@ -32,10 +33,11 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
     public render() {
 
         // Icon
+        const styleIconBem = new Rbem(component, "icon");
         const styleIcon = {
-            [component.icon]: true,
-            [component["icon--white"]]: false,
-            [component["icon--red"]]: true,
+            [styleIconBem.get()]: true,
+            [styleIconBem.get(null, "white")]: false,
+            [styleIconBem.get(null, "red")]: true,
         };
 
         // Select
@@ -118,12 +120,28 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                     <InputComponent />
                 </PureComponent>
                 <PureComponent tag="section">
+                    TextArea default:
+                    <InputComponent type={"textarea"} />
+                </PureComponent>
+                <PureComponent tag="section">
                     Input autosize:
                     <InputComponent autosize={true} value={this.state.valueForInput} onChange={this.changeInputValue} />
                 </PureComponent>
                 <PureComponent tag="section">
                     Textarea autosize:
                     <InputComponent type={"textarea"} autosize={true} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input with label:
+                    <InputComponent label={"Login"}/>
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input with label and error:
+                    <InputComponent label={"Login"} error={true}/>
+                </PureComponent>
+                <PureComponent tag="section">
+                    Input with label and error text:
+                    <InputComponent label={"Login"} error={"Login can't be empty!"}/>
                 </PureComponent>
             </PureComponent>
         );

@@ -1,7 +1,6 @@
-@import '~bemify';
 @import '../variables/index';
 
-@include block('header') {
+@include block(header) {
   background: $header-background-color;
   height: 100px;
   left: 0;
@@ -11,7 +10,7 @@
   width: 100%;
   z-index: 1;
 
-  @include modifier('transparent') {
+  @include modifier(transparent) {
     background: transparent;
   }
 
