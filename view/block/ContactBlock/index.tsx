@@ -16,10 +16,15 @@ export class ContactBlock extends React.Component<IContact, {}> {
 
         return (
             <PureComponent tag="section" className={styleList}>
-                <h2 className={section.section__name}>Contact</h2>
-                <MapComponent
-                    position={mapPosition}
-                />
+                <div className={section.container}>
+                    <div className={section.row}>
+                        <h2 className={section.section__name}>Contact</h2>
+                        <MapComponent
+                            position={mapPosition}
+                            zoom={5}
+                        />
+                    </div>
+                </div>
             </PureComponent>
         );
     }
