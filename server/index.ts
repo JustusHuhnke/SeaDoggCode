@@ -3,7 +3,7 @@ import * as pino from "pino";
 import config, {logConfig} from "./config";
 import "./redis";
 import application from "./server";
-import socket from "./socket";
+import socket from "./socket_core";
 
 const log = pino({...logConfig, name: "Application"}, config.pretty);
 const server = http.createServer(application.callback());
