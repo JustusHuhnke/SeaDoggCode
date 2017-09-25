@@ -1,4 +1,7 @@
+import {InputComponent} from "_components/InputComponent";
+import SelectComponent from "_components/SelectComponent";
 import {component} from "_style";
+import {List} from "immutable";
 import * as React from "react";
 import * as Modal from "react-modal";
 import {IEarlyModal} from "./interface";
@@ -16,6 +19,22 @@ export class EarlyModalBlock extends React.Component<IEarlyModal | any, {}> {
 
     public render() {
         const {open, ...otherProps} = this.props;
+
+        const selectOptions = List([
+            {
+                label: "Option 1",
+                value: "value1",
+            },
+            {
+                label: "Option 2",
+                value: "value2",
+            },
+            {
+                label: "Option 3",
+                value: "value4",
+            },
+        ]);
+
         return ModalBlock && (
             <div>
                 <ModalBlock
@@ -24,11 +43,10 @@ export class EarlyModalBlock extends React.Component<IEarlyModal | any, {}> {
                     overlayClassName={overlayStyle}
                     {...otherProps}
                 >
-                    <h1>Get Early Access</h1>
-                    <p>Your name</p>
-                    <p>Role</p>
-                    <p>Email</p>
-                    <p>Phone</p>
+                    <p>Input(type = input): <InputComponent type="input" /></p>
+                    <p>Input(type = number): <InputComponent type="number" /></p>
+                    <p>Input(type = textarea): <InputComponent type="textarea" /></p>
+                    <p>Select: <SelectComponent options={selectOptions} /></p>
                 </ModalBlock>
             </div>
         );
