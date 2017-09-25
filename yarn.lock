@@ -240,6 +240,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-tabs@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/react-tabs/-/react-tabs-1.0.2.tgz#af52498beb5fe49e642c0c09e45f96151fc5d124"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-textarea-autosize@^4.3.1":
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/@types/react-textarea-autosize/-/react-textarea-autosize-4.3.1.tgz#3b1de74e4113a648891f765a62e0e7f5c6ed0124"
@@ -2197,7 +2203,7 @@ class-utils@^0.3.5:
     lazy-cache "^2.0.2"
     static-extend "^0.1.1"
 
-classnames@^2.2.4, classnames@^2.2.5:
+classnames@^2.2.0, classnames@^2.2.4, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -7651,7 +7657,7 @@ promptly@2.2.0:
   dependencies:
     read "^1.0.4"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8:
+prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -7917,6 +7923,13 @@ react-side-effect@^1.1.0:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
+
+react-tabs@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-tabs/-/react-tabs-2.0.0.tgz#ec793dd5589d731a8d34cfd1b5938b594e3167d8"
+  dependencies:
+    classnames "^2.2.0"
+    prop-types "^15.5.0"
 
 react-test-renderer@^15.6.1:
   version "15.6.1"

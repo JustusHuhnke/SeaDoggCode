@@ -9,6 +9,7 @@ import {component} from "_style";
 import Rbem from "_utils/rbem";
 import {List} from "immutable";
 import * as React from "react";
+import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {IHelloProps} from "./interface";
 
 interface ITempTestComponent {
@@ -60,6 +61,9 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
             {src: "http://via.placeholder.com/350x150?text=custom1", media: "(min-width: 1367px) and (max-width: 1920px)"},
             {src: "http://via.placeholder.com/350x150?text=custom2", media: "(min-width: 769px) and (max-width: 1366px)"},
         ]);
+
+        // Tabs
+        const tabStyle = new Rbem(component, "tab");
 
         return (
             <PureComponent>
@@ -174,6 +178,22 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                 <PureComponent tag="section">
                     Input only number with mask:
                     <InputComponent type="number" decimalPrecision={2} format={"# ###.##"} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    Tab:
+                    <Tabs className={tabStyle.get()}>
+                        <TabList className={tabStyle.get("header")}>
+                            <Tab className={tabStyle.get("link")}>Title 1</Tab>
+                            <Tab className={tabStyle.get("link")}>Title 2</Tab>
+                        </TabList>
+
+                        <TabPanel className={tabStyle.get("block")}>
+                            <h2>Any content 1</h2>
+                        </TabPanel>
+                        <TabPanel className={tabStyle.get("block")}>
+                            <h2>Any content 2</h2>
+                        </TabPanel>
+                    </Tabs>
                 </PureComponent>
             </PureComponent>
         );

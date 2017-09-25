@@ -1,0 +1,21 @@
+@import '../variables/index';
+
+@include block('tab') {
+  display: block;
+
+  @include element(header) {
+    display: inline-block;
+    list-style: none;
+
+    @include element(link) {
+      color: blue;
+      display: inline-block;
+      margin: 5px 10px;
+    }
+  }
+
+  @include element(block) {
+    display: block;
+  }
+
+}
