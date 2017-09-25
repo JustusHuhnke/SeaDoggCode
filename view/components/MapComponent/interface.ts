@@ -9,4 +9,5 @@ interface IMapPosition {
 export interface IMapComponent {
     className?: classNames;
     position?: ImmutableMap<IMapPosition>;
+    zoom?: number;
 }
