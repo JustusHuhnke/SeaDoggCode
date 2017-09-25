@@ -11,11 +11,20 @@
       color: blue;
       display: inline-block;
       margin: 5px 10px;
+
+      @include modifier(selected) {
+        color: red;
+      }
+
     }
   }
 
   @include element(block) {
     display: block;
+
+    @include modifier(selected) {
+      color: green;
+    }
   }
 
 }

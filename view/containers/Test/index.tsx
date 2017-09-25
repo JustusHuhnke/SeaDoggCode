@@ -181,7 +181,7 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                 </PureComponent>
                 <PureComponent tag="section">
                     Tab:
-                    <Tabs className={tabStyle.get()}>
+                    <Tabs className={tabStyle.get()} selectedTabClassName={tabStyle.get("link", "selected")} selectedTabPanelClassName={tabStyle.get("block", "selected")} >
                         <TabList className={tabStyle.get("header")}>
                             <Tab className={tabStyle.get("link")}>Title 1</Tab>
                             <Tab className={tabStyle.get("link")}>Title 2</Tab>
