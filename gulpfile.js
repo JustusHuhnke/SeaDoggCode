@@ -70,12 +70,12 @@ gulp.task('svgSprite', (callback) => {
     });
 });
 
-gulp.task('svgoDev', ['svgSprite'], () => {
+gulp.task('svgoSpr', ['svgSprite'], () => {
 
     return gulp.src('./dist/public/*.svg', {ignoreInitial: false})
         .pipe(svgo({
             plugins: [
-                {removeAttrs: {attrs: ['class', 'fill', 'viewBox']}},
+                {removeAttrs: {attrs: ['class', 'viewBox']}},
                 {removeUselessDefs: true},
                 {removeDoctype: true},
                 {removeStyleElement: true},
@@ -93,6 +93,23 @@ gulp.task('svgoDev', ['svgSprite'], () => {
             ]
         }))
         .pipe(gulp.dest('./dist/public'));
+});
+
+gulp.task('svgoDev', ['svgoSpr'], (cb) => {
+    try {
+        let spriteFile = fs.readFileSync(resolve("dist/public", "sprite.svg"));
+        const svgs = fs.readdirSync(resolve("static/icon", "no_svgo"));
+        let sprites = "";
+        svgs.forEach((file) => {
+            const _spriteFile = fs.readFileSync(resolve("static/icon", "no_svgo", file)).toString().replace(/[\n\r]/igm, "").replace(/\s+/igm, " ");
+            sprites += _spriteFile;
+        });
+        fs.writeFileSync(resolve("dist/public", "sprite.svg"), sprites + spriteFile.toString());
+        cb();
+    } catch (err) {
+        console.error(err);
+        cb(err);
+    }
 });
 
 gulp.task('autoTypedStyle', (callback) => {
