@@ -1,12 +1,13 @@
 @import '../variables/index';
 
 @include block('link') {
+  outline: none;
   text-decoration: none;
 }
 
 @include block('button') {
   appearance: none;
-  background: #4E4E4E;
+  background: $button-background-color;
   border: 0;
   border-radius: 30px;
   box-shadow: none;
@@ -17,4 +18,16 @@
   outline: none;
   padding: 18px 36px;
   text-decoration: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include modifier('green') {
+    background: $green-accent-dark-1;
+
+    &:hover {
+      background-color: $green-accent;
+    }
+  }
 }
