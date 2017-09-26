@@ -1,5 +1,7 @@
-import * as io from "socket.io-client";
+let io = require("socket.io-client");
 export const ss = require("socket.io-stream");
+
+io = io.default || io;
 
 export const socket = io((process.env.NODE_ENV === "production" ? (window as any).location.origin : "http://localhost:1337") + "/socket_user", {
     reconnection: true,
