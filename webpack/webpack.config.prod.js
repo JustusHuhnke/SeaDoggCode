@@ -136,6 +136,7 @@ module.exports = {
             "_images": resolve(__dirname, '..', 'static/images'),
             "_stylesLoad": resolve(__dirname, '..', 'styles'),
             "_style": resolve(__dirname, '..', 'styles/index.ts'),
+            "_socket": resolve(__dirname, '..', 'client/socket.ts'),
             "_utils": resolve(__dirname, '..', 'utils')
         }
     },

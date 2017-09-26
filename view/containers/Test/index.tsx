@@ -5,6 +5,7 @@ import InputComponent from "_components/InputComponent";
 import {LinkComponent} from "_components/LinkComponent";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/SelectComponent";
+import UploadComponent from "_components/UploadComponent";
 import {component} from "_style";
 import Rbem from "_utils/rbem";
 import {List} from "immutable";
@@ -174,6 +175,28 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                 <PureComponent tag="section">
                     Input only number with mask:
                     <InputComponent type="number" decimalPrecision={2} format={"# ###.##"} />
+                </PureComponent>
+                <PureComponent tag="section">
+                    DropZone default:
+                    <UploadComponent />
+                </PureComponent>
+                <PureComponent tag="section">
+                    DropZone with child:
+                    <UploadComponent
+                        onProgress={console.log.bind(console, "onProgress")}
+                        onError={console.log.bind(console, "onError")}
+                        onUploaded={console.log.bind(console, "onUploaded")}
+                    >
+                        Drop your file and look console
+                    </UploadComponent>
+                </PureComponent>
+                <PureComponent tag="section">
+                    DropZone with before start check(now false and dont started):
+                    <UploadComponent
+                        beforeStart={false}
+                    >
+                        Drop your file but I not upload
+                    </UploadComponent>
                 </PureComponent>
             </PureComponent>
         );

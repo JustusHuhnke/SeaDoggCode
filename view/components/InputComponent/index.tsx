@@ -31,7 +31,7 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
 
     public render() {
 
-        const {className, classNameLayout, type, autosize, label, disabled, mask, error, ...otherProps} = this.props;
+        const {className, classNameLayout, type, autosize, label, disabled, mask, error, maskChar, ...otherProps} = this.props;
         const classes = classnames(inputBlock.get(type === "number" ? "input" : type), className);
         const classesLayout = classnames({
             [inputBlock.get()]: true,
