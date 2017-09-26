@@ -1,6 +1,7 @@
 @import 'utils/bem';
 @import '~sass-mediaqueries/media-queries';
 @import '~bootstrap/scss/bootstrap-grid';
+@import 'variables/colors';
 
 
 @include block('section') {
@@ -8,12 +9,13 @@
   min-height: 50px;
   width: 100%;
   @include element('name') {
+    color: $blue-dark-1;
     display: inline-block;
     font-size: 45px;
     font-weight: 300;
     margin-bottom: 55px;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
     width: 100%;
   }
 

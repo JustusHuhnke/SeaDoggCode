@@ -3,9 +3,12 @@ import {NavigationComponent} from "_components/NavigationComponent";
 import {PureComponent} from "_components/PureComponent";
 import {IState} from "_reducers";
 import {block} from "_style";
+import Rbem from "_utils/rbem";
 import * as React from "react";
 import {connect} from "react-redux";
 import {IHeader} from "./interface";
+
+const headerStyle = new Rbem(block, "header");
 
 class Header extends React.Component<IHeader, {}> {
 
@@ -16,8 +19,9 @@ class Header extends React.Component<IHeader, {}> {
         }];
         return (
             <PureComponent tag="header" className={styleList} {...oterProps}>
-                <LogoComponent />
+                <LogoComponent className={headerStyle.get("logo")} />
                 <NavigationComponent />
+                {/*<NavigationComponent className={headerStyle.get("navigation")} />*/}
             </PureComponent>
         );
     }

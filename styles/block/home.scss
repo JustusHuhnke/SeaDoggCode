@@ -1,50 +1,51 @@
 @import '../variables/index';
 
 @include block(early) {
-  background: $early-background-color;
+  background: $blue;
   min-height: 100vh;
   text-align: center;
   width: 100%;
 
   @include element(heading) {
-    color: $text-black;
+    color: $text-white;
     display: inline-block;
-    font-size: 45px;
-    font-weight: 300;
+    font-size: 50px;
     line-height: 1.25;
     margin-bottom: 20px;
-    margin-top: 280px;
-    max-width: 720px;
+    margin-top: 30vh;
+    padding: 0px 10px;
     text-transform: uppercase;
     width: 100%;
-    @include element(subelement) {
-      background: gray;
+    @include max-screen(768px) {
+      font-size: 36px;
     }
 
-    @include max-screen(768px) {
-      font-size: 32px;
+    @include element(subelement) {
+      background: gray;
     }
   }
 
   @include element(text) {
-    color: $text-black;
+    color: $text-white;
     display: block;
     font-size: 20px;
     font-weight: 300;
     line-height: 1.7;
     margin: 20px auto;
-    max-width: 720px;
+    padding: 0px 10px;
     width: 100%;
+    max-width: 720px;
   }
 
   @include element(button) {
     display: block;
     margin: 30px auto;
+    box-shadow: 0 15px 20px 0 rgba(0, 18, 32, 0.3);
   }
 }
 
 @include block(about) {
-  background: $background-color;
+  background: $section-background-white;
   box-sizing: border-box;
   color: $text-black;
   padding: 95px 15px;
@@ -61,7 +62,7 @@
 }
 
 @include block(features) {
-  background: $background-color;
+  background: $section-background-gray;
   box-sizing: border-box;
   color: $text-black;
   padding: 95px 15px;
@@ -84,7 +85,7 @@
 }
 
 @include block(contact) {
-  background: $background-color;
+  background: $section-background-white;
   box-sizing: border-box;
   color: $text-black;
   padding: 95px 15px;

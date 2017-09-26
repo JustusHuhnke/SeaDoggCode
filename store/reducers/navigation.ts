@@ -9,7 +9,7 @@ export interface INavigationElement {
 
 export interface INavigationModel {
     home: List<INavigationElement>;
-    homeTransparent: boolean;
+    homeTransparent?: boolean;
 }
 
 interface INav {
@@ -20,9 +20,11 @@ type Nav = INav | IActive;
 
 export default (state = Map({
     home: List([
-            {link: "/#features", title: "Features"},
             {link: "/#about", title: "About"},
+            {link: "/#features", title: "Features"},
             {link: "/#works", title: "How it works"},
+            {link: "/#locations", title: "Locations"},
+            {link: "/#contact", title: "Contact"},
         ]),
     homeTransparent: true,
 }),             {type}: Nav) => {

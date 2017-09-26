@@ -2,15 +2,16 @@
 @import '~bootstrap/scss/bootstrap-reboot';
 @import '~bootstrap/scss/print';
 @import 'variables/colors';
+@import 'variables/fonts';
 
 * {
   box-sizing: border-box;
 }
 
 html, body {
-  background: $background-color;
+  background: $section-background-white;
   color: $text-black;
-  font-family: 'OpenSansLight', sans-serif;
+  font-family: $font-light;
 }
 
 svg {

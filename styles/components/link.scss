@@ -10,24 +10,26 @@
   background: $button-background-color;
   border: 0;
   border-radius: 30px;
-  box-shadow: none;
   color: $text-white;
   cursor: pointer;
+
   font-size: 15px;
   font-weight: 300;
+  letter-spacing: 1px;
   outline: none;
   padding: 18px 36px;
   text-decoration: none;
+  text-transform: uppercase;
 
   &:focus {
     outline: none;
   }
 
   @include modifier('green') {
-    background: $green-accent-dark-1;
+    background: $green-accent;
 
     &:hover {
-      background-color: $green-accent;
+      background-color: $green-accent-light-1;
     }
   }
 }
