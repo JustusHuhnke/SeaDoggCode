@@ -2,7 +2,6 @@
 
 @include block('icon') {
   display: inline-block;
-  height: $icon-default-size;
   overflow: visible;
   width: $icon-default-size;
 
@@ -20,10 +19,14 @@
   }
 
   @include element('logo') {
-    fill: $icon-color-logo;
-    height: $icon-logo-size;
     vertical-align: middle;
-    width: $icon-logo-size;
+    width: $icon-logo-width;
+  }
+
+  @include element('logo_text') {
+    margin-left: 10px;
+    vertical-align: middle;
+    width: $icon-logo-text-width;
   }
 
 }

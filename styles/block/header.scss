@@ -8,10 +8,35 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
+
+  @include element('logo') {
+    svg {
+      fill: url(#gradient);
+    }
+  }
+
+  @include bem('icon', 'logo_text') {
+    svg {
+      fill: $icon-color-logo--active;
+    }
+  }
 
   @include modifier(transparent) {
     background: transparent;
+
+    @include element('logo') {
+      svg {
+        fill: $icon-color-logo;
+      }
+    }
+    @include bem('navigation', 'list') {
+      @include bem('navigation', 'item') {
+        @include bem('navigation', 'link') {
+          color: $text-white;
+        }
+      }
+    }
   }
 
 }
