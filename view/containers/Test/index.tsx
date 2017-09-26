@@ -5,11 +5,11 @@ import InputComponent from "_components/InputComponent";
 import {LinkComponent} from "_components/LinkComponent";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/SelectComponent";
+import UploadComponent from "_components/UploadComponent";
 import {component} from "_style";
 import Rbem from "_utils/rbem";
 import {List} from "immutable";
 import * as React from "react";
-import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {IHelloProps} from "./interface";
 
 interface ITempTestComponent {
@@ -180,20 +180,26 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                     <InputComponent type="number" decimalPrecision={2} format={"# ###.##"} />
                 </PureComponent>
                 <PureComponent tag="section">
-                    Tab:
-                    <Tabs className={tabStyle.get()} selectedTabClassName={tabStyle.get("link", "selected")} selectedTabPanelClassName={tabStyle.get("block", "selected")} >
-                        <TabList className={tabStyle.get("header")}>
-                            <Tab className={tabStyle.get("link")}>Title 1</Tab>
-                            <Tab className={tabStyle.get("link")}>Title 2</Tab>
-                        </TabList>
-
-                        <TabPanel className={tabStyle.get("block")}>
-                            <h2>Any content 1</h2>
-                        </TabPanel>
-                        <TabPanel className={tabStyle.get("block")}>
-                            <h2>Any content 2</h2>
-                        </TabPanel>
-                    </Tabs>
+                    DropZone default:
+                    <UploadComponent />
+                </PureComponent>
+                <PureComponent tag="section">
+                    DropZone with child:
+                    <UploadComponent
+                        onProgress={console.log.bind(console, "onProgress")}
+                        onError={console.log.bind(console, "onError")}
+                        onUploaded={console.log.bind(console, "onUploaded")}
+                    >
+                        Drop your file and look console
+                    </UploadComponent>
+                </PureComponent>
+                <PureComponent tag="section">
+                    DropZone with before start check(now false and dont started):
+                    <UploadComponent
+                        beforeStart={false}
+                    >
+                        Drop your file but I not upload
+                    </UploadComponent>
                 </PureComponent>
             </PureComponent>
         );

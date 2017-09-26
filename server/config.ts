@@ -1,3 +1,4 @@
+import {resolve} from "path";
 import * as pino from "pino";
 
 const pretty = pino.pretty();
@@ -40,6 +41,7 @@ interface IConfig {
         sniffOnStart: boolean;
         sniffInterval: number;
     };
+    pathToUpload: string;
 }
 
 export const database = {
@@ -76,6 +78,7 @@ const config: IConfig = {
     port: process.env.PORT && parseInt(String(process.env.PORT), 10) || 1337,
     pretty,
     redis: redisConfig,
+    pathToUpload: resolve(__dirname, "..", "dist", "public"),
 };
 
 export const ASSETS: any = process.env.ASSETS;
