@@ -5,6 +5,7 @@ import InputComponent from "_components/InputComponent";
 import {LinkComponent} from "_components/LinkComponent";
 import {PureComponent} from "_components/PureComponent";
 import {SelectComponent} from "_components/SelectComponent";
+import {Tab, TabBlock, TabHeader} from "_components/TabComponent";
 import UploadComponent from "_components/UploadComponent";
 import {component} from "_style";
 import Rbem from "_utils/rbem";
@@ -61,9 +62,6 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
             {src: "http://via.placeholder.com/350x150?text=custom1", media: "(min-width: 1367px) and (max-width: 1920px)"},
             {src: "http://via.placeholder.com/350x150?text=custom2", media: "(min-width: 769px) and (max-width: 1366px)"},
         ]);
-
-        // Tabs
-        const tabStyle = new Rbem(component, "tab");
 
         return (
             <PureComponent>
@@ -200,6 +198,15 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                     >
                         Drop your file but I not upload
                     </UploadComponent>
+                </PureComponent>
+                <PureComponent tag="section">
+                    <Tab>
+                        <TabHeader>First Tab</TabHeader>
+                        <TabHeader>Second Tab</TabHeader>
+
+                        <TabBlock />
+                        <TabBlock />
+                    </Tab>
                 </PureComponent>
             </PureComponent>
         );

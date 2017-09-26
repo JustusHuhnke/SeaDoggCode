@@ -25,6 +25,11 @@
     @include modifier(selected) {
       color: green;
     }
+
+    @include element(panel) {
+      display: block;
+
+    }
   }
 
 }
