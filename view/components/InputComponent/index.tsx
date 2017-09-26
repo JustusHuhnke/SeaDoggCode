@@ -47,9 +47,9 @@ export class InputComponent extends React.PureComponent<IInputComponent, {}> {
         children.push((() => {
             switch (false) {
                 case !(type === "number"):
-                    return <InputNumber key={this.IdInput} id={this.IdInput} {...otherProps} />;
+                    return <InputNumber key={this.IdInput} id={this.IdInput} className={classes} {...otherProps} />;
                 case !(typeof mask === "string" && process.env.BROWSER):
-                    return <InputMask key={this.IdInput} id={this.IdInput} mask={mask} maskChar={maskChar} {...otherProps} />;
+                    return <InputMask key={this.IdInput} id={this.IdInput} className={classes} mask={mask} {...otherProps} />;
                 case !(type === "input" && autosize === true):
                     return <AutosizeInput key={this.IdInput} id={this.IdInput} inputClassName={classes} disabled={disabled} {...otherProps} />;
                 case !(type === "textarea" && process.env.BROWSER && autosize === true):

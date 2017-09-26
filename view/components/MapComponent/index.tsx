@@ -30,7 +30,6 @@ export class MapComponent extends React.Component<IMapComponent, {}> {
                 center={position.toJS()}
                 className={classes}
                 scrollWheelZoom={false}
-                zoom={5}
                 {...otherProps}
             >
                 <TileLayer
