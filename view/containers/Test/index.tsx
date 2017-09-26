@@ -182,7 +182,21 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                 </PureComponent>
                 <PureComponent tag="section">
                     DropZone with child:
-                    <UploadComponent>Drop your file</UploadComponent>
+                    <UploadComponent
+                        onProgress={console.log.bind(console, "onProgress")}
+                        onError={console.log.bind(console, "onError")}
+                        onUploaded={console.log.bind(console, "onUploaded")}
+                    >
+                        Drop your file and look console
+                    </UploadComponent>
+                </PureComponent>
+                <PureComponent tag="section">
+                    DropZone with before start check(now false and dont started):
+                    <UploadComponent
+                        beforeStart={false}
+                    >
+                        Drop your file but I not upload
+                    </UploadComponent>
                 </PureComponent>
             </PureComponent>
         );
