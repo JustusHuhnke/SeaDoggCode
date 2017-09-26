@@ -16,7 +16,7 @@
       line-height: 100px;
       margin: 0 8px;
       @include element('link') {
-        color: $text-black;
+        color: $text-white;
         display: inline-block;
         font-size: 17px;
         line-height: 100px;
@@ -24,6 +24,5 @@
         text-decoration: none;
       }
     }
-
   }
 }

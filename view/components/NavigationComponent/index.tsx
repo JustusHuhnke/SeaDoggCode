@@ -12,7 +12,7 @@ import {INavigationComponent} from "./interface";
 
 const navigationStyle = new Rbem(component, "navigation");
 
-const NavElement: React.StatelessComponent<INavigationElement> = ({title, link}, key) => (
+const NavElement: React.SFC<INavigationElement> = ({title, link}, key) => (
     <li key={key} className={navigationStyle.get("item")}>
         <LinkComponent href={link} title={title} className={navigationStyle.get("link")} />
     </li>
