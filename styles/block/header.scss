@@ -16,15 +16,6 @@
     }
   }
 
-  @include element('navigation') {
-    display: inline-block;
-    @include block('navigation') {
-      @include element('link') {
-        color: $text-white;
-      }
-    }
-  }
-
   @include modifier(transparent) {
     background: transparent;
 
@@ -33,11 +24,10 @@
         fill: $icon-color-logo;
       }
     }
-
-    @include element('navigation') {
-      @include block('navigation') {
-        @include element('link') {
-          color: $blue;
+    @include bem('navigation', 'list') {
+      @include bem('navigation', 'item') {
+        @include bem('navigation', 'link') {
+          color: $text-white;
         }
       }
     }

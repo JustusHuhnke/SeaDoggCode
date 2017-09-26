@@ -42,5 +42,5 @@ class Navigation extends React.PureComponent<INavigationComponent, {}> {
 
 export const NavigationComponent = connect((state: IState) => ({
     list: state.navigation.get("home"),
-}))(Navigation as any);
+}))(Navigation as any) as any;
 export default NavigationComponent;

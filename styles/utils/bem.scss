@@ -63,3 +63,31 @@ $modifier-separator: '--';
     }
   }
 }
+
+@mixin bem($block, $element: null, $modifier: null) {
+  @if $element != null and $modifier != null {
+    @at-root {
+      #{&} .#{$block}#{$element-separator + $element}#{$modifier-separator + $modifier} {
+        @content;
+      }
+    }
+  } @else if($element != null and $modifier == null) {
+    @at-root {
+      #{&} .#{$block}#{$element-separator + $element} {
+        @content;
+      }
+    }
+  } @else if($element == null and $modifier != null) {
+    @at-root {
+      #{&} .#{$block}#{$modifier-separator + $modifier} {
+        @content;
+      }
+    }
+  } @else {
+    @at-root {
+      #{&} .#{$block} {
+        @content;
+      }
+    }
+  }
+}
