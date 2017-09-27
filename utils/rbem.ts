@@ -15,7 +15,7 @@ const isString = (value: any): boolean => typeof value === "string";
  * footer.get() -> footer
  * footer.get("text") -> footer__text
  * footer.get(null, "test") -> footer--test
- * footer.get("text", "my").get() -> footer__text--my
+ * footer.get("text", "my") -> footer__text--my
  */
 
 export class Rbem implements IRbem {

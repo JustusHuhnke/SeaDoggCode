@@ -51,8 +51,9 @@ gulp.task('backend', () => {
 });
 
 gulp.task('watchImages', () => {
+    gulp.start('prebuild');
     return watch('./static/original_images/**/*.{png,jpg,jpeg}', () => {
-        gulp.start('tinypng');
+        gulp.start('prebuild');
     });
 });
 
