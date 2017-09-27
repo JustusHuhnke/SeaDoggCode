@@ -14,6 +14,10 @@ export class ContactBlock extends React.Component<IContact, {}> {
             lng: -121.930030,
         });
 
+        // const = markersPosition({
+        //
+        // })
+
         return (
             <PureComponent tag="section" className={styleList}>
                 <div className={section.container}>

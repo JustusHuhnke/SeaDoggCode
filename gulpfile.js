@@ -122,6 +122,9 @@ gulp.task('autoTypedStyle', (callback) => {
         resolve: {
             modules: ['node_modules'],
             extensions: ['.js', '.jsx', '.scss', '.css'],
+            alias: {
+                "_images": resolve(__dirname, 'static/images'),
+            },
             descriptionFiles: ['package.json'],
             moduleExtensions: ['-loader'],
             alias: {

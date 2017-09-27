@@ -1,3 +1,4 @@
+import {NavigationComponent} from "_components/NavigationComponent";
 import {PureComponent} from "_components/PureComponent";
 import {block, section} from "_style";
 import Rbem from "_utils/rbem";
@@ -10,9 +11,13 @@ export class FooterBlock extends React.Component<{}, {}> {
     public render() {
         return (
             <PureComponent tag="footer" className={footer.get()}>
-                <div className={section.container}>
+                <div className={section["container-fluid"]}>
                     <div className={section.row}>
-                        <p className={block.footer__text}>SeaDogg, 2017. All rights reserved</p>
+                        <div className={footer.get("nav")}>
+                            <NavigationComponent />
+                        </div>
+
+                        {/*<p className={block.footer__text}>SeaDogg, 2017. All rights reserved</p>*/}
                     </div>
                 </div>
             </PureComponent>

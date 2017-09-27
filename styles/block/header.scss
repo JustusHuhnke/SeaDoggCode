@@ -17,6 +17,10 @@
     }
   }
 
+  @include bem('navigation') {
+    float: right;
+  }
+
   @include bem('icon', 'logo_text') {
     svg {
       fill: $icon-color-logo-text-active;
