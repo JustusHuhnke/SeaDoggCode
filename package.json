@@ -210,6 +210,7 @@
     "typescript": "2.5.2",
     "typings-for-css-modules-loader": "^1.6.1",
     "uglifyjs-webpack-plugin": "^0.4.6",
+    "url-loader": "^0.5.9",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2",
     "webpack-error-notification": "^0.1.7",
