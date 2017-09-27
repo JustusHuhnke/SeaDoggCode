@@ -200,12 +200,12 @@ export class Test extends React.Component<IHelloProps, ITempTestComponent> {
                     </UploadComponent>
                 </PureComponent>
                 <PureComponent tag="section">
-                    <Tab>
-                        <TabHeader>First Tab</TabHeader>
-                        <TabHeader>Second Tab</TabHeader>
+                    <Tab selected={"one"}>
+                        <TabHeader forId={"one"}>First Tab</TabHeader>
+                        <TabHeader forId={"two"}>Second Tab</TabHeader>
 
-                        <TabBlock />
-                        <TabBlock />
+                        <TabBlock idTab={"one"}>Showed First Tab</TabBlock>
+                        <TabBlock idTab={"two"}>Showed Second Tab</TabBlock>
                     </Tab>
                 </PureComponent>
             </PureComponent>

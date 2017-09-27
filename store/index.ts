@@ -19,10 +19,6 @@ if (process.env.BROWSER) {
     }
     const middleArr = [epicMiddleware];
 
-    if (process.env.NODE_ENV !== "production") {
-        middleArr.push(require("redux-logger").default);
-    }
-
     store = createStore(
         reducers,
         initialState,
