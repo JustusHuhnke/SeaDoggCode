@@ -8,6 +8,9 @@ import {connect} from "react-redux";
 import {IHelloProps} from "./interface";
 
 const {Scrollbars} = Scrollbar as any;
+const CustomScrol: React.SFC<any> = ({children, ...otherProps}: any) => (
+    process.env.BROWSER && <Scrollbars children={children} {...otherProps} /> || <div>{children}</div>
+);
 
 class HomeComponent extends React.Component<IHelloProps, {}> {
 
@@ -26,7 +29,7 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
         return (
             <PureComponent tag={"main"}>
                 <HeaderBlock/>
-                <Scrollbars
+                <CustomScrol
                     autoHeight={true}
                     universal={true}
                     autoHeightMax={"100vh"}
@@ -37,7 +40,7 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
                     <FeaturesBlock />
                     <ContactBlock />
                     <FooterBlock />
-                </Scrollbars>
+                </CustomScrol>
             </PureComponent>
         );
     }
