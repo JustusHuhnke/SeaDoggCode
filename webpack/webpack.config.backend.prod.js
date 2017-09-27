@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const vendorStyles = require("./vendor.style").default;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const Hashids = require('hashids');
 
 const entry = {
     index: resolve(__dirname, '../server', 'index.ts'),
@@ -130,7 +131,7 @@ module.exports = {
                 test: /\.s[ac]ss$/,
                 use:
                     ExtractTextPlugin.extract({
-                        fallback: "style-loader",
+                        fallback: "style-loader?sourceMap=false",
                         use: [
                             {
                                 loader: "css-loader", options: {
@@ -138,7 +139,13 @@ module.exports = {
                                 modules: true,
                                 importLoaders: 3,
                                 minimize: true,
-                                localIdentName: '[hash:base64:6]'
+                                localIdentName: '[md5:hash:hex:6]',
+                                getLocalIdent: (context, localIdentName, localName) => {
+                                    const hashids = new Hashids(localName);
+                                    const lngt = localName.length;
+                                    const name = hashids.encode(lngt, lngt, lngt).replace(/^\d/ig, "_" + hashids.encode(1));
+                                    return name;
+                                }
                             }
                             },
                             'group-css-media-queries-loader',

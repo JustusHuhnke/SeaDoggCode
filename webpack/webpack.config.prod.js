@@ -10,7 +10,8 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const vendorStyles = require("./vendor.style").default;
 const vendorScripts = require("./vendor.scripts").default;
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');;
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const Hashids = require('hashids');
 
 const entry = process.env.TEMP_NAME ? {bundle: process.env.TEMP_NAME} : {
     bundle: './client/index.tsx',
@@ -189,9 +190,15 @@ module.exports = {
                                 loader: "css-loader", options: {
                                 sourceMap: false,
                                 modules: true,
-                                importLoaders: 1,
+                                importLoaders: 3,
                                 minimize: true,
-                                localIdentName: '[hash:base64:6]'
+                                localIdentName: '[local]',
+                                getLocalIdent: (context, localIdentName, localName) => {
+                                    const hashids = new Hashids(localName);
+                                    const lngt = localName.length;
+                                    const name = hashids.encode(lngt, lngt, lngt).replace(/^\d/ig, "_" + hashids.encode(1));
+                                    return name;
+                                }
                             }
                             },
                             'group-css-media-queries-loader',
@@ -213,9 +220,10 @@ module.exports = {
                             {
                                 loader: "sass-loader", options: {
                                 sourceMap: false,
+                                // indentedSyntax: true,
                                 modules: true,
                             }
-                            }
+                            },
                         ]
                     })
 
