@@ -156,7 +156,7 @@ module.exports = {
                                 sourceMap: true,
                                 modules: true,
                                 importLoaders: 3,
-                                localIdentName: '[local]---[hash:base64]'
+                                localIdentName: '[local]'
                             }
                             },
                             'group-css-media-queries-loader',
