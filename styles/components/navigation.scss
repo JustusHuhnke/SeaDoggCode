@@ -16,13 +16,14 @@
       line-height: 100px;
       margin: 0 8px;
       @include element('link') {
-        color: $blue;
+        color: $nav-link-color;
         display: inline-block;
         font-size: 17px;
         line-height: 100px;
         margin: 0 8px;
         text-decoration: none;
         &:hover {
+          color: $nav-link-color-hover;
           text-decoration: underline;
         }
       }

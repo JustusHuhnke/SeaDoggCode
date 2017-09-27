@@ -10,8 +10,8 @@ export class ContactBlock extends React.Component<IContact, {}> {
         const styleList = [section.section, block.contact];
 
         const mapPosition = Map({
-            lat: 49,
-            lng: 32,
+            lat: 37.344845,
+            lng: -121.930030,
         });
 
         return (
@@ -23,7 +23,7 @@ export class ContactBlock extends React.Component<IContact, {}> {
                 </div>
                 <MapComponent
                     position={mapPosition}
-                    zoom={5}
+                    zoom={16}
                 />
             </PureComponent>
         );

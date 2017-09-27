@@ -13,8 +13,7 @@
 
   @include element('logo') {
     svg {
-      //fill: url(#gradient);
-      fill: $icon-color-logo-text-active;
+      fill: url(#gradient);
     }
   }
 
@@ -37,6 +36,9 @@
       @include bem('navigation', 'item') {
         @include bem('navigation', 'link') {
           color: $text-white;
+          &:hover {
+            color: $text-white;
+          }
         }
       }
     }

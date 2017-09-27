@@ -5,4 +5,54 @@
   height: 500px;
   width: 100%;
   z-index: 1;
+
+  @include max-screen(1200px) {
+    height: 480px;
+  }
+
+  @include max-screen(991px) {
+    height: 320px;
+  }
 }
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+
+.leaflet-touch {
+  .leaflet-bar {
+    border: 1px solid $map-controls-border;
+
+    a {
+      background-color: $map-controls-background;
+      border-color: $map-controls-border;
+      color: $map-controls-text-color;
+
+      &:hover {
+        background-color: $map-controls-background-hover;
+        color: $map-controls-text-color;
+      }
+    }
+  }
+}
+
+.leaflet-div-icon {
+  background: transparent;
+  border: 0;
+  height: 0;
+  margin-left: 0;
+  margin-top: 0;
+  width: 0;
+
+  svg {
+    bottom: 0;
+    display: block;
+    height: 35px;
+    position: absolute;
+    right: -13px;
+  }
+}
+
+
+

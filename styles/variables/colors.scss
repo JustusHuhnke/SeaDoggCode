@@ -1,7 +1,7 @@
 //Main colors
-
-$blue-dark-2: #343c83;
+$blue-dark-2: #171c3f;
 $blue-dark-1: #2e3887;
+$cerulean: #0268cd;
 $blue: #3772ff;
 $blue-light-1: #00f6ff;
 
@@ -12,6 +12,10 @@ $text-black: #050505;
 $text-white: #fff;
 $text-cloudy-blue: #ccd7e1;
 $text-red: #f00;
+
+// Nav menu
+$nav-link-color: #60778d;
+$nav-link-color-hover: $cerulean;
 
 // Sections
 $section-background-white: #fff;
@@ -35,3 +39,9 @@ $button-background-color: #4e4e4e;
 // Input
 $input-border-color: #9e9e9e;
 
+// Map
+
+$map-controls-background: $blue;
+$map-controls-background-hover: $blue-light-1;
+$map-controls-border: $blue-dark-1;
+$map-controls-text-color: $text-white;
