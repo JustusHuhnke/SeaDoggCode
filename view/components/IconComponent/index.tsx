@@ -19,6 +19,7 @@ export class IconComponent extends React.PureComponent<IIconComponent, {}> {
                 const svgContainer = document.getElementById("svgContainer");
                 const {spriteName} = this.props;
                 if (svgContainer !== null && !svgContainer.children.length) {
+                    svgContainer.innerHTML = "<p></p>";
                     const result = await request({url: `/${spriteName}.svg`});
                     svgContainer.innerHTML = result;
                 }

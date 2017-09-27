@@ -1,0 +1,25 @@
+@import '../variables/index';
+
+@include block('loading') {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  @include element("icon") {
+    display: block;
+    animation: rotating 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    svg {
+      stroke: #cecece;
+      fill: transparent;
+      stroke-width: 1;
+    }
+  }
+}
