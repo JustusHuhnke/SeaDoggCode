@@ -1,7 +1,7 @@
 @import '../variables/index';
 
 @include block('map') {
-  display: inline-block;
+  display: block;
   height: 500px;
   width: 100%;
   z-index: 1;
