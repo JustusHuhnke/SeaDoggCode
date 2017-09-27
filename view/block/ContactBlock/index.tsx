@@ -19,12 +19,12 @@ export class ContactBlock extends React.Component<IContact, {}> {
                 <div className={section.container}>
                     <div className={section.row}>
                         <h2 className={section.section__name}>Contact</h2>
-                        <MapComponent
-                            position={mapPosition}
-                            zoom={5}
-                        />
                     </div>
                 </div>
+                <MapComponent
+                    position={mapPosition}
+                    zoom={5}
+                />
             </PureComponent>
         );
     }
