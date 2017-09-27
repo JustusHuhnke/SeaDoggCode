@@ -26,6 +26,11 @@
     }
 
     @include element(social) {
+      color: $text-cloudy-blue;
+      display: inline-block;
+      float: right;
+      font-size: 17px;
+      line-height: 100px;
 
     }
   }

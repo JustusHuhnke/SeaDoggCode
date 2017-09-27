@@ -15,6 +15,9 @@ export class FooterBlock extends React.Component<{}, {}> {
                     <div className={section.row}>
                         <div className={footer.get("nav")}>
                             <NavigationComponent />
+                            <div className={footer.get("social")}>
+                                Follow us on:
+                            </div>
                         </div>
 
                         {/*<p className={block.footer__text}>SeaDogg, 2017. All rights reserved</p>*/}
