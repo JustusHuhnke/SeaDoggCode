@@ -1,12 +1,13 @@
 import {component} from "_style";
 import classnames from "_utils/classnames";
+import noob from "_utils/noob";
 import Rbem from "_utils/rbem";
 import * as React from "react";
-import {ITabComponent} from "./interface";
+import {ITabBlock, ITabComponent, ITabComponentState, ITabHeader} from "./interface";
 
 const tabStyle = new Rbem(component, "tab");
 
-export class Tab extends React.PureComponent<ITabComponent, {}> {
+export class Tab extends React.Component<ITabComponent, ITabComponentState> {
 
     public static defaultProps: ITabComponent = {
         className: tabStyle.get(),
@@ -16,66 +17,49 @@ export class Tab extends React.PureComponent<ITabComponent, {}> {
     constructor(props: any) {
         super(props);
         this.changeActive = this.changeActive.bind(this);
+        this.state = {
+            idTab: null,
+        };
     }
 
-    public changeActive(active: number) {
-        (console as any).log(active);
+    public changeActive(idTab: string | number): void {
+        this.setState({idTab});
     }
 
     public render() {
-        const {className, children} = this.props;
 
-        const tabsHeader: React.ReactNode[] = (Array.isArray(children) && children || [children]).filter((element: React.ReactNode) => (element as any).type.displayName === "TabHeader");
-        const tabsBlock: React.ReactNode[] = (Array.isArray(children) && children || [children]).filter((element: React.ReactNode) => (element as any).type.displayName === "TabHeader");
+        const {className, selected, children} = this.props;
+        const {idTab} = this.state;
+        const activeTab = (idTab || selected);
         const classes = classnames(tabStyle.get(), className);
+        const tabsHeader: React.ReactNode[] = (Array.isArray(children) && children || [children]).filter((element: React.ReactNode) => !!(element as any).props.forId);
+        const tabsBlock: React.ReactNode[] = (Array.isArray(children) && children || [children]).filter((element: React.ReactNode) => !!(element as any).props.idTab && activeTab === (element as any).props.idTab);
 
         return (
             <div className={classes}>
                 <ul className={tabStyle.get("header")}>
-                    {tabsHeader}
+                    {tabsHeader.map(({props}: any, key) => <TabHeader key={key} {...props} isActive={activeTab === props.forId} changeActive={this.changeActive}/>)}
                 </ul>
                 <div className={tabStyle.get("block")}>
-                    {tabsBlock}
+                    {tabsBlock.map(({props}: any, key) => <TabBlock key={key} {...props}/>)}
                 </div>
             </div>
         );
     }
 }
 
-export class TabHeader extends React.PureComponent<ITabComponent, {}> {
+export const TabHeader: React.SFC<ITabHeader> = (props: ITabHeader) => {
+    const {className, children, isActive = false, forId, changeActive, onClick = noob, ...otherProps} = props;
+    const classes = classnames({
+        [tabStyle.get("link")]: true,
+        [tabStyle.get("link", "selected")]: isActive,
+    }, className);
+    const changeTab = (event: MouseEvent): void => { onClick(event); changeActive(forId); };
+    return (<li className={classes} children={children} onClick={changeTab as any} {...otherProps} />);
+};
 
-    public static displayName = "TabHeader";
-
-    public static defaultProps: ITabComponent = {
-        className: tabStyle.get("link"),
-    };
-
-    public render() {
-        const {className, children} = this.props;
-        const classes = classnames(className, tabStyle.get("link"));
-        return (
-            <li className={classes}>
-                {children}
-            </li>
-        );
-    }
-}
-
-export class TabBlock extends React.PureComponent<ITabComponent, {}> {
-
-    public static displayName = "TabBlock";
-
-    public static defaultProps: ITabComponent = {
-        className: tabStyle.get("panel"),
-    };
-
-    public render() {
-        const {className, children} = this.props;
-        const classes = classnames(className, tabStyle.get("panel"));
-        return (
-            <div className={classes}>
-                {children}
-            </div>
-        );
-    }
-}
+export const TabBlock: React.SFC<ITabBlock> = (props: ITabBlock) => {
+    const {className, children, idTab, ...otherProps} = props;
+    const classes = classnames(tabStyle.get("panel"), className);
+    return (<div className={classes} children={children} {...otherProps} />);
+};
