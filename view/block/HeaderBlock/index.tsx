@@ -20,7 +20,7 @@ class Header extends React.Component<IHeader, {}> {
         return (
             <PureComponent tag="header" className={styleList} {...oterProps}>
                 <LogoComponent className={headerStyle.get("logo")} />
-                <NavigationComponent className={headerStyle.get("navigation")} />
+                <NavigationComponent />
             </PureComponent>
         );
     }
