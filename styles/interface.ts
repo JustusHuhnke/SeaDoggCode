@@ -19,6 +19,8 @@ export interface IBlock {
   readonly "footer__text": string;
 }
 export interface IComponents {
+  readonly "button": string;
+  readonly "button--green": string;
   readonly "dropdown": string;
   readonly "icon": string;
   readonly "icon--white": string;
@@ -33,9 +35,9 @@ export interface IComponents {
   readonly "input-block--disabled": string;
   readonly "input-block__error": string;
   readonly "input-block__label": string;
-  readonly "button": string;
   readonly "link": string;
-  readonly "button--green": string;
+  readonly "loading": string;
+  readonly "loading__icon": string;
   readonly "logo": string;
   readonly "map": string;
   readonly "leaflet-control-attribution": string;

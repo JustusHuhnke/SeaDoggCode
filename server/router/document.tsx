@@ -1,6 +1,6 @@
 import Store from "_store";
 import * as React from "react";
-import {renderToString} from "react-dom/server";
+import {renderToStaticMarkup} from "react-dom/server";
 import {Helmet} from "react-helmet";
 import {Provider} from "react-redux";
 import * as serialize from "serialize-javascript";
@@ -47,7 +47,7 @@ const ChildrenRender = (props?: IpropertyRender): string => {
 
     const store = Store(props.context);
 
-    return renderToString(React.createElement(
+    return renderToStaticMarkup(React.createElement(
         Provider,
         {store},
         React.createElement((Routes as any), props),
@@ -56,5 +56,5 @@ const ChildrenRender = (props?: IpropertyRender): string => {
 
 export const render: (location: string, context: any) => string = (location: string, context: any = {}) => {
     const renderElement = React.createElement(HTML, { html:  ChildrenRender({location, context}), context});
-    return "<!doctype html>" + renderToString(renderElement);
+    return "<!doctype html>" + renderToStaticMarkup(renderElement);
 };

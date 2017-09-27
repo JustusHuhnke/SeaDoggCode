@@ -11,6 +11,7 @@
       color: blue;
       display: inline-block;
       margin: 5px 10px;
+      cursor: pointer;
 
       @include modifier(selected) {
         color: red;
