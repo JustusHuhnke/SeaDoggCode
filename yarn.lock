@@ -7914,9 +7914,11 @@ react-input-mask@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/react-input-mask/-/react-input-mask-1.0.7.tgz#690d2189a1206972aeb82f332336be337fddf280"
 
-react-leaflet-div-icon@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-leaflet-div-icon/-/react-leaflet-div-icon-1.0.2.tgz#857c7526696e223ebcc28332cb7ac50fbb8642f6"
+"react-leaflet-div-icon@https://github.com/alexeyvakarchuk/react-leaflet-div-icon.git":
+  version "1.0.3"
+  resolved "https://github.com/alexeyvakarchuk/react-leaflet-div-icon.git#e471e4673486a1b08223c4682278a02a06278ab7"
+  dependencies:
+    prop-types "^15.6.0"
 
 react-leaflet@^1.7.0:
   version "1.7.0"

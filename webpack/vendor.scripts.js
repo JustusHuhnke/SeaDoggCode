@@ -24,7 +24,7 @@ const vendor = [
     "react-modal",
 
     "lodash",
-    "leaflet",
+    // "leaflet",
     // "react-leaflet", get error message of className is undefined
 ];
 exports.default = vendor;

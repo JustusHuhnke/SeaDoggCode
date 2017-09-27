@@ -28,10 +28,8 @@ export class MapComponent extends React.Component<IMapComponent, {}> {
 
         const classes = classnames(component.map, className);
 
-        // const markers = {lat: 48.465807, lng: 35.051003}
-
-        const markers = markersPosition.map((el: IMapPosition) => (
-            <DivIcon position={el}>
+        const markers = markersPosition.map((el: IMapPosition, key) => (
+            <DivIcon position={el} key={key}>
                 <IconComponent name="map_marker" viewBox="0 0 36 50" />
             </DivIcon>
         ));
