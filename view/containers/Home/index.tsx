@@ -2,14 +2,15 @@ import {setTransparent} from "_actions";
 import {ContactBlock, EarlyAccessBlock, FeaturesBlock, FooterBlock, HeaderBlock, HomeAboutBlock} from "_blocks";
 import {PureComponent} from "_components/PureComponent";
 import {IState} from "_reducers";
+import AnimationScroll from "_utils/AnimationScroll";
 import * as React from "react";
 import * as Scrollbar from "react-custom-scrollbars";
 import {connect} from "react-redux";
 import {IHelloProps} from "./interface";
 
 const {Scrollbars} = Scrollbar as any;
-const CustomScrol: React.SFC<any> = ({children, ...otherProps}: any) => (
-    process.env.BROWSER && <Scrollbars children={children} {...otherProps} /> || <div>{children}</div>
+const CustomScrol: React.SFC<any> = ({children, refIn, ...otherProps}: any) => (
+    process.env.BROWSER && <Scrollbars children={children} ref={refIn} {...otherProps} /> || <div>{children}</div>
 );
 
 class HomeComponent extends React.Component<IHelloProps, {}> {
@@ -30,16 +31,17 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
             <PureComponent tag={"main"}>
                 <HeaderBlock/>
                 <CustomScrol
+                    refIn={AnimationScroll(100, this)}
                     autoHeight={true}
                     universal={true}
                     autoHeightMax={"100vh"}
                     onScrollFrame={this.scrollUpadte}
                 >
-                    <EarlyAccessBlock />
-                    <HomeAboutBlock />
-                    <FeaturesBlock />
-                    <ContactBlock />
-                    <FooterBlock />
+                    <EarlyAccessBlock/>
+                    <HomeAboutBlock id={"about"} />
+                    <FeaturesBlock id={"features"}/>
+                    <ContactBlock id={"contact"}/>
+                    <FooterBlock/>
                 </CustomScrol>
             </PureComponent>
         );

@@ -2,7 +2,6 @@ import {IconComponent} from "_components/IconComponent";
 import {component} from "_style";
 import classnames from "_utils/classnames";
 import * as React from "react";
-// import DivIcon from "react-leaflet-div-icon"
 import {IMapComponent, IMapPosition} from "./interface";
 
 let DivIcon: any;
@@ -21,14 +20,12 @@ export class MapComponent extends React.Component<IMapComponent, {}> {
         className: component.map,
     };
 
-    /* tslint:disable:max-line-length */
     public render() {
 
         const {className, markersPosition = [], position, ...otherProps} = this.props;
-
         const classes = classnames(component.map, className);
 
-        const markers = markersPosition.map((el: IMapPosition, key) => (
+        const markers = DivIcon && markersPosition.map((el: IMapPosition, key: number) => (
             <DivIcon position={el} key={key}>
                 <IconComponent name="map_marker" viewBox="0 0 36 50" />
             </DivIcon>
@@ -49,7 +46,6 @@ export class MapComponent extends React.Component<IMapComponent, {}> {
             </Map>
         ) || null;
     }
-    /* tslint:enable:max-line-length */
 }
 
 export default MapComponent;

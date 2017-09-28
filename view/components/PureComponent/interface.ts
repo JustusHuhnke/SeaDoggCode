@@ -7,4 +7,6 @@ export interface IPureComponent {
     children?: ReactNode;
     tag?: string;
     className?: classNames;
+
+    [id: string]: any;
 }

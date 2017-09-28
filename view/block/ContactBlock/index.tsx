@@ -20,7 +20,7 @@ export class ContactBlock extends React.Component<IContact, {}> {
         }];
 
         return (
-            <PureComponent tag="section" className={styleList}>
+            <PureComponent tag="section" className={styleList} {...this.props}>
                 <div className={section.container}>
                     <div className={section.row}>
                         <h2 className={section.section__name}>Contact</h2>
