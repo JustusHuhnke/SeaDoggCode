@@ -13,18 +13,9 @@ export class PureComponent extends React.PureComponent<IPureComponent, {}> {
     }
 
     public render() {
-        const props = {...this.props};
-        const {tag, inputRef, children, className = null} = props;
+        const {tag, inputRef, children, className = null, ...otherProps} = this.props;
         const Tag = tag;
-        if (Reflect && Reflect.deleteProperty) {
-            Reflect.deleteProperty(props, "tag");
-            Reflect.deleteProperty(props, "inputRef");
-        } else {
-            delete props.tag;
-            delete props.inputRef;
-        }
-        Reflect.deleteProperty(props, "inputRef");
-        props.className = className && classnames(className);
-        return <Tag ref={inputRef} {...props}>{children}</Tag>;
+        const classes = classnames(className);
+        return <Tag ref={inputRef} className={classes} {...otherProps}>{children}</Tag>;
     }
 }

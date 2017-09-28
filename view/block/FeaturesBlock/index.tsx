@@ -9,7 +9,7 @@ export class FeaturesBlock extends React.Component<IFeatures, {}> {
     public render() {
         const styleList = [section.section, block.features];
         return (
-            <PureComponent tag="section" className={styleList}>
+            <PureComponent tag="section" className={styleList} {...this.props}>
                 <h2 className={section.section__name}>Our features</h2>
 
                 <p className={block.features__text}>Get early access and get a bonuses</p>

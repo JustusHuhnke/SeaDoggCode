@@ -31,16 +31,16 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
             <PureComponent tag={"main"}>
                 <HeaderBlock/>
                 <CustomScrol
-                    refIn={AnimationScroll}
+                    refIn={AnimationScroll(100, this)}
                     autoHeight={true}
                     universal={true}
                     autoHeightMax={"100vh"}
                     onScrollFrame={this.scrollUpadte}
                 >
                     <EarlyAccessBlock/>
-                    <HomeAboutBlock/>
-                    <FeaturesBlock/>
-                    <ContactBlock/>
+                    <HomeAboutBlock id={"about"} />
+                    <FeaturesBlock id={"features"}/>
+                    <ContactBlock id={"contact"}/>
                     <FooterBlock/>
                 </CustomScrol>
             </PureComponent>
