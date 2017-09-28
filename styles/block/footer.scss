@@ -1,15 +1,251 @@
 @import '../variables/index';
 
 @include block(footer) {
-  background-color: $blue-dark-1;
+  background-color: $blue-dark-2;
   display: inline-block;
-  padding: 55px 20px;
+  padding: 20px;
   width: 100%;
 
-  @include element(text) {
-    color: $text-cloudy-blue;
-    display: inline-block;
-    text-align: center;
+  @include max-screen(991px) {
+    padding: 20px 10px 15px;
+  }
+
+  @include element(nav) {
+    border-bottom: 1px solid $footer-divider-color;
+    padding-bottom: 20px;
     width: 100%;
+
+    @include max-screen(515px) {
+      padding-bottom: 12px;
+    }
+    
+    @include bem('navigation') {
+      float: left;
+
+      @include max-screen(991px) {
+        float: none;
+        height: 60px;
+        text-align: center;
+        vertical-align: inherit;
+        width: 100%;
+
+        @include bem('navigation', 'list') {
+          height: 60px;
+          @include bem('navigation', 'item') {
+            line-height: 60px;
+            @include bem('navigation', 'link') {
+              line-height: 60px;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      @include max-screen(515px) {
+        height: 45px;
+        @include bem('navigation', 'list') {
+          height: 45px;
+          @include bem('navigation', 'item') {
+            margin: 0px 6px;
+            line-height: 45px;
+            @include bem('navigation', 'link') {
+              font-size: 13px;
+              line-height: 45px;
+            }
+          }
+        }
+      }
+
+    }
+    
+    @include bem('navigation', 'list') {
+      @include bem('navigation', 'item') {
+        @include bem('navigation', 'link') {
+          color: $text-white;
+          &:hover {
+            color: $text-white;
+          }
+        }
+      }
+    }
+
+    @include element(social) {
+      color: $text-cloudy-blue;
+      display: inline-block;
+      float: right;
+      font-size: 17px;
+      line-height: 100px;
+      margin-right: 15px;
+      vertical-align: top;
+
+      @include bem('link') {
+        margin: 0px 12px;
+      }
+
+      @include max-screen(991px) {
+        float: none;
+        width: 100%;
+        text-align: center;
+        vertical-align: inherit;
+        line-height: 80px;
+        margin-right: 0;
+      }
+
+      @include max-screen(515px) {
+        font-size: 14px;
+        line-height: 60px;
+        margin-top: 10px;
+
+        @include bem('link') {
+          margin: 0px 10px;
+        }
+      }
+
+    }
+
+    @include element(text) {
+      display: inline-block;
+      margin-bottom: 0;
+      margin-right: 22px;
+
+      @include max-screen(515px) {
+        margin-right: 16px;
+      }
+    }
+
+    @include bem(icon) {
+      display: inline-block;
+      fill: $white;
+      vertical-align: middle;
+      width: auto;
+
+      & svg {
+        height: 25px;
+      }
+
+      @include modifier('youtube') {
+        & svg {
+          height: 22px;
+        }
+      }
+
+      @include max-screen(515px) {
+        & svg {
+          height: 17px;
+        }
+
+        @include modifier('youtube') {
+          & svg {
+            height: 15px;
+          }
+        }
+      }
+
+      &:hover {
+        fill: $blue-light-1;
+      }
+    }
+  }
+
+  @include element(info) {
+    padding-top: 20px;
+    width: 100%;
+
+    @include max-screen(515px) {
+      padding-top: 12px;
+    }
+
+    @include element(text) {
+      color: $text-cloudy-blue;
+      display: inline-block;
+      float: left;
+      font-size: 16px;
+      line-height: 100px;
+      margin-bottom: 0;
+      margin-left: 15px;
+      vertical-align: top;
+
+      @include bem('logo') {
+        svg {
+          fill: $icon-color-logo;
+          margin-right: 35px;
+        }
+
+        @include bem('icon', 'logo') {
+          svg {
+            width: 30px;
+          }
+        }
+
+        @include bem('icon', 'logo_text') {
+          svg {
+            width: 115px;
+          }
+        }
+      }
+
+      @include max-screen(991px) {
+        float: none;
+        line-height: 60px;
+        margin-left: 0;
+        text-align: center;
+        vertical-align: inherit;
+        width: 100%;
+
+        @include bem('logo') {
+          height: 60px;
+          line-height: 60px;
+        }
+      }
+
+      @include max-screen(515px) {
+        font-size: 15px;
+        line-height: 46px;
+
+        @include bem('logo') {
+          color: $text-white;
+          display: block;
+          margin-right: 0;
+
+          @include bem('icon', 'logo') {
+            svg {
+              fill: url(#gradient);
+            }
+          }
+        }
+      }
+
+    }
+
+    @include element(copyright) {
+      color: $text-cloudy-blue;
+      display: inline-block;
+      float: right;
+      font-size: 16px;
+      line-height: 100px;
+      margin-right: 15px;
+      vertical-align: top;
+
+      @include max-screen(991px) {
+        float: none;
+        width: 100%;
+        text-align: center;
+        vertical-align: inherit;
+        font-size: 14px;
+        line-height: 80px;
+        margin-right: 15px;
+      }
+
+      @include max-screen(515px) {
+        font-size: 13px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      @include max-screen(356px) {
+        font-size: 12px;
+        line-height: 1.8;
+      }
+    }
   }
 }

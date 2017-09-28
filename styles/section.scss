@@ -12,12 +12,31 @@
   @include element('name') {
     color: $blue-dark-1;
     display: inline-block;
-    font-size: 45px;
+    font-size: 52px;
     font-weight: 300;
     margin-bottom: 55px;
     text-align: center;
     text-transform: capitalize;
     width: 100%;
+
+    @include max-screen(1440px) {
+      font-size: 45px;
+      margin-bottom: 50px;
+    }
+
+    @include max-screen(991px) {
+      font-size: 40px;
+      margin-bottom: 46px;
+    }
+
+    @include max-screen(768px) {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    @include max-screen(515px) {
+      margin-bottom: 36px;
+    }
   }
 
   @include element('windowScroll'){
