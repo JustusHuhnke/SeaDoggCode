@@ -48,4 +48,19 @@
     }
   }
 
+  @include max-screen(991px) {
+    @include bem('navigation') {
+      display: none;
+    }
+  }
+
+  @include max-screen(768px) {
+    padding: 0 25px;
+    height: 75px;
+
+    @include bem(logo) {
+      height: 75px;
+      line-height: 75px;
+    }
+  }
 }
