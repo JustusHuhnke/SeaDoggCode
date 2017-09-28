@@ -2,6 +2,10 @@
 
 @include block(early) {
   background: $blue;
+  background-image: url('_images/sea-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
   text-align: center;
   width: 100%;
@@ -9,15 +13,27 @@
   @include element(heading) {
     color: $text-white;
     display: inline-block;
-    font-size: 50px;
-    line-height: 1.25;
+    font-size: 65px;
+    line-height: 1.3;
     margin-bottom: 20px;
-    margin-top: 30vh;
+    margin-top: 32vh;
     padding: 0px 10px;
     text-transform: uppercase;
     width: 100%;
+
+    @include max-screen(1440px) {
+      font-size: 50px;
+    }
+
     @include max-screen(768px) {
       font-size: 36px;
+      margin-top: 26vh;
+    }
+
+    @include max-screen(515px) {
+      font-size: 32px;
+      line-height: 1.35;
+      margin-top: 24vh;
     }
 
     @include element(subelement) {
@@ -28,18 +44,34 @@
   @include element(text) {
     color: $text-white;
     display: block;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 300;
     line-height: 1.7;
     margin: 20px auto;
     padding: 0px 10px;
     width: 100%;
-    max-width: 720px;
+    max-width: 760px;
+
+    @include max-screen(1440px) {
+      font-size: 20px;
+    }
+
+    @include max-screen(992px) {
+      font-size: 18px;
+    }
+
+    @include max-screen(768px) {
+      font-size: 16px;
+    }
+
+    @include max-screen(515px) {
+      font-size: 15px;
+    }
   }
 
   @include element(button) {
     display: block;
-    margin: 30px auto;
+    margin: 30px auto 70px;
     box-shadow: 0 15px 20px 0 rgba(0, 18, 32, 0.3);
   }
 }
@@ -54,10 +86,31 @@
 
   @include element(text) {
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.8;
     max-width: 900px;
     width: 100%;
+
+    @include max-screen(1440px) {
+      font-size: 16px;
+      max-width: 780px;
+    }
+
+    @include max-screen(992px) {
+      font-size: 15px;
+    }
+
+    @include max-screen(515px) {
+      font-size: 14px;
+    }
+  }
+
+  @include max-screen(992px) {
+    padding: 70px 15px;
+  }
+
+  @include max-screen(515px) {
+    padding: 45px 10px;
   }
 }
 
@@ -82,6 +135,14 @@
     display: block;
     margin: 30px auto;
   }
+
+  @include max-screen(992px) {
+    padding: 70px 15px;
+  }
+
+  @include max-screen(515px) {
+    padding: 45px 10px;
+  }
 }
 
 @include block(contact) {
@@ -91,4 +152,12 @@
   padding: 95px 0px 0px;
   text-align: center;
   width: 100%;
+
+  @include max-screen(992px) {
+    padding-top: 70px;
+  }
+
+  @include max-screen(515px) {
+    padding-top: 45px;
+  }
 }

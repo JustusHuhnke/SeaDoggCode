@@ -2,7 +2,6 @@
 
 @include block('navigation') {
   display: inline-block;
-  float: right;
   height: 100px;
   vertical-align: top;
 
@@ -10,24 +9,24 @@
     display: inline-block;
     height: 100px;
     margin: 0;
+    padding: 0;
 
     @include element('item') {
       display: inline-block;
       line-height: 100px;
       margin: 0 8px;
       @include element('link') {
-        color: $blue;
+        color: $nav-link-color;
         display: inline-block;
         font-size: 17px;
         line-height: 100px;
         margin: 0 8px;
         text-decoration: none;
         &:hover {
+          color: $nav-link-color-hover;
           text-decoration: underline;
         }
       }
     }
   }
-
-
 }

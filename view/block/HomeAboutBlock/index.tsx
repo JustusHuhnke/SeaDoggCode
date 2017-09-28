@@ -11,7 +11,7 @@ export class HomeAboutBlock extends React.Component<IHomeAbout, {}> {
             <PureComponent tag="section" className={styleList}>
                 <h2 className={section.section__name}>About</h2>
 
-                <p className={block.about__text}>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                <p className={block.about__text}>Most people who work in an office environment, buy computer products, or have a computer at home have had the “fun” experience of dealing with technical support. It’s not always the easiest, or most pleasant, experience but hopefully this article will help you make the best of the situation the next time you call. Below you will find a list of things to keep in mind the next time your computer breaks down. Stay calm – Don’t yell at the support person on the other end of the phone. He is there only to help and the more angry you are the less help you are going to get.</p>
             </PureComponent>
         );
     }

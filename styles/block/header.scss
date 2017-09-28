@@ -13,9 +13,12 @@
 
   @include element('logo') {
     svg {
-      //fill: url(#gradient);
-      fill: $icon-color-logo-text-active;
+      fill: url(#gradient);
     }
+  }
+
+  @include bem('navigation') {
+    float: right;
   }
 
   @include bem('icon', 'logo_text') {
@@ -37,9 +40,27 @@
       @include bem('navigation', 'item') {
         @include bem('navigation', 'link') {
           color: $text-white;
+          &:hover {
+            color: $text-white;
+          }
         }
       }
     }
   }
 
+  @include max-screen(991px) {
+    @include bem('navigation') {
+      display: none;
+    }
+  }
+
+  @include max-screen(768px) {
+    padding: 0 25px;
+    height: 75px;
+
+    @include bem(logo) {
+      height: 75px;
+      line-height: 75px;
+    }
+  }
 }

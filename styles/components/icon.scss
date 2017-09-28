@@ -29,4 +29,8 @@
     width: $icon-logo-text-width;
   }
 
+  @include modifier('youtube') {
+    display: inline-block;
+  }
+
 }

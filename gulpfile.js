@@ -9,6 +9,7 @@ const watch = require('gulp-watch');
 const tinypng = require('gulp-tiny').default;
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const WebpackErrorNotificationPlugin = require('webpack-error-notification');
 const cssnano = require('gulp-cssnano');
 
 let style_js_remove = [];
@@ -51,8 +52,9 @@ gulp.task('backend', () => {
 });
 
 gulp.task('watchImages', () => {
+    gulp.start('prebuild');
     return watch('./static/original_images/**/*.{png,jpg,jpeg}', () => {
-        gulp.start('tinypng');
+        gulp.start('prebuild');
     });
 });
 
@@ -121,8 +123,28 @@ gulp.task('autoTypedStyle', (callback) => {
         resolve: {
             modules: ['node_modules'],
             extensions: ['.js', '.jsx', '.scss', '.css'],
+            alias: {
+                "_images": resolve(__dirname, 'static/images'),
+            },
             descriptionFiles: ['package.json'],
-            moduleExtensions: ['-loader']
+            moduleExtensions: ['-loader'],
+            alias: {
+                "_actions": resolve(__dirname, 'store/actions/index.ts'),
+                "_blocks": resolve(__dirname, 'view/block/index.ts'),
+                "_config": resolve(__dirname, 'server/config.ts'),
+                '_components': resolve(__dirname, 'view/components'),
+                '_containers': resolve(__dirname, 'view/containers'),
+                "_reducers": resolve(__dirname, 'store/reducers/index.ts'),
+                "_reducer": resolve(__dirname, 'store/reducers'),
+                "_route": resolve(__dirname, 'route/index.tsx'),
+                "_store": resolve(__dirname, 'store/index.ts'),
+                "_static": resolve(__dirname, 'static'),
+                "_images": resolve(__dirname, 'static/images'),
+                "_stylesLoad": resolve(__dirname, 'styles'),
+                "_style": resolve(__dirname, 'styles/index.ts'),
+                "_socket": resolve(__dirname, 'client/socket.ts'),
+                "_utils": resolve(__dirname, 'utils')
+            }
         },
         module: {
             rules: [
@@ -135,7 +157,7 @@ gulp.task('autoTypedStyle', (callback) => {
                                 {
                                     loader: "css-loader", options: {
                                     sourceMap: false,
-                                    modules: false,
+                                    modules: true,
                                     importLoaders: 1,
                                     localIdentName: '[local]',
                                     minimize: true
@@ -155,9 +177,38 @@ gulp.task('autoTypedStyle', (callback) => {
                 {
                     test: /\.(woff|ttf|eot|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                     loader: 'base64-font-loader'
-                },]
+                },
+                {
+                    test: /\.(png|jpg|jpeg|gif)$/,
+                    use: [
+                        {
+                            loader: 'url-loader'
+                        }
+                    ]
+                }
+            ]
         },
         plugins: [
+            new webpack.LoaderOptionsPlugin({
+                debug: true,
+                options: {
+                    public: true,
+                    progress: true,
+                    configuration: {
+                        devtool: 'sourcemap'
+                    }
+                },
+                root: resolve(__dirname)
+            }),
+            new webpack.DefinePlugin({
+                'process.env': {
+                    BROWSER: JSON.stringify(true),
+                    NODE_ENV: JSON.stringify('production')
+                }
+            }),
+
+            new webpack.NamedModulesPlugin(),
+            new WebpackErrorNotificationPlugin(),
             new ExtractTextPlugin("[name].css")
         ]
     }, function (err, stats) {

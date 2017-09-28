@@ -16,6 +16,11 @@
   text-decoration: none;
   text-transform: uppercase;
 
+  @include max-screen(768px) {
+    font-size: 14px;
+    padding: 14px 30px;
+  }
+
   &:focus {
     outline: none;
   }
