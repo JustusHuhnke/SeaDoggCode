@@ -42,7 +42,7 @@ export class FooterBlock extends React.Component<{}, {}> {
 
                         <div className={footer.get("info")}>
                             <div className={footer.get("text")}><LogoComponent />We  revolutionize water expiriences</div>
-                            <div className={footer.get("copyright")}>© All rights reserved. A Seadogg Inc. Company 2017</div>
+                            <div className={footer.get("copyright")}>2017 © All rights reserved. Seadogg Inc.</div>
                         </div>
                     </div>
                 </div>

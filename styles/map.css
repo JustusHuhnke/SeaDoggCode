@@ -1,0 +1,32 @@
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+.leaflet-touch .leaflet-bar {
+    border: 1px solid #2e3887 !important;
+}
+
+.leaflet-touch .leaflet-bar a {
+    background-color: #3772ff !important;
+    border-color: #2e3887 !important;
+    color: #fff !important;
+}
+
+.leaflet-touch .leaflet-bar a:hover {
+     background-color: #00f6ff !important;
+     color: #fff !important;
+ }
+
+.leaflet-div-icon {
+    background: transparent !important;
+    border: 0 !important;
+    position: relative !important;
+}
+
+.leaflet-div-icon svg {
+    bottom: 0 !important;
+    display: block !important;
+    height: 50px !important;
+    position: absolute !important;
+    right: -12px !important;
+}

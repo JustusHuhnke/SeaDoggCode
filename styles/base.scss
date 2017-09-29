@@ -12,6 +12,7 @@ html, body {
   background: $section-background-white;
   color: $text-black;
   font-family: $font-light;
+  overflow-x: hidden;
 }
 
 svg {
