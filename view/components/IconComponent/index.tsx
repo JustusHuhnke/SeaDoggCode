@@ -35,7 +35,7 @@ export class IconComponent extends React.PureComponent<IIconComponent, {}> {
         const classes = classnames(component.icon, className);
 
         return !!name && (
-            <span  className={classes} {...otherProps}>
+            <span className={classes} {...otherProps}>
                 <svg viewBox={viewBox}>
                     <use xlinkHref={`#${name}`}/>
                 </svg>

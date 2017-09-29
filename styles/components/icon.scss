@@ -33,4 +33,8 @@
     display: inline-block;
   }
 
+  @include modifier('mail') {
+    display: inline-block;
+  }
+
 }
