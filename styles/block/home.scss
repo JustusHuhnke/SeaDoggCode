@@ -196,7 +196,7 @@
   @include element(info) {
     margin-bottom: 30px;
   }
-  
+
   @include element(item) {
     display: inline-block;
     margin-bottom: 30px;
@@ -252,5 +252,20 @@
 
   @include max-screen(515px) {
     padding-top: 45px;
+  }
+}
+
+@include block(world) {
+  @extend .contact;
+
+  @include element('icon', true) {
+    display: block;
+    height: 660px;
+    margin: 0 auto;
+    width: 1024px;
+
+    & svg {
+      fill: $world-map-color;
+    }
   }
 }

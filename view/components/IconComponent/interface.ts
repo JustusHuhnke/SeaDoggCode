@@ -7,4 +7,5 @@ export interface IIconComponent {
     spriteName?: string;
     children?: ReactNode;
     className?: classNames;
+    refComponent?: (elem: HTMLElement) => void;
 }

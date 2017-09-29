@@ -38,7 +38,7 @@ $modifier-separator: '--';
   }
 }
 
-@mixin element($element) {
+@mixin element($element, $not_root: false) {
   $selector: &;
   @if containsmodifier($selector) {
     $block: getblock($selector);
@@ -48,9 +48,15 @@ $modifier-separator: '--';
       }
     }
   } @else {
-    @at-root {
+    @if ($not_root) {
       #{$selector + $element-separator + $element} {
         @content;
+      }
+    } @else {
+      @at-root {
+        #{$selector + $element-separator + $element} {
+          @content;
+        }
       }
     }
   }
@@ -71,13 +77,13 @@ $modifier-separator: '--';
         @content;
       }
     }
-  } @else if($element != null and $modifier == null) {
+  } @else if ($element != null and $modifier == null) {
     @at-root {
       #{&} .#{$block}#{$element-separator + $element} {
         @content;
       }
     }
-  } @else if($element == null and $modifier != null) {
+  } @else if ($element == null and $modifier != null) {
     @at-root {
       #{&} .#{$block}#{$modifier-separator + $modifier} {
         @content;

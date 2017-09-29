@@ -1,11 +1,10 @@
 import Store from "_store";
 import * as React from "react";
-
-const { renderToNodeStream, renderToStaticMarkup } = require("react-dom/server");
 import {Helmet} from "react-helmet";
 import {Provider} from "react-redux";
 import * as serialize from "serialize-javascript";
 import Routes from "./../../route/backendRoute";
+const { renderToNodeStream, renderToStaticMarkup } = require("react-dom/server");
 //
 interface IpropertyRender {
     location: string;
@@ -43,26 +42,43 @@ const ChildrenRender = (props?: IpropertyRender): any => {
 };
 
 export const render: (ctx: any, location: string, context: any) => string = (ctx: any, location: string, context: any = {}) => {
-    ctx.status = 200;
-    ctx.type = "text/html; charset=utf-8";
-    ctx.set("Cache-Control", "no-cache");
-    ctx.set("Connection", "keep-alive");
-    ctx.set("Transfer-Encoding", "gzip, chunked");
+    let stream: any = "";
 
-    ctx.res.write(`<!doctype html><html manifest="/appcache/manifest.appcache">`);
-    ctx.res.write(renderToStaticMarkup(React.createElement(HTMLStart)));
-    ctx.res.write(`<body><span id="svgContainer"></span><div id="application">`);
+    if (process.env.NODE_ENV === "production") {
+        ctx.status = 200;
+        ctx.type = "text/html; charset=utf-8";
+        ctx.set("Cache-Control", "no-cache");
+        ctx.set("Connection", "keep-alive");
+        ctx.set("Transfer-Encoding", "gzip, chunked");
 
-    const stream = renderToNodeStream(ChildrenRender(context));
-    stream.on("end", () => {
-        ctx.res.write("</div>");
-        ctx.res.write(`<script type="text/javascript">window.__initialState__=${serialize(context)}</script>`);
-        ctx.res.write(`<script type="text/javascript">window.ASSETS=${JSON.stringify(ASSETS)}</script>`);
-        ctx.res.write(`<script src="${ASSETS["vendor.js"] || "vendor.js"}" type="text/javascript"></script>`);
-        ctx.res.write(`<script src="${ASSETS["style.js"] || "style.js"}" type="text/javascript"></script>`);
-        ctx.res.write(`<script src="${ASSETS["bundle.js"] || "bundle.js"}" type="text/javascript"></script>`);
-        ctx.res.write("</body></html>");
-        ctx.res.end();
-    });
+        ctx.res.write(`<!doctype html><html manifest="/appcache/manifest.appcache">`);
+        ctx.res.write(renderToStaticMarkup(React.createElement(HTMLStart)));
+        ctx.res.write(`<body><span id="svgContainer"></span><div id="application">`);
+
+        stream = renderToNodeStream(ChildrenRender(context));
+        stream.on("end", () => {
+            ctx.res.write("</div>");
+            ctx.res.write(`<script type="text/javascript">window.__initialState__=${serialize(context)}</script>`);
+            ctx.res.write(`<script type="text/javascript">window.ASSETS=${JSON.stringify(ASSETS)}</script>`);
+            ctx.res.write(`<script src="${ASSETS["vendor.js"] || "vendor.js"}" type="text/javascript"></script>`);
+            ctx.res.write(`<script src="${ASSETS["style.js"] || "style.js"}" type="text/javascript"></script>`);
+            ctx.res.write(`<script src="${ASSETS["bundle.js"] || "bundle.js"}" type="text/javascript"></script>`);
+            ctx.res.write("</body></html>");
+            ctx.res.end();
+        });
+    } else {
+        stream += `<!doctype html><html manifest="/appcache/manifest.appcache">`;
+        stream += renderToStaticMarkup(React.createElement(HTMLStart));
+        stream += `<body><span id="svgContainer"></span><div id="application">`;
+        stream += renderToStaticMarkup(ChildrenRender(context));
+        stream += "</div>";
+        stream += `<script type="text/javascript">window.__initialState__=${serialize(context)}</script>`;
+        stream += `<script type="text/javascript">window.ASSETS=${JSON.stringify(ASSETS)}</script>`;
+        stream += `<script src="${ASSETS["vendor.js"] || "vendor.js"}" type="text/javascript"></script>`;
+        stream += `<script src="${ASSETS["style.js"] || "style.js"}" type="text/javascript"></script>`;
+        stream += `<script src="${ASSETS["bundle.js"] || "bundle.js"}" type="text/javascript"></script>`;
+        stream += "</body></html>";
+    }
+
     return stream;
 };
