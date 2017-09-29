@@ -64,6 +64,7 @@ export const AnimationScroll = process.env.BROWSER && ((minusTop: number = 0, el
                     }, 500);
                 }
             }
+            window.location.hash = "";
 
         }
     };
