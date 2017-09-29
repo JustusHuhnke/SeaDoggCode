@@ -44,3 +44,15 @@
     height: 100vh;
   }
 }
+
+@include block('scroll') {
+  display: block;
+
+  @include modifier("disable") {
+    pointer-events: none;
+    & * {
+      pointer-events: none;
+    }
+  }
+
+}
