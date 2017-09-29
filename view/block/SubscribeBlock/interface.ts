@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
 
-export interface IFeatures {
+export interface ISubscribe {
     children?: ReactNode;
 }
