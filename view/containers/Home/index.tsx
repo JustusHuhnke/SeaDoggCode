@@ -2,6 +2,7 @@ import {setTransparent} from "_actions";
 import {ContactBlock, EarlyAccessBlock, FeaturesBlock, FooterBlock, HeaderBlock, HomeAboutBlock} from "_blocks";
 import {PureComponent} from "_components/PureComponent";
 import {IState} from "_reducers";
+import {section} from "_style";
 import AnimationScroll from "_utils/AnimationScroll";
 import * as React from "react";
 import * as Scrollbar from "react-custom-scrollbars";
@@ -31,6 +32,7 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
             <PureComponent tag={"main"}>
                 <HeaderBlock/>
                 <CustomScrol
+                    className={section.scroll}
                     refIn={AnimationScroll(100, this)}
                     autoHeight={true}
                     universal={true}
