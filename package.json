@@ -85,7 +85,7 @@
     "bourbon": "^4.3.4",
     "classnames": "^2.2.5",
     "cookie": "^0.3.1",
-    "draft-js": "^0.10.2",
+    "draft-js": "^0.10.3",
     "elasticsearch": "^13.3.1",
     "history": "^4.7.2",
     "immutable": "^3.8.1",

@@ -219,9 +219,9 @@ gulp.task('autoTypedStyle', (callback) => {
             let template = "";
             let valueStyles = [];
             style_js_remove.forEach((name) => {
-                if (name === "base") return;
+                if (name === "base" || name === "font") return;
                 const str = fs.readFileSync(resolve(__dirname, '.gulp/style', name + '.css'), 'utf8');
-                const regex = /(\.([\w-_]+))(,|{)/gi;
+                const regex = /\.([a-zA-Z_][\w-_]*[^\.\s\{#:\,;])/gmi;
                 let m;
                 let clases = [];
 
@@ -231,7 +231,7 @@ gulp.task('autoTypedStyle', (callback) => {
                     if (m.index === regex.lastIndex) {
                         regex.lastIndex++;
                     }
-                    clases.push(m[2])
+                    clases.push(m[1].replace(">", ""))
                 }
                 clases = (clases.filter(onlyUnique));
                 if (clases.length) {

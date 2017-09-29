@@ -124,7 +124,7 @@ module.exports = {
                                 sourceMap: true,
                                 modules: true,
                                 importLoaders: 3,
-                                localIdentName: '[local]',
+                                localIdentName: '[name]__[local]',
                                 discardComments: {
                                     removeAll: true
                                 }
