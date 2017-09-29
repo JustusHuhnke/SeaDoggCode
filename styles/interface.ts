@@ -9,10 +9,15 @@ export interface IBlock {
   readonly "features": string;
   readonly "features__text": string;
   readonly "features__button": string;
+  readonly "subscribe": string;
+  readonly "subscribe__text": string;
+  readonly "subscribe__button": string;
   readonly "contact": string;
   readonly "contact__info": string;
   readonly "contact__item": string;
   readonly "icon": string;
+  readonly "contact__descr": string;
+  readonly "contact__descr--mail": string;
   readonly "icon--mail": string;
   readonly "header": string;
   readonly "header__logo": string;
@@ -36,6 +41,7 @@ export interface IBlock {
 export interface IComponents {
   readonly "button": string;
   readonly "button--green": string;
+  readonly "button--white": string;
   readonly "dropdown": string;
   readonly "icon": string;
   readonly "icon--white": string;

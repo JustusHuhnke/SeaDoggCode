@@ -1,5 +1,5 @@
 import {setTransparent} from "_actions";
-import {ContactBlock, EarlyAccessBlock, FeaturesBlock, FooterBlock, HeaderBlock, HomeAboutBlock} from "_blocks";
+import {ContactBlock, EarlyAccessBlock, FooterBlock, HeaderBlock, HomeAboutBlock, SubscribeBlock} from "_blocks";
 import {PureComponent} from "_components/PureComponent";
 import {IState} from "_reducers";
 import {section} from "_style";
@@ -41,7 +41,7 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
                 >
                     <EarlyAccessBlock/>
                     <HomeAboutBlock id={"about"} />
-                    <FeaturesBlock id={"features"}/>
+                    <SubscribeBlock />
                     <ContactBlock id={"contact"}/>
                     <FooterBlock/>
                 </CustomScrol>

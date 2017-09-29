@@ -150,6 +150,41 @@
   }
 }
 
+@include block(subscribe) {
+  background: $cerulean;
+  color: $text-black;
+  padding: 95px 15px;
+  text-align: center;
+  width: 100%;
+
+  @include element(text) {
+    color: $text-white;
+    display: block;
+    font-family: $font-regular;
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0 auto 25px;
+    width: 100%;
+  }
+
+  @include bem(button) {
+    font-family: $font-regular;
+  }
+
+  @include max-screen(992px) {
+    padding: 70px 15px;
+  }
+
+  @include max-screen(515px) {
+    padding: 80px 10px;
+
+    @include element(text) {
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
 @include block(contact) {
   background: $section-background-white;
   box-sizing: border-box;
@@ -165,18 +200,49 @@
   @include element(item) {
     display: inline-block;
     margin-bottom: 30px;
-    width: 100%;
+
+    @include max-screen(992px) {
+      text-align: center;
+      margin-bottom: 15px;
+
+      @include bem(icon) {
+        float: none;
+      }
+
+      @include element(descr) {
+        width: 210px;
+        float: none;
+        padding: 0 12px;
+
+        @include modifier(mail) {
+          padding: 5px 12px;
+        }
+      }
+    }
 
     @include bem(icon) {
       color: $blue;
       display: inline-block;
       float: left;
       width: 25px;
+      vertical-align: top;
 
       @include modifier(mail) {
         margin-top: 7px;
         width: 30px;
       }
+    }
+
+    @include element(descr) {
+      display: inline-block;
+      float: right;
+      text-align: left;
+      width: calc(100% - 32px);
+      padding: 5px 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: $charcoal-grey;
+      vertical-align: top;
     }
   }
 

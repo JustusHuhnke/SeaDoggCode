@@ -29,20 +29,17 @@ export class ContactBlock extends React.Component<IContact, {}> {
                 <div className={section.container}>
                     <div className={`${section.row} ${contactStyle.get("info")}`}>
                         <h2 className={section.section__name}>Contact</h2>
-                        <div className="col-lg-4 col-sm-12">
-                            <div className={contactStyle.get("item")}>
-                                <IconComponent name="contact_address" viewBox="0 0 20 27" />
-                            </div>
+                        <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${contactStyle.get("item")}`}>
+                            <IconComponent name="contact_address" viewBox="0 0 20 27" />
+                            <p className={contactStyle.get("descr")}>431 El Camino Real<br/>Santa Clara, CA  95050</p>
                         </div>
-                        <div className="col-lg-4 col-sm-12">
-                            <div className={contactStyle.get("item")}>
-                                <IconComponent name="contact_phone" viewBox="0 0 18 26" />
-                            </div>
+                        <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${contactStyle.get("item")}`}>
+                            <IconComponent name="contact_phone" viewBox="0 0 18 26" />
+                            <p className={contactStyle.get("descr")}>+1 (650) 823 3668</p>
                         </div>
-                        <div className="col-lg-4 col-sm-12">
-                            <div className={contactStyle.get("item")}>
-                                <IconComponent name="contact_email" viewBox="0 0 26 18" className={iconStyle.get(null, "mail")} />
-                            </div>
+                        <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${contactStyle.get("item")}`}>
+                            <IconComponent name="contact_email" viewBox="0 0 26 18" className={iconStyle.get(null, "mail")} />
+                            <p className={`${contactStyle.get("descr")} ${contactStyle.get("descr", "mail")}`}>hello@seadogg.com</p>
                         </div>
                     </div>
                 </div>

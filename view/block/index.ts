@@ -15,10 +15,6 @@ const EarlyModalBlock = process.env.BROWSER &&
    LazyLoadComponent(() => System.import("./EarlyModalBlock"), LoadingComponent, ErrorComponent) ||
    require("./EarlyModalBlock").default;
 
-const FeaturesBlock = process.env.BROWSER &&
-   LazyLoadComponent(() => System.import("./FeaturesBlock"), LoadingComponent, ErrorComponent) ||
-   require("./FeaturesBlock").default;
-
 const FooterBlock = process.env.BROWSER &&
    LazyLoadComponent(() => System.import("./FooterBlock"), LoadingComponent, ErrorComponent) ||
    require("./FooterBlock").default;
@@ -31,12 +27,16 @@ const HomeAboutBlock = process.env.BROWSER &&
    LazyLoadComponent(() => System.import("./HomeAboutBlock"), LoadingComponent, ErrorComponent) ||
    require("./HomeAboutBlock").default;
 
+const SubscribeBlock = process.env.BROWSER &&
+   LazyLoadComponent(() => System.import("./SubscribeBlock"), LoadingComponent, ErrorComponent) ||
+   require("./SubscribeBlock").default;
+
 export {
     ContactBlock,
     EarlyAccessBlock,
     EarlyModalBlock,
-    FeaturesBlock,
     FooterBlock,
     HeaderBlock,
     HomeAboutBlock,
+    SubscribeBlock,
 };

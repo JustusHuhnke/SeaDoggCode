@@ -2,7 +2,7 @@
 @import 'utils/bem';
 @import '~sass-mediaqueries/media-queries';
 @import '~bootstrap/scss/bootstrap-grid';
-@import 'variables/colors';
+@import 'variables/index';
 
 
 @include block('section') {
@@ -12,6 +12,7 @@
   @include element('name') {
     color: $blue-dark-1;
     display: inline-block;
+    font-family: $font-bold;
     font-size: 52px;
     font-weight: 300;
     margin-bottom: 55px;
