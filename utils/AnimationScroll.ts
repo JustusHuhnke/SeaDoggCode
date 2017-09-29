@@ -4,6 +4,9 @@ import noob from "./noob";
 import Rbem from "./rbem";
 let lastPos: number = null;
 const styleScroll = new Rbem(section, "scroll");
+if (process.env.BROWSER) {
+    window.location.hash = "";
+}
 
 export const AnimationScroll = process.env.BROWSER && ((minusTop: number = 0, element: any): any => {
     const MathUtil = require("rebound").MathUtil;
