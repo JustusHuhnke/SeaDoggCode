@@ -22,9 +22,9 @@ export class EarlyAccessBlock extends React.Component<IEarlyAccess, IEarlyAccess
         const styleList = [section.section, block.early];
         return (
             <PureComponent tag="section" className={styleList}>
-                <div className={section.container}>
+                <div className={section["container-fluid"]}>
                     <div className={section.row}>
-                        <h2 className={block.early__heading}>Connect. Share. Experience.</h2>
+                        <h2 className={block.early__heading}>Connect, Embark & Experience</h2>
                         <p className={block.early__text}>Our mission is to revolutionize the world of boating. By connecting those, that like us share a passion for the ocean and it’s adventures, we are able to provide unique breathtaking experiences.</p>
                     </div>
                     <div className="row">

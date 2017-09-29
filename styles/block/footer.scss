@@ -10,13 +10,17 @@
     padding: 20px 10px 15px;
   }
 
+  @include max-screen(515px) {
+    padding-top: 25px;
+  }
+
   @include element(nav) {
     border-bottom: 1px solid $footer-divider-color;
     padding-bottom: 20px;
     width: 100%;
 
     @include max-screen(515px) {
-      padding-bottom: 12px;
+      padding-bottom: 25px;
     }
     
     @include bem('navigation') {
@@ -42,15 +46,24 @@
       }
 
       @include max-screen(515px) {
-        height: 45px;
+        border-bottom: 1px solid $footer-divider-color;
+        display: inline-block;
+        height: auto;
+        padding-bottom: 25px;
         @include bem('navigation', 'list') {
-          height: 45px;
+          display: inline-block;
+          height: auto;
+          width: 100%;
           @include bem('navigation', 'item') {
-            margin: 0px 6px;
-            line-height: 45px;
+            margin: 0px;
+            line-height: 55px;
+            width: 100%;
             @include bem('navigation', 'link') {
-              font-size: 13px;
-              line-height: 45px;
+              display: block;
+              font-size: 18px;
+              line-height: 55px;
+              margin: 0;
+              width: 100%;
             }
           }
         }
@@ -92,12 +105,12 @@
       }
 
       @include max-screen(515px) {
-        font-size: 14px;
-        line-height: 60px;
-        margin-top: 10px;
+        font-size: 17px;
+        line-height: 45px;
+        margin-top: 20px;
 
         @include bem('link') {
-          margin: 0px 10px;
+          margin: 0px 14px;
         }
       }
 
@@ -109,7 +122,8 @@
       margin-right: 22px;
 
       @include max-screen(515px) {
-        margin-right: 16px;
+        margin-right: 0px;
+        display: block;
       }
     }
 
@@ -126,20 +140,22 @@
       @include modifier('youtube') {
         & svg {
           height: 22px;
+          margin-top: 3px;
         }
       }
 
-      @include max-screen(515px) {
-        & svg {
-          height: 17px;
-        }
-
-        @include modifier('youtube') {
-          & svg {
-            height: 15px;
-          }
-        }
-      }
+      //@include max-screen(515px) {
+      //  & svg {
+      //    height: 17px;
+      //    margin-top: 2px;
+      //  }
+      //
+      //  @include modifier('youtube') {
+      //    & svg {
+      //      height: 15px;
+      //    }
+      //  }
+      //}
 
       &:hover {
         fill: $blue-light-1;
@@ -150,10 +166,6 @@
   @include element(info) {
     padding-top: 20px;
     width: 100%;
-
-    @include max-screen(515px) {
-      padding-top: 12px;
-    }
 
     @include element(text) {
       color: $text-cloudy-blue;
@@ -201,6 +213,7 @@
       @include max-screen(515px) {
         font-size: 15px;
         line-height: 46px;
+        margin-bottom: 20px;
 
         @include bem('logo') {
           color: $text-white;
@@ -210,6 +223,7 @@
           @include bem('icon', 'logo') {
             svg {
               fill: url(#gradient);
+              width: 35px;
             }
           }
         }
@@ -240,11 +254,6 @@
         font-size: 13px;
         line-height: 1.8;
         margin-bottom: 20px;
-      }
-
-      @include max-screen(356px) {
-        font-size: 12px;
-        line-height: 1.8;
       }
     }
   }

@@ -1,5 +1,6 @@
 @import '~bourbon/app/assets/stylesheets/bourbon';
 
-@include font-face('Montserrat-Regular', './fonts/Montserrat-Regular/Montserrat-Regular', normal, normal, $file-formats: eot woff ttf woff2);
-@include font-face('Montserrat-Light', './fonts/Montserrat-Light/Montserrat-Light', 300, normal, $file-formats: eot woff ttf woff2);
+@include font-face('Montserrat-Bold', './fonts/Montserrat-Bold/Montserrat-Bold', normal, $file-formats: eot woff ttf woff2);
+@include font-face('Montserrat-Regular', './fonts/Montserrat-Regular/Montserrat-Regular', normal, $file-formats: eot woff ttf woff2);
+@include font-face('Montserrat-Light', './fonts/Montserrat-Light/Montserrat-Light', 300, normal, normal, $file-formats: eot woff ttf woff2);
 //@include font-face('OpenSansLight', './fonts/opensans_light/OpenSans-Light-webfont', normal, normal, $file-formats: eot woff ttf woff2);
