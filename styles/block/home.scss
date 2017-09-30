@@ -259,13 +259,75 @@
   @extend .contact;
 
   @include element('icon', true) {
+    bottom: 0;
     display: block;
-    height: 660px;
-    margin: 0 auto;
-    width: 1024px;
+    position: absolute;
+    top: 0;
+    width: 100%;
 
     & svg {
       fill: $world-map-color;
+    }
+  }
+
+  @include element(block) {
+    display: block;
+    height: 660px;
+    margin: 0 auto;
+    position: relative;
+    width: 1024px;
+  }
+
+  @include element(tooltip){
+    cursor: pointer;
+    display: block;
+    height: 24px;
+    margin: -4px 0 0 -4px;
+    position: absolute;
+    width: 24px;
+
+    @include element(point){
+      display: block;
+      height: 24px;
+      width: 24px;
+    }
+
+    @include element(title) {
+      color: $blue-dark-2;
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      left: 12px;
+      letter-spacing: 1px;
+      line-height: 1.5;
+      position: absolute;
+      text-transform: uppercase;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    @include element(tooltip-block) {
+      background-color: $white;
+      border-radius: 5px;
+      bottom: 36px;
+      box-shadow: 0 10px 40px 0 rgba(23, 28, 63, 0.1);
+      cursor: default;
+      display: block;
+      height: 310px;
+      margin-left: -180px;
+      opacity: 0;
+      position: absolute;
+      transition: opacity .3s ease-in-out;
+      transition-delay: 200ms;
+      visibility: hidden;
+      width: 360px;
+    }
+
+    &:hover {
+      @include bem('world', 'tooltip-block') {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 }

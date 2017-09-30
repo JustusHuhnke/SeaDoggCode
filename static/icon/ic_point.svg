@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+    <g fill="none" fill-rule="evenodd">
+        <circle cx="9" cy="9" r="2" fill="#0268CD"/>
+        <circle cx="9" cy="9" r="4" stroke="#0268CD" opacity=".7"/>
+        <circle cx="9" cy="9" r="6" stroke="#0268CD" opacity=".4"/>
+        <circle cx="9" cy="9" r="8" stroke="#0268CD" opacity=".1"/>
+    </g>
+</svg>
