@@ -1,5 +1,6 @@
 import {component} from "_style";
 import classnames from "_utils/classnames";
+import noob from "_utils/noob";
 import request from "_utils/xhr";
 import * as React from "react";
 import {IIconComponent} from "./interface";
@@ -13,16 +14,26 @@ export class IconComponent extends React.PureComponent<IIconComponent, {}> {
         viewBox: "0 0 24 24",
     };
 
-    public async componentDidMount() {
+    constructor(props: IIconComponent) {
+        super(props);
+    }
+
+    public componentDidMount() {
         try {
             if (process.env.BROWSER) {
-                const svgContainer = document.getElementById("svgContainer");
-                const {spriteName} = this.props;
-                if (svgContainer !== null && !svgContainer.children.length) {
-                    svgContainer.innerHTML = "<p></p>";
-                    const result = await request({url: `/${spriteName}.svg`});
-                    svgContainer.innerHTML = result;
+                const {onLoaded = noob} = this.props;
+                if ((window as any).prom === undefined) {
+                    (window as any).prom = new Promise(async (resolve) => {
+                        const svgContainer = document.getElementById("svgContainer");
+                        const {spriteName} = this.props;
+
+                        svgContainer.innerHTML = "<p></p>";
+                        const result = await request({url: `/${spriteName}.svg`});
+                        svgContainer.innerHTML = result;
+                        resolve();
+                    });
                 }
+                onLoaded((window as any).prom);
             }
         } catch (err) {
             console.error(err);
@@ -31,7 +42,7 @@ export class IconComponent extends React.PureComponent<IIconComponent, {}> {
 
     public render() {
 
-        const {name, viewBox, className, refComponent, spriteName, ...otherProps} = this.props;
+        const {name, viewBox, className, refComponent, spriteName, onLoaded, ...otherProps} = this.props;
         const classes = classnames(component.icon, className);
 
         return !!name && (
