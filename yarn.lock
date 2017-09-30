@@ -43,6 +43,10 @@
   version "5.0.17"
   resolved "https://registry.yarnpkg.com/@types/elasticsearch/-/elasticsearch-5.0.17.tgz#e2ff3a37cfa974260f6bb29990b288459687a34f"
 
+"@types/event-emitter@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@types/event-emitter/-/event-emitter-0.3.1.tgz#95dc2eb3609cea707c048f7f1fcc97e565b70f1f"
+
 "@types/express-serve-static-core@*":
   version "4.0.53"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.0.53.tgz#1723a35d1447f2c55e13c8721eab3448e42f4d82"

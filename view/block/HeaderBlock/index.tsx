@@ -7,25 +7,23 @@ import {block} from "_style";
 import Rbem from "_utils/rbem";
 import * as React from "react";
 import {connect} from "react-redux";
-import {IHeader} from "./interface";
+import {IHeader, IHeaderState} from "./interface";
 
 const headerStyle = new Rbem(block, "header");
 
-class Header extends React.Component<IHeader, {}> {
-    // public state = {
-    //     menuExpanded: false,
-    // };
-    //
-    // private toggleMenuVisibility() {
-    //     if (this.state.menuExpanded === false) {
-    //         this.setState(menuExpanded, true);
-    //     } else {
-    //         this.setState(menuExpanded, false);
-    //     }
-    // }
+class Header extends React.Component<IHeader, IHeaderState> {
+    public state: IHeaderState = {
+        menuExpanded: false,
+    };
+
+    constructor(props: IHeader) {
+        super(props);
+        this.toggleMenuVisibility = this.toggleMenuVisibility.bind(this);
+    }
 
     public render() {
         const {homeTransparent = true, dispatch, ...oterProps} = this.props;
+        const {menuExpanded} = this.state;
         const styleList = [block.header, {
             [block["header--transparent"]]: homeTransparent,
         }];
@@ -35,10 +33,14 @@ class Header extends React.Component<IHeader, {}> {
                 <LogoComponent className={headerStyle.get("logo")} />
                 <NavigationComponent />
                 <span className={headerStyle.get("menu-button")}>
-                    <IconComponent name="menu" viewBox="0 0 22 18" />
+                    <IconComponent name="menu" viewBox="0 0 22 18" onClick={this.toggleMenuVisibility.bind(this, !menuExpanded)} />
                 </span>
             </PureComponent>
         );
+    }
+
+    private toggleMenuVisibility(menuExpanded: boolean) {
+        this.setState({menuExpanded});
     }
 }
 
