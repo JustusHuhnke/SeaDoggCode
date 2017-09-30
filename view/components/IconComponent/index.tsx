@@ -31,11 +31,11 @@ export class IconComponent extends React.PureComponent<IIconComponent, {}> {
 
     public render() {
 
-        const {name, viewBox, className, spriteName, ...otherProps} = this.props;
+        const {name, viewBox, className, refComponent, spriteName, ...otherProps} = this.props;
         const classes = classnames(component.icon, className);
 
         return !!name && (
-            <span className={classes} {...otherProps}>
+            <span className={classes} ref={refComponent} {...otherProps}>
                 <svg viewBox={viewBox}>
                     <use xlinkHref={`#${name}`}/>
                 </svg>

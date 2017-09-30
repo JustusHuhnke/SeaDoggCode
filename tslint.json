@@ -6,6 +6,7 @@
     "no-var-requires": false,
     "no-submodule-imports": false,
     "object-literal-sort-keys": false,
+    "jsx-no-multiline-js": false,
     "max-classes-per-file": [true, 3]
   }
 }

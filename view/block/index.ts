@@ -31,6 +31,10 @@ const SubscribeBlock = process.env.BROWSER &&
    LazyLoadComponent(() => System.import("./SubscribeBlock"), LoadingComponent, ErrorComponent) ||
    require("./SubscribeBlock").default;
 
+const WorldMapBlock = process.env.BROWSER &&
+   LazyLoadComponent(() => System.import("./WorldMapBlock"), LoadingComponent, ErrorComponent) ||
+   require("./WorldMapBlock").default;
+
 export {
     ContactBlock,
     EarlyAccessBlock,
@@ -39,4 +43,5 @@ export {
     HeaderBlock,
     HomeAboutBlock,
     SubscribeBlock,
+    WorldMapBlock,
 };

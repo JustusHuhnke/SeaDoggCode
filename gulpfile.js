@@ -90,7 +90,7 @@ gulp.task('svgoSpr', ['svgSprite'], () => {
                 {removeTitle: true},
                 {removeDesc: true},
                 {removeScriptElement: true},
-                {cleanupNumericValues: {floatPrecision: 3}},
+                {cleanupNumericValues: {floatPrecision: 4}},
                 {addAttributesToSVGElement: {attribute: ['viewBox="0 0 24 24"']}}
             ]
         }))
@@ -244,8 +244,8 @@ gulp.task('autoTypedStyle', (callback) => {
                 }
             });
             const regexBlock = /^(([a-z0-9]+)(-|_){0,1})+([a-z0-9]+)/i;
-            const regexElement = /__([a-z0-9]+)/gi;
-            const regexMod = /--([a-z0-9]+)/gi;
+            const regexElement = /__([a-z0-9]+(-|_|)[a-z0-9]+)/gi;
+            const regexMod = /--([a-z0-9]+(-|_|)[a-z0-9]+)/gi;
             let m;
             let valueBlocks = [];
             let valueElements = [];
