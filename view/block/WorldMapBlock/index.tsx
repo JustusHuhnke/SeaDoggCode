@@ -1,11 +1,11 @@
 import {IconComponent} from "_components/IconComponent";
+import ImageComponent from "_components/ImageComponent";
 import {PureComponent} from "_components/PureComponent";
 import {block, /*component,*/ section} from "_style";
 import Rbem from "_utils/rbem";
 import {List} from "immutable";
 import * as React from "react";
 import {IWorldLocations, IWorldPoint, IWorldState} from "./interface";
-import ImageComponent from "_components/ImageComponent";
 
 const worldStyle = new Rbem(block, "world");
 
