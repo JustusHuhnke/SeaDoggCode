@@ -2,6 +2,7 @@ import {IconComponent} from "_components/IconComponent";
 import ImageComponent from "_components/ImageComponent";
 import {PureComponent} from "_components/PureComponent";
 import {block, /*component,*/ section} from "_style";
+import observeDOM from "_utils/observeDOM";
 import Rbem from "_utils/rbem";
 import {List} from "immutable";
 import * as React from "react";
@@ -45,9 +46,23 @@ export class WorldMapBlock extends React.Component<{}, IWorldState> {
     }
 
     public componentDidMount() {
-        setTimeout(() => {
+        setTimeout(async () => {
             const svg = this.worldIcon.children[0];
-            const bigMap = document.getElementById("world_map");
+
+            const bigMap: any = await new Promise((resolve) => {
+                let worldMap = document.getElementById("world_map");
+                if (worldMap != null) {
+                    resolve(worldMap);
+                } else {
+                    observeDOM(document.getElementById("svgContainer"), () => {
+                        worldMap = document.getElementById("world_map");
+                        if (worldMap != null) {
+                            resolve(worldMap);
+                        }
+                    });
+                }
+            });
+
             svg.innerHTML = bigMap.innerHTML;
             const children: any = svg.children;
 
