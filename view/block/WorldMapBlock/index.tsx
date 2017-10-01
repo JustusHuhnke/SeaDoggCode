@@ -83,6 +83,10 @@ export class WorldMapBlock extends React.Component<{}, IWorldState> {
                         </div>
                     )).toArray()}
                 </div>
+                <div className={worldStyle.get("info-us")}>
+                    <div className={worldStyle.get("count")}>14 567</div>
+                    <span className={worldStyle.get("text")}>happy people already with us</span>
+                </div>
             </PureComponent>
         );
     }

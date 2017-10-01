@@ -440,4 +440,24 @@
       }
     }
   }
+
+
+  @include element(info-us) {
+    display: block;
+    margin: 95px 0 auto;
+
+    @include element(count) {
+      color: $green-blue;
+      font-size: 60px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    @include element(text) {
+      color: $charcoal-grey;
+      font-size: 20px;
+      line-height: 1.5;
+      text-align: center;
+    }
+  }
 }
