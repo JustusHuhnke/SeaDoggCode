@@ -28,7 +28,8 @@ class WorldMap extends React.Component<IWorldState, {}> {
 
         return (
             <PureComponent tag="section" className={styleList} {...otherProps}>
-                <h2 className={section.section__name}>Locations</h2>
+                <h2 className={section.section__name}>Location</h2>
+                <p className={worldStyle.get("text")}>We have started testing our service in one location,but are always looking to expand!</p>
                 <div className={worldStyle.get("block")}>
                     <IconComponent onLoaded={this.showElements} refComponent={this.setWorldIcon} name="world_map" viewBox="0 0 1010 650" className={worldStyle.get("icon")} />
                     {locations.map(({code, point, title, description, avatar, user_name, user_description, location, tel, mail}: IWorldLocations) => (
@@ -40,12 +41,12 @@ class WorldMap extends React.Component<IWorldState, {}> {
                                 <h3 className={worldStyle.get("title")}>{title}</h3>
                                 <p className={worldStyle.get("title-descr")}>{description}</p>
                                 <div className={worldStyle.get("user")}>
-                                    <div className={worldStyle.get("avatar")}><ImageComponent alt={user_name} imgSrc={avatar} /></div>
+                                    <div className={worldStyle.get("avatar")}><ImageComponent alt={user_name} src={avatar} /></div>
                                     <div className={worldStyle.get("user_name")}>{user_name}</div>
                                     <div className={worldStyle.get("user_descr")}>{user_description}</div>
                                 </div>
                                 <div className={worldStyle.get("item")}>
-                                    <IconComponent name="contact_address" viewBox="0 0 20 27"/>
+                                    <IconComponent name="contact_address" viewBox="0 0 20 27" className={iconStyle.get(null, "map_marker")} />
                                     <p className={worldStyle.get("descr")}>{location}</p>
                                 </div>
                                 <div className={worldStyle.get("item")}>

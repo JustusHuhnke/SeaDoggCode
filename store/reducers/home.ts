@@ -16,27 +16,29 @@ export interface IHomeModel {
 }
 
 export default (state = Map({
-    locations: List([{
-        code: "BS",
-        title: "The Bahamas",
-        description: "Country in the Caribbean",
-        avatar: "https://randomuser.me/api/portraits/women/26.jpg",
-        user_name: "Anthony Torres",
-        user_description: "SeaDogg official representative on The Bahamas",
-        location: "345 Queen’s Hwy, Andros Town, The Bahamas  95050",
-        tel: "+1 (650) 823 3668",
-        mail: "hello@seadogg.com",
-        point: null,
-    }, {
+    locations: List([
+    //     {
+    //     code: "BS",
+    //     title: "The Bahamas",
+    //     description: "Country in the Caribbean",
+    //     avatar: "https://randomuser.me/api/portraits/women/26.jpg",
+    //     user_name: "Anthony Torres",
+    //     user_description: "SeaDogg official representative on The Bahamas",
+    //     location: "345 Queen’s Hwy, Andros Town, The Bahamas  95050",
+    //     tel: "+1 (650) 823 3668",
+    //     mail: "hello@seadogg.com",
+    //     point: null,
+    // },
+        {
         code: "HAWAII",
         title: "Hawaii",
-        description: "Country in the Caribbean 2",
-        avatar: "https://randomuser.me/api/portraits/women/28.jpg",
-        user_name: "Anthony Torres 2",
-        user_description: "SeaDogg official representative on The Bahamas 2",
-        location: "3422 ahamas  95050",
-        tel: "+1 (650) 000 000 0",
-        mail: "hello2@seadogg.com",
+        description: "Islands in the Pacific",
+        avatar: "felix_team.jpg",
+        user_name: "Felix",
+        user_description: "Official SeaDogg representative on Hawaii",
+        location: "Hanalei, Kauai, HI 96714",
+        tel: "+1 (650) 823 366 8",
+        mail: "felix@seadogg.com",
         point: null,
     }]),
     earlyModal: false,

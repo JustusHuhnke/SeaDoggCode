@@ -15,10 +15,9 @@ export class SubscribeBlock extends React.Component<ISubscribe, {}> {
         const styleList = [section.section, block.subscribe];
         return (
             <PureComponent tag="section" className={styleList} {...this.props}>
-                <p className={subscribeStyle.get("text")}>Get early access and get&nbsp;a&nbsp;bonuses</p>
+                <p className={subscribeStyle.get("text")}>Get early access and receive&nbsp;bonuses!</p>
 
                 <ButtonComponent className={buttonStyle.get(null, "white")} title={"Get early access"} onClick={toggleModal.bind(toggleModal, true)} />
-
             </PureComponent>
         );
     }

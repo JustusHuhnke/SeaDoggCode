@@ -44,7 +44,7 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
                 >
                     <EarlyAccessBlock/>
                     <HomeAboutBlock id={"about"}/>
-                    <WorldMapBlock id={"locations"}/>
+                    <WorldMapBlock id={"location"}/>
                     <SubscribeBlock/>
                     <ContactBlock id={"contact"}/>
                     <FooterBlock/>

@@ -37,6 +37,10 @@
     display: inline-block;
   }
 
+  @include modifier('map_marker') {
+    display: inline-block;
+  }
+
   @include element('check') {
     cursor: pointer;
     display: block;
