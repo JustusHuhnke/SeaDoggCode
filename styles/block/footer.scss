@@ -110,7 +110,7 @@
         margin-top: 20px;
 
         @include bem('link') {
-          margin: 0px 14px;
+          margin: 0 14px;
         }
       }
 
@@ -122,8 +122,8 @@
       margin-right: 22px;
 
       @include max-screen(515px) {
-        margin-right: 0px;
         display: block;
+        margin-right: 0;
       }
     }
 
@@ -143,19 +143,6 @@
           margin-top: 3px;
         }
       }
-
-      //@include max-screen(515px) {
-      //  & svg {
-      //    height: 17px;
-      //    margin-top: 2px;
-      //  }
-      //
-      //  @include modifier('youtube') {
-      //    & svg {
-      //      height: 15px;
-      //    }
-      //  }
-      //}
 
       &:hover {
         fill: $blue-light-1;
@@ -242,12 +229,12 @@
 
       @include max-screen(991px) {
         float: none;
-        width: 100%;
-        text-align: center;
-        vertical-align: inherit;
         font-size: 14px;
         line-height: 80px;
         margin-right: 0;
+        text-align: center;
+        vertical-align: inherit;
+        width: 100%;
       }
 
       @include max-screen(515px) {

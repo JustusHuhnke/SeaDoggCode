@@ -1,10 +1,10 @@
 @import '../variables/index';
 
-@include block(header) {
+@include block('header') {
   background: $header-background-color;
-  height: 100px;
+  height: $header-height-big-screen;
   left: 0;
-  padding: 0 55px;
+  padding: $header-padding-big-screen;
   position: fixed;
   top: 0;
   transition: background .2s ease-out;
@@ -21,6 +21,23 @@
     float: right;
   }
 
+  @include element('menu-button') {
+    display: none;
+    float: right;
+    height: $header-height-big-screen;
+    line-height: $header-height-big-screen;
+
+    @include bem('icon') {
+      cursor: pointer;
+      vertical-align: middle;
+      width: 40px;
+
+      svg {
+        stroke: $blue-dark-1;
+      }
+    }
+  }
+
   @include bem('icon', 'logo_text') {
     svg {
       fill: $icon-color-logo-text-active;
@@ -33,6 +50,14 @@
     @include element('logo') {
       svg {
         fill: $icon-color-logo;
+      }
+    }
+
+    @include element('menu-button') {
+      @include bem('icon') {
+        svg {
+          stroke: $white;
+        }
       }
     }
 
@@ -52,15 +77,30 @@
     @include bem('navigation') {
       display: none;
     }
+
+    @include element('menu-button') {
+      display: inline-block;
+    }
   }
 
   @include max-screen(768px) {
-    padding: 0 25px;
-    height: 75px;
+    height: $header-height-small-screen;
+    padding: $header-padding-small-screen;
 
-    @include bem(logo) {
-      height: 75px;
-      line-height: 75px;
+    @include bem('logo') {
+      height: $header-height-small-screen;
+      line-height: $header-height-small-screen;
+    }
+
+    @include element('menu-button') {
+      display: inline-block;
+      float: right;
+      height: $header-height-small-screen;
+      line-height: $header-height-small-screen;
+
+      @include bem('icon') {
+        width: 36px;
+      }
     }
   }
 }

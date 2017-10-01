@@ -25,7 +25,7 @@ export class EarlyAccessBlock extends React.Component<IEarlyAccess, IEarlyAccess
                 <div className={section["container-fluid"]}>
                     <div className={section.row}>
                         <h2 className={block.early__heading}>Connect, Embark & Experience</h2>
-                        <p className={block.early__text}>Our mission is to revolutionize the world of boating. By connecting those, that like us share a passion for the ocean and it’s adventures, we are able to provide unique breathtaking experiences.</p>
+                        <p className={block.early__text}>Our mission is to revolutionize the world of boating by developing symbiotic relationships between SeaDogg, boat owners, captains and adventurers. Through this we are able to provide the most unique and breathtaking experiences.</p>
                     </div>
                     <div className="row">
                         <ButtonComponent className={[block.early__button, buttonStyle.get(null, "green")]} title={"Get early access"} onClick={this.toggleModal.bind(this.toggleModal, true)} />

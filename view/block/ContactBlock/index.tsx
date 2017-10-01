@@ -39,7 +39,7 @@ export class ContactBlock extends React.Component<IContact, {}> {
                         </div>
                         <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${contactStyle.get("item")}`}>
                             <IconComponent name="contact_email" viewBox="0 0 26 18" className={iconStyle.get(null, "mail")} />
-                            <p className={`${contactStyle.get("descr")} ${contactStyle.get("descr", "mail")}`}>hello@seadogg.com</p>
+                            <p className={`${contactStyle.get("descr")} ${contactStyle.get("descr", "mail")}`}>support@seadogg.com</p>
                         </div>
                     </div>
                 </div>

@@ -8,4 +8,7 @@ export interface IIconComponent {
     children?: ReactNode;
     className?: classNames;
     refComponent?: (elem: HTMLElement) => void;
+    onLoaded?: (promise: Promise<{}>) => void;
+
+    [id: string]: any;
 }
