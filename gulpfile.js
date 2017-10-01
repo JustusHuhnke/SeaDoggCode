@@ -380,12 +380,14 @@ gulp.task("blockGenerate", () => {
     });
 
     let importBlock = '';
+    let importBlockBack = '';
     let exportBlock = '';
+    let letName = '';
 
     foldres.forEach((name) => {
-        importBlock += 'const ' + name + ' = process.env.BROWSER &&\n' +
-            '   LazyLoadComponent(() => System.import("./' + name + '"), LoadingComponent, ErrorComponent) ||\n' +
-            '   require("./' + name + '").default;\n\n';
+        letName += "let " + name + ": any;\n";
+        importBlock += '   ' + name + ' = LazyLoadComponent(() => System.import("./' + name + '"), LoadingComponent, ErrorComponent);\n';
+        importBlockBack += '   ' + name + ' = require("./' + name + '").default;\n';
         exportBlock += '    ' + name + ',\n';
     });
 
@@ -394,7 +396,12 @@ gulp.task("blockGenerate", () => {
         'import LazyLoadComponent from "_components/LazyLoadComponent";\n' +
         'import {LoadingComponent} from "_components/LoadingComponent";\n' +
         'declare const System: { import: (path: string) => Promise<any>; };\n\n' +
+        letName +
+        'if (process.env.BROWSER) {\n' +
         importBlock +
+        '} else {\n' +
+        importBlockBack +
+        '}\n' +
         'export {\n' +
         exportBlock +
         '};\n';

@@ -1,62 +1,39 @@
+import {changeHomeMapPoint} from "_actions";
 import {IconComponent} from "_components/IconComponent";
 import ImageComponent from "_components/ImageComponent";
 import {PureComponent} from "_components/PureComponent";
+import {IState} from "_reducers";
 import {block, component, section} from "_style";
 import Rbem from "_utils/rbem";
-import {List} from "immutable";
 import * as React from "react";
+import {connect} from "react-redux";
 import {IWorldLocations, IWorldPoint, IWorldState} from "./interface";
 
 const worldStyle = new Rbem(block, "world");
 const iconStyle = new Rbem(component, "icon");
 
-export class WorldMapBlock extends React.Component<{}, IWorldState> {
+class WorldMap extends React.Component<IWorldState, {}> {
 
     private worldIcon: HTMLElement;
 
-    constructor(props: {}) {
+    constructor(props: IWorldState) {
         super(props);
         this.setWorldIcon = this.setWorldIcon.bind(this);
         this.showElements = this.showElements.bind(this);
-
-        this.state = {
-            locations: List([{
-                code: "BS",
-                title: "The Bahamas",
-                description: "Country in the Caribbean",
-                avatar: "https://randomuser.me/api/portraits/women/26.jpg",
-                user_name: "Anthony Torres",
-                user_description: "SeaDogg official representative on The Bahamas",
-                location: "345 Queen’s Hwy, Andros Town, The Bahamas  95050",
-                tel: "+1 (650) 823 3668",
-                mail: "hello@seadogg.com",
-                point: null,
-            }, {
-                code: "HAWAII",
-                title: "Hawaii",
-                description: "Country in the Caribbean 2",
-                avatar: "https://randomuser.me/api/portraits/women/28.jpg",
-                user_name: "Anthony Torres 2",
-                user_description: "SeaDogg official representative on The Bahamas 2",
-                location: "3422 ahamas  95050",
-                tel: "+1 (650) 000 000 0",
-                mail: "hello2@seadogg.com",
-                point: null,
-            }]),
-        };
     }
 
     public render() {
         const styleList = [section.section, worldStyle.get()];
-        const {locations} = this.state;
+        const {locations, dispatch, ...otherProps} = this.props;
 
         return (
-            <PureComponent tag="section" className={styleList} {...this.props}>
+            <PureComponent tag="section" className={styleList} {...otherProps}>
                 <h2 className={section.section__name}>Locations</h2>
                 <div className={worldStyle.get("block")}>
-                    <IconComponent onLoaded={this.showElements}refComponent={this.setWorldIcon} name="world_map" viewBox="0 0 1010 650" className={worldStyle.get("icon")}/>
+                    <IconComponent onLoaded={this.showElements} refComponent={this.setWorldIcon} name="world_map" viewBox="0 0 1010 650" className={worldStyle.get("icon")} />
                     {locations.map(({code, point, title, description, avatar, user_name, user_description, location, tel, mail}: IWorldLocations) => (
-                        point && <div key={code} className={worldStyle.get("tooltip")} style={{left: point.x, top: point.y}}>
+                        point &&
+                        <div key={code} className={worldStyle.get("tooltip")} style={{left: point.x, top: point.y}}>
                             <IconComponent className={worldStyle.get("point")} name="ic_point" viewBox="0 0 18 18"/>
                             <h2 className={worldStyle.get("marker-title")}>{title}</h2>
                             <div className={worldStyle.get("tooltip-block")}>
@@ -68,11 +45,11 @@ export class WorldMapBlock extends React.Component<{}, IWorldState> {
                                     <div className={worldStyle.get("user_descr")}>{user_description}</div>
                                 </div>
                                 <div className={worldStyle.get("item")}>
-                                    <IconComponent name="contact_address" viewBox="0 0 20 27" />
+                                    <IconComponent name="contact_address" viewBox="0 0 20 27"/>
                                     <p className={worldStyle.get("descr")}>{location}</p>
                                 </div>
                                 <div className={worldStyle.get("item")}>
-                                    <IconComponent name="contact_phone" viewBox="0 0 18 26" />
+                                    <IconComponent name="contact_phone" viewBox="0 0 18 26"/>
                                     <p className={worldStyle.get("descr")}>{tel}</p>
                                 </div>
                                 <div className={worldStyle.get("item")}>
@@ -83,31 +60,34 @@ export class WorldMapBlock extends React.Component<{}, IWorldState> {
                         </div>
                     )).toArray()}
                 </div>
+                <div className={worldStyle.get("info-us")}>
+                    <div className={worldStyle.get("count")}>14 567</div>
+                    <span className={worldStyle.get("text")}>happy people already with us</span>
+                </div>
             </PureComponent>
         );
     }
 
     private showElements(prom: Promise<{}>) {
-        setTimeout(() => {
-            prom.then(() => {
-                const svg = this.worldIcon.children[0];
-                const bigMap: any = document.getElementById("world_map");
+        prom.then(() => {
+            const {locations} = this.props;
+            const svg = this.worldIcon.children[0];
+            const bigMap: any = document.getElementById("world_map");
 
-                svg.innerHTML = bigMap.innerHTML;
-                const children: any = svg.children;
+            svg.innerHTML = bigMap.innerHTML;
+            const children: any = svg.children;
 
-                const locations: any = this.state.locations.map((info: IWorldLocations) => {
-                    const {top: topChild, left: leftChild} = children[info.code].getBoundingClientRect();
-                    const {top: topMap, left: leftMap} = svg.getBoundingClientRect();
-                    const point: IWorldPoint = {
-                        x: leftChild - leftMap,
-                        y: topChild - topMap,
-                    };
-                    return {...info, point};
-                });
-                this.setState({locations});
+            const points: any = locations.map((info: IWorldLocations) => {
+                const {top: topChild, left: leftChild} = children[info.code].getBoundingClientRect();
+                const {top: topMap, left: leftMap} = svg.getBoundingClientRect();
+                const point: IWorldPoint = {
+                    x: leftChild - leftMap,
+                    y: topChild - topMap,
+                };
+                return point;
             });
-        }, 0);
+            changeHomeMapPoint(points);
+        });
     }
 
     private setWorldIcon(element: HTMLElement) {
@@ -115,4 +95,7 @@ export class WorldMapBlock extends React.Component<{}, IWorldState> {
     }
 }
 
+export const WorldMapBlock: any = connect((state: IState) => ({
+    locations: state.home.get("locations"),
+}))(WorldMap as any);
 export default WorldMapBlock;
