@@ -1843,10 +1843,6 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@2.10.2:
-  version "2.10.2"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.10.2.tgz#024a5517295308857f14f91f1106fc3b555f446b"
-
 bluebird@^3.3.4, bluebird@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
@@ -2829,7 +2825,7 @@ debug@2.6.8:
   dependencies:
     ms "2.0.0"
 
-debug@2.6.9, debug@^2.1.1, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.3, debug@^2.6.6, debug@^2.6.8, debug@~2.6.4, debug@~2.6.6, debug@~2.6.8:
+debug@2.6.9, debug@^2.1.1, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.3, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9, debug@~2.6.4, debug@~2.6.6, debug@~2.6.8:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -3779,11 +3775,12 @@ file-entry-cache@^1.1.1:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-loader@^0.11.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.11.2.tgz#4ff1df28af38719a6098093b88c82c71d1794a34"
+file-loader@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.4.tgz#5ca9384adfafe008077c3439a435b2781a889ef5"
   dependencies:
     loader-utils "^1.0.2"
+    schema-utils "^0.3.0"
 
 filename-regex@^2.0.0:
   version "2.0.1"
@@ -6641,9 +6638,9 @@ mongoosastic@^4.3.0:
     elasticsearch "12.1.3"
     lodash.clonedeep "4.5.0"
 
-mongoose@^4.11.13:
-  version "4.11.13"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.11.13.tgz#0470cbfecbd0b9d3e77fe03a2ff6bde53a82507c"
+mongoose@^4.11.14:
+  version "4.11.14"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-4.11.14.tgz#b85402aaf28c5c3e45c8ef93fe69544eaa5d00f3"
   dependencies:
     async "2.1.4"
     bson "~1.0.4"
@@ -6652,7 +6649,7 @@ mongoose@^4.11.13:
     mongodb "2.2.31"
     mpath "0.3.0"
     mpromise "0.5.5"
-    mquery "2.3.1"
+    mquery "2.3.2"
     ms "2.0.0"
     muri "1.2.2"
     regexp-clone "0.0.1"
@@ -6666,13 +6663,13 @@ mpromise@0.5.5:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/mpromise/-/mpromise-0.5.5.tgz#f5b24259d763acc2257b0a0c8c6d866fd51732e6"
 
-mquery@2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/mquery/-/mquery-2.3.1.tgz#9ab36749714800ff0bb53a681ce4bc4d5f07c87b"
+mquery@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/mquery/-/mquery-2.3.2.tgz#e2c60ad117cf080f2efb1ecdd144e7bbffbfca11"
   dependencies:
-    bluebird "2.10.2"
-    debug "2.6.8"
-    regexp-clone "0.0.1"
+    bluebird "^3.5.0"
+    debug "^2.6.9"
+    regexp-clone "^0.0.1"
     sliced "0.0.5"
 
 ms@0.7.1:
@@ -8478,7 +8475,7 @@ regex-not@^1.0.0:
   dependencies:
     extend-shallow "^2.0.1"
 
-regexp-clone@0.0.1:
+regexp-clone@0.0.1, regexp-clone@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/regexp-clone/-/regexp-clone-0.0.1.tgz#a7c2e09891fdbf38fbb10d376fb73003e68ac589"
 
@@ -9200,9 +9197,9 @@ source-list-map@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.0.tgz#aaa47403f7b245a92fbc97ea08f250d6087ed085"
 
-source-map-loader@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/source-map-loader/-/source-map-loader-0.2.1.tgz#48126be9230bd47fad05e46a8c3c2e3d2dabe507"
+source-map-loader@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/source-map-loader/-/source-map-loader-0.2.2.tgz#1249348ff6a66ea64a2957fc98f74cb6bba67505"
   dependencies:
     async "^0.9.0"
     loader-utils "~0.2.2"
