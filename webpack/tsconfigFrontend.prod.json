@@ -54,7 +54,7 @@
     "silent": true,
     "useBabel": true,
     "babelOptions": {
-      "plugins": ["lodash", "dynamic-import-webpack", "transform-react-constant-elements", "transform-remove-debugger", "transform-undefined-to-void", "transform-property-literals", "minify-type-constructors", "minify-numeric-literals", "minify-guarded-expressions", "minify-constant-folding", "transform-minify-booleans", "transform-merge-sibling-variables"],
+      "plugins": ["es6-promise", "lodash", "dynamic-import-webpack", "transform-react-constant-elements", "transform-remove-debugger", "transform-undefined-to-void", "transform-property-literals", "minify-type-constructors", "minify-numeric-literals", "minify-guarded-expressions", "minify-constant-folding", "transform-minify-booleans", "transform-merge-sibling-variables"],
       "presets": ["react-optimize", ["env", {
         "targets": {
           "browsers": [">1%", "last 4 versions", "safari >= 9", "ie >= 9"],

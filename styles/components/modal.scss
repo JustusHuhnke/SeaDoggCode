@@ -4,11 +4,66 @@
 
   @include element('overlay') {
     background-color: rgba(255, 255, 255, 0.75);
-    bottom: 0;
-    left: 0;
+    border-radius: 5px;
+    max-height: calc(100vh - 32px);
     position: fixed;
+
+    @include modifier('full') {
+      border: 0;
+      bottom: 0;
+      left: 0;
+      max-height: 100%;
+      right: 0;
+      top: 0;
+      z-index: 10;
+    }
+  }
+
+  @include element('block') {
+    background: white;
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: absolute;
     right: 0;
     top: 0;
-    z-index: 5;
+  }
+
+  @include element('logo') {
+    text-align: center;
+    width: 100%;
+
+    @include bem('icon', 'logo') {
+      & svg {
+        fill: url(#gradient);
+      }
+    }
+    @include bem('icon', 'logo_text') {
+      & svg {
+        fill: $icon-color-logo-text-active;
+      }
+    }
+  }
+
+  @include element(close){
+    cursor: pointer;
+    display: block;
+    height: 20px;
+    position: absolute;
+    right: 55px;
+    top: 55px;
+    width: 20px;
+
+    & svg {
+      stroke: $close-modal-color;
+    }
+  }
+
+  @include element(tab) {
+    display: none;
+
+    @include modifier(active) {
+      display: block;
+    }
   }
 }

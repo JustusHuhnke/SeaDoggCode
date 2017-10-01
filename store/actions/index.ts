@@ -1,5 +1,5 @@
 import store from "_store";
-import {CHANGE_HOME_MAP_POINT, LOCATION_CHANGE, TO_CHANGE_TRANSPARENT_MENU} from "../constants";
+import {CHANGE_HOME_MAP_POINT, LOCATION_CHANGE, TO_CHANGE_TRANSPARENT_MENU, TOOGLE_EARLY_ACCESS_MODAL} from "../constants";
 const {dispatch} = store;
 
 // Routing
@@ -10,3 +10,4 @@ export const setTransparent = (data: any) => dispatch({ type: TO_CHANGE_TRANSPAR
 
 // Home
 export const changeHomeMapPoint = (data: any) => dispatch({ type: CHANGE_HOME_MAP_POINT, data });
+export const toggleModal = (data: boolean) => dispatch({ type: TOOGLE_EARLY_ACCESS_MODAL, data });

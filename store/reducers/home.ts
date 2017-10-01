@@ -1,17 +1,18 @@
 import {IActive} from "_reducers";
 import {List, Map} from "immutable";
 import {IWorldPoint, IWorldState} from "../../view/block/WorldMapBlock/interface";
-import {CHANGE_HOME_MAP_POINT} from "../constants";
+import {CHANGE_HOME_MAP_POINT, TOOGLE_EARLY_ACCESS_MODAL} from "../constants";
 
 interface IHome {
-    type: typeof CHANGE_HOME_MAP_POINT;
+    type: typeof CHANGE_HOME_MAP_POINT | typeof TOOGLE_EARLY_ACCESS_MODAL;
     data: any;
 }
 
 type Home = IHome | IActive;
 
 export interface IHomeModel {
-    locations: IWorldState;
+    earlyModal: boolean;
+    locations: List<IWorldState>;
 }
 
 export default (state = Map({
@@ -38,15 +39,19 @@ export default (state = Map({
         mail: "hello2@seadogg.com",
         point: null,
     }]),
+    earlyModal: false,
 }),             {type, data}: Home) => {
     switch (type) {
         case CHANGE_HOME_MAP_POINT:
-            let locations = state.get("locations");
+            let locations: any = state.get("locations");
             data.forEach((point: IWorldPoint, key: number) => {
                 const location: any = locations.get(key);
                 locations = locations.set(key, {...location, point});
             });
             return state.set("locations", locations);
+        case TOOGLE_EARLY_ACCESS_MODAL:
+            const earlyModal = !!data;
+            return state.set("earlyModal", earlyModal);
         default:
             return state;
     }

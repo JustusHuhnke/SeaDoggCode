@@ -37,4 +37,18 @@
     display: inline-block;
   }
 
+  @include element('check') {
+    cursor: pointer;
+    display: block;
+
+    & svg {
+      stroke: $blue-grey;
+    }
+    @include modifier('active') {
+      & svg {
+        stroke: $cerulean;
+      }
+    }
+  }
+
 }

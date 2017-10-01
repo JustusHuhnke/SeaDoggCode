@@ -1,3 +1,4 @@
+import {toggleModal} from "_actions";
 import {ButtonComponent} from "_components/ButtonComponent";
 import {PureComponent} from "_components/PureComponent";
 import {block, component, section} from "_style";
@@ -16,7 +17,7 @@ export class SubscribeBlock extends React.Component<ISubscribe, {}> {
             <PureComponent tag="section" className={styleList} {...this.props}>
                 <p className={subscribeStyle.get("text")}>Get early access and get&nbsp;a&nbsp;bonuses</p>
 
-                <ButtonComponent className={buttonStyle.get(null, "white")} title={"Get early access"}/>
+                <ButtonComponent className={buttonStyle.get(null, "white")} title={"Get early access"} onClick={toggleModal.bind(toggleModal, true)} />
 
             </PureComponent>
         );
