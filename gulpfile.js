@@ -468,11 +468,11 @@ gulp.task('buildBackend', ['buildFrontend'], (callback) => {
 });
 
 gulp.task('fixManifest', (cb) => {
-    const path = resolve("dist", "public", "appcache", "manifest.appcache");
-    if (fs.existsSync(path)) {
-        const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '').replace("CACHE:", "CACHE:\n/sprite.svg");
-        fs.writeFileSync(path, content);
-    }
+    // const path = resolve("dist", "public", "appcache", "manifest.appcache");
+    // if (fs.existsSync(path)) {
+    //     const content = fs.readFileSync(path).toString().replace(/\/\.\.\/public/gmi, '').replace("CACHE:", "CACHE:\n/sprite.svg");
+    //     fs.writeFileSync(path, content);
+    // }
     cb()
 });
 
