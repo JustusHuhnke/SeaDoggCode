@@ -37,6 +37,7 @@ export interface IBlock {
   readonly "world__descr--mail": string;
   readonly "world__info-us": string;
   readonly "world__count": string;
+  readonly "world__text": string;
   readonly "header": string;
   readonly "header__logo": string;
   readonly "navigation": string;

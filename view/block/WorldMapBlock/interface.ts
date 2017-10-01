@@ -19,4 +19,6 @@ export interface IWorldLocations {
 
 export interface IWorldState {
     locations: List<IWorldLocations>;
+
+    [id: string]: any;
 }

@@ -45,7 +45,7 @@ const plugins = [
         }
     }),
 
-    new ExtractTextPlugin("style/[name].[hash:4].css"),
+    new ExtractTextPlugin("style/[name].[chunkhash:4].css"),
     new webpack.optimize.UglifyJsPlugin({
         minimize: true,
         beautify: false,
@@ -70,6 +70,12 @@ const plugins = [
     }),
 ];
 
+function isVendor({ resource }) {
+    return resource &&
+        resource.indexOf('node_modules') >= 0 &&
+        resource.match(/\.js$/);
+}
+
 if (process.env.TEMP_NAME === undefined) {
     plugins.push(new CleanWebpackPlugin(['./dist/public/'], {
         root: resolve(__dirname, '..'),
@@ -79,9 +85,22 @@ if (process.env.TEMP_NAME === undefined) {
     plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
     plugins.push(new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        minChunks: Infinity,
-        filename: 'vendor.[hash:4].js'
+        minChunks: isVendor,
+        filename: '[name].[chunkhash:4].js'
     }));
+    plugins.push(new webpack.optimize.CommonsChunkPlugin({
+        name: 'style',
+        chunks: ['style'],
+        minChunks: Infinity,
+        filename: '[name].[chunkhash:4].js'
+    }));
+    plugins.push(new webpack.optimize.CommonsChunkPlugin({
+        name: 'bundle',
+        chunks: ['bundle'],
+        minChunks: Infinity,
+        filename: '[name].[chunkhash:4].js'
+    }));
+
     plugins.push(new WebpackErrorNotificationPlugin());
     plugins.push(new BellOnBundlerErrorPlugin());
     plugins.push(new OfflinePlugin({
@@ -111,10 +130,10 @@ module.exports = {
         path: resolve(__dirname, '../dist/public'),
         publicPath: '/',
         libraryTarget: 'umd',
-        filename: '[name].[hash:4].js',
-        sourceMapFilename: '[name].js.map?v=[hash]',
-        chunkFilename: '[name].[hash:4].js',
-        jsonpFunction: '$'
+        filename: '[name].[chunkhash:4].js',
+        sourceMapFilename: '[name].js.map?v=[chunkhash]',
+        chunkFilename: '[name].[chunkhash:4].js',
+        // jsonpFunction: '$'
     },
 
     context: resolve(__dirname, '../'),

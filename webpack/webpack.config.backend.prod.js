@@ -20,7 +20,22 @@ fs.readdirSync(resolve(__dirname, "..", "styles")).forEach(file => {
     }
 });
 entry['base'] = [entry['base'], ...vendorStyles];
-const assets = fs.readFileSync(resolve(__dirname, "..", "dist", "server", "manifest.json"), "utf-8");
+const preAssets = JSON.parse(fs.readFileSync(resolve(__dirname, "..", "dist", "server", "manifest.json"), "utf-8"));
+let assets = {};
+Object.keys(preAssets).forEach((value) => {
+    if(
+        value === "base.css" ||
+        value === "block.css" ||
+        value === "bundle.js" ||
+        value === "components.css" ||
+        value === "font.css" ||
+        value === "section.css" ||
+        value === "style.js" ||
+        value === "vendor.js"
+    ) {
+        assets[value] = preAssets[value];
+    }
+});
 
 module.exports = {
     devtool: 'sourcemap',
@@ -82,7 +97,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env.BROWSER': JSON.stringify(false),
-            'process.env.ASSETS': assets
+            'process.env.ASSETS': JSON.stringify(assets),
         }),
 
         new ExtractTextPlugin("style/[name].css"),
