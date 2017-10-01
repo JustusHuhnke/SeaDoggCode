@@ -37,4 +37,8 @@
     display: inline-block;
   }
 
+  @include modifier('map_marker') {
+    display: inline-block;
+  }
+
 }

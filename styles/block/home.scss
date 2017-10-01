@@ -262,6 +262,10 @@
     & svg {
       fill: $world-map-color;
     }
+
+    @include max-screen(768px) {
+      display: none;
+    }
   }
 
   @include element('block') {
@@ -272,7 +276,30 @@
     width: 1024px;
 
     @include max-screen(768px) {
-      display: none;
+      height: auto;
+      width: auto;
+    }
+  }
+
+  @include element('text') {
+    @extend .about__text;
+    margin-bottom: 50px;
+
+    @include max-screen(1440px) {
+      margin-bottom: 40px;
+    }
+
+    @include max-screen(992px) {
+      font-size: 18px;
+    }
+
+    @include max-screen(768px) {
+      margin-bottom: 35px;
+      font-size: 18px;
+    }
+
+    @include max-screen(515px) {
+      font-size: 18px;
     }
   }
 
@@ -284,10 +311,24 @@
     position: absolute;
     width: 24px;
 
+    @include max-screen(768px) {
+      display: inline-block;
+      height: auto;
+      width: 100%;
+      margin: 0;
+      top: 0 !important;
+      left: 0 !important;
+      position: relative;
+    }
+
     @include element('point') {
       display: block;
       height: 24px;
       width: 24px;
+
+      @include max-screen(768px) {
+        display: none;
+      }
     }
 
     @include element('marker-title') {
@@ -303,6 +344,10 @@
       transform: translateX(-50%);
       user-select: none;
       white-space: nowrap;
+
+      @include max-screen(768px) {
+        display: none;
+      }
     }
 
     @include element('tooltip-block') {
@@ -331,6 +376,19 @@
 
       @include max-screen(1150px) {
         display: none;
+      }
+
+      @include max-screen(768px) {
+        display: inline-block;
+        opacity: 1;
+        visibility: visible;
+        margin-left: 0;
+        bottom: 0;
+        position: relative;
+        width: 100%;
+        box-shadow: none;
+        border: solid 1px $text-cloudy-blue;
+        transition: none;
       }
 
       @include element('title') {
@@ -407,6 +465,10 @@
           vertical-align: top;
           width: 20px;
 
+          @include modifier('map_marker') {
+            margin-bottom: 6px;
+          }
+
           @include modifier('mail') {
             margin-top: 10px;
             width: 24px;
@@ -442,20 +504,29 @@
   }
 
 
-  @include element(info-us) {
+  @include element('info-us') {
     display: block;
-    margin: 95px 0 auto;
+    padding: 95px 0 0;
 
-    @include element(count) {
+    @include max-screen(992px) {
+      padding-top: 70px;
+    }
+
+    @include max-screen(768px) {
+      padding-top: 50px;
+    }
+
+    @include element('count') {
       color: $green-blue;
       font-size: 60px;
-      font-weight: bold;
+      font-family: $font-bold;
       text-align: center;
     }
 
-    @include element(text) {
+    @include element('text') {
       color: $charcoal-grey;
       font-size: 20px;
+      font-family: $font-regular;
       line-height: 1.5;
       text-align: center;
     }
