@@ -23,7 +23,7 @@ export default (state = Map({
             {link: "/#about", title: "About"},
             {link: "/#features", title: "Features"},
             {link: "/#works", title: "How it works"},
-            {link: "/#locations", title: "Locations"},
+            {link: "/#location", title: "Location"},
             {link: "/#contact", title: "Contact"},
         ]),
     homeTransparent: true,
