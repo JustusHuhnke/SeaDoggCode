@@ -29,6 +29,7 @@
     "stop": "./node_modules/.bin/pm2 stop ecosystem.json",
     "kill": "./node_modules/.bin/pm2 kill",
     "logs": "./node_modules/.bin/pm2 logs",
+    "monit": "./node_modules/.bin/pm2 monit",
     "-----Lints-----": "",
     "lint-typescript": "./node_modules/.bin/tslint -c tslint.json '**/*.ts' --exclude '**/node_modules/**' --exclude '**/__tests__/**' && ./node_modules/.bin/tslint -c tslint.json '**/*.tsx' --exclude '**/node_modules/**' --exclude '**/__tests__/**'",
     "lint-typescript-fix": "./node_modules/.bin/tslint --fix '**/*.ts' && ./node_modules/.bin/tslint --fix '**/*.tsx'",
