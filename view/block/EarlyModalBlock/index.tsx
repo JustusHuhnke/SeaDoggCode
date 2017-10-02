@@ -179,7 +179,15 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
     }
 
     private sendUser() {
-        this.nextStep(2);
+        if (process.env.BROWSER) {
+            const {socket} = require("../../../client/socket");
+            socket.emit("saveEarly", this.state.user.toJS(), () => {
+                this.nextStep(2);
+                setTimeout(() => {
+                    toggleModal(false);
+                }, 5000);
+            });
+        }
     }
 }
 

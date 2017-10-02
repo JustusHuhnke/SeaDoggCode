@@ -15,11 +15,25 @@ const iconStyle = new Rbem(component, "icon");
 class WorldMap extends React.Component<IWorldState, {}> {
 
     private worldIcon: HTMLElement;
+    private prom: any;
 
     constructor(props: IWorldState) {
         super(props);
         this.setWorldIcon = this.setWorldIcon.bind(this);
         this.showElements = this.showElements.bind(this);
+        this.resizeWindow = this.resizeWindow.bind(this);
+    }
+
+    public componentDidMount() {
+        if (process.env.BROWSER) {
+            window.addEventListener("resize", this.resizeWindow);
+        }
+    }
+
+    public componentWillUnmount() {
+        if (process.env.BROWSER) {
+            window.removeEventListener("resize", this.resizeWindow);
+        }
     }
 
     public render() {
@@ -69,8 +83,11 @@ class WorldMap extends React.Component<IWorldState, {}> {
         );
     }
 
-    private showElements(prom: Promise<{}>) {
-        prom.then(() => {
+    private showElements(prom?: Promise<{}>) {
+        if (prom) {
+            this.prom = prom;
+        }
+        this.prom.then(() => {
             const {locations} = this.props;
             const svg = this.worldIcon.children[0];
             const bigMap: any = document.getElementById("world_map");
@@ -93,6 +110,15 @@ class WorldMap extends React.Component<IWorldState, {}> {
 
     private setWorldIcon(element: HTMLElement) {
         this.worldIcon = element;
+    }
+
+    private resizeWindow() {
+        if (process.env.BROWSER) {
+            const widthWin: number = window.innerWidth;
+            if (widthWin >= 768) {
+                this.showElements();
+            }
+        }
     }
 }
 
