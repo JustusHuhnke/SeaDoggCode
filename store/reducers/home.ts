@@ -41,7 +41,7 @@ export default (state = Map({
         mail: "felix@seadogg.com",
         point: null,
     }]),
-    earlyModal: false,
+    earlyModal: true,
 }),             {type, data}: Home) => {
     switch (type) {
         case CHANGE_HOME_MAP_POINT:

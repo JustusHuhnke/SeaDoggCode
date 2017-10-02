@@ -1,4 +1,4 @@
-import {List} from "immutable";
+import {List, Map} from "immutable";
 import {ReactNode} from "react";
 
 export interface IEarlyCheck {
@@ -16,5 +16,6 @@ export interface IEarlyModal {
 
 export interface IEarlyState {
     checkList: List<IEarlyCheck>;
+    user: Map<any, any>;
     step: number;
 }
