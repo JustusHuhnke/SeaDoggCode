@@ -29,6 +29,53 @@
     top: 0;
   }
 
+  @include element('first_screen') {
+    display: inline-block;
+    width: 100%;
+    margin: 55px auto 0;
+    text-align: center;
+
+    @include max-screen(767px) {
+      margin-top: 35px;
+    }
+
+    @include max-screen(390px) {
+      margin-top: 18px;
+    }
+
+    @include max-screen(370px) {
+      margin-top: 24px
+    }
+  }
+
+  @include element('second_screen') {
+    @extend .modal__first_screen;
+
+    margin: 20px auto 15px;
+  }
+
+  @include element('third_screen') {
+    @extend .modal__first_screen;
+
+    margin: 12vh auto 0;
+
+    @include max-screen(767px) {
+      margin-top: 18vh;
+    }
+
+    @include max-screen(390px) {
+      margin-top: 15vh
+    }
+
+    @include max-screen(370px) {
+      margin-top: 15vh;
+    }
+
+    @include bem('button') {
+      margin-top: 35px;
+    }
+  }
+
   @include element('logo') {
     text-align: center;
     width: 100%;
@@ -38,14 +85,20 @@
         fill: url(#gradient);
       }
     }
+
     @include bem('icon', 'logo_text') {
       & svg {
         fill: $icon-color-logo-text-active;
       }
     }
+
+    @include max-screen(768px) {
+      text-align: left;
+      padding: 0 30px;
+    }
   }
 
-  @include element(close){
+  @include element(close) {
     cursor: pointer;
     display: block;
     height: 20px;
@@ -57,6 +110,108 @@
     & svg {
       stroke: $close-modal-color;
     }
+
+    @include max-screen(768px) {
+      top: 40px;
+      right: 30px;
+    }
+  }
+
+  @include element('heading') {
+    color: $blue-dark-1;
+    display: inline-block;
+    font-family: $font-medium;
+    font-size: 40px;
+    margin-top: 10vh;
+    text-align: center;
+    user-select: none;
+    width: 100%;
+
+    @include max-screen(768px) {
+      margin-top: 4vh;
+    }
+
+    @include max-screen(515px) {
+      margin-top: 2vh;
+    }
+
+    @include max-screen(370px) {
+      margin-top: 0;
+      font-size: 32px;
+    }
+  }
+
+  @include element('text') {
+    color: $charcoal-grey;
+    display: block;
+    font-size: 20px;
+    margin: 15px auto;
+    max-width: 640px;
+    padding: 0px 15px;
+    text-align: center;
+    user-select: none;
+    width: 100%;
+
+    @include max-screen(370px) {
+      font-size: 18px;
+      margin-top: 0;
+    }
+  }
+
+  @include element('role-check') {
+    display: inline-block;
+    margin: 0 25px 45px;
+    position: relative;
+
+    @include max-screen(515px) {
+      margin-bottom: 24px;
+    }
+
+    @include max-screen(370px) {
+      margin-bottom: 16px;
+    }
+  }
+
+  @include element('role-title') {
+    color: $blue-grey;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $font-regular;
+    font-size: 16px;
+    user-select: none;
+
+    @include modifier('active') {
+      color: $cerulean;
+    }
+  }
+
+  @include element('input-field') {
+    margin: 0 auto 25px;
+    text-align: center;
+    width: 100%;
+  }
+
+  @include element('back-control') {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+
+    & span {
+      display: inline-block;
+      color: $blue;
+      font-size: 16px;
+      margin-bottom: 35px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+  }
+
+  @include element('button') {
+    box-shadow: 0 12px 18px 0 rgba(0, 0, 0, 0.1);
+    font-family: $font-regular;
+    display: block;
+    margin: 10px auto 30px;
+    padding: 18px 55px;
   }
 
   @include element(tab) {

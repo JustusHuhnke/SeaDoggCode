@@ -42,8 +42,8 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
             }),
             checkList: List([
                 {
-                    icon: "boat",
-                    viewBox: "0 0 40 40",
+                    icon: "renter",
+                    viewBox: "0 0 40 36",
                     checked: false,
                     name: "renter",
                     title: "Renter",
@@ -56,15 +56,15 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                     title: "Boat owner",
                 },
                 {
-                    icon: "boat",
-                    viewBox: "0 0 40 40",
+                    icon: "captain",
+                    viewBox: "0 0 44 31",
                     checked: false,
                     name: "captain",
                     title: "Captain",
                 },
                 {
-                    icon: "boat",
-                    viewBox: "0 0 40 40",
+                    icon: "experience",
+                    viewBox: "0 0 42 36",
                     checked: false,
                     name: "adventure",
                     title: "Adventurer",
@@ -95,12 +95,12 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                         [modalStyle.get("tab", "active")]: step === 0,
                     })}
                 >
-                    <h2>Get early access</h2>
-                    <h5>Select your experiences</h5>
-                    <div>
+                    <h2 className={modalStyle.get("heading")}>Get early access</h2>
+                    <p className={modalStyle.get("text")}>Select your experiences</p>
+                    <div className={modalStyle.get("first_screen")}>
                         {
                             checkList.map(({title, icon, viewBox, checked}: IEarlyCheck, key) => (
-                                <div key={key} onClick={this.selectType.bind(this, key, !checked)}>
+                                <div className={modalStyle.get("role-check")} key={key} onClick={this.selectType.bind(this, key, !checked)}>
                                     <IconComponent
                                         name={icon}
                                         viewBox={viewBox}
@@ -109,7 +109,22 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                                             [iconStyle.get("check", "active")]: checked,
                                         }}
                                     />
-                                    <span>{title}</span>
+                                    <IconComponent
+                                        name="check_circle"
+                                        viewBox="0 0 20 20"
+                                        className={{
+                                            [iconStyle.get("check_circle")]: true,
+                                            [iconStyle.get("check_circle", "active")]: checked,
+                                        }}
+                                    />
+                                    <span
+                                        className={classnames({
+                                            [modalStyle.get("role-title")]: true,
+                                            [modalStyle.get("role-title", "active")]: checked,
+                                        })}
+                                    >
+                                        {title}
+                                    </span>
                                 </div>
                             )).toArray()}
                     </div>
@@ -118,6 +133,7 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                         disabled={firstButton}
                         className={{
                             [buttonStyle.get(null, "green")]: !firstButton,
+                            [modalStyle.get("button")]: true,
                         }}
                         onClick={this.nextStep.bind(this, 1)}
                     />
@@ -128,18 +144,29 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                         [modalStyle.get("tab", "active")]: step === 1,
                     })}
                 >
-                    <InputComponent placeholder={"Your name"} type="input" onChange={this.changeValue.bind(this, "name")} value={user.get("name")} />
-                    <InputComponent placeholder={"Your email"} type="input" onChange={this.changeValue.bind(this, "email")} value={user.get("email")} />
-                    <InputComponent placeholder={"Your phone"} mask={"+1-999-999-9999"} onChange={this.changeValue.bind(this, "phone")} value={user.get("phone")} />
+                    <h2 className={modalStyle.get("heading")}>Get early access</h2>
+                    <p className={modalStyle.get("text")}>Fill in this short form, please</p>
+                    <div className={modalStyle.get("second_screen")}>
+                        <div className={modalStyle.get("input-field")}>
+                            <InputComponent placeholder={"Your name"} type="input" onChange={this.changeValue.bind(this, "name")} value={user.get("name")} />
+                        </div>
+                        <div className={modalStyle.get("input-field")}>
+                            <InputComponent placeholder={"Email"} type="input" onChange={this.changeValue.bind(this, "email")} value={user.get("email")} />
+                        </div>
+                        <div className={modalStyle.get("input-field")}>
+                            <InputComponent placeholder={"Phone"} mask={"+1-999-999-9999"} onChange={this.changeValue.bind(this, "phone")} value={user.get("phone")} />
+                        </div>
+                    </div>
                     <ButtonComponent
-                        title={"next"}
+                        title={"Get early access"}
                         disabled={secondButton}
                         className={{
                             [buttonStyle.get(null, "green")]: !secondButton,
+                            [modalStyle.get("button")]: true,
                         }}
                         onClick={this.sendUser}
                     />
-                    <div>
+                    <div className={modalStyle.get("back-control")}>
                         <span onClick={this.nextStep.bind(this, 0)}>Back</span>
                     </div>
                 </div>
@@ -149,13 +176,15 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                         [modalStyle.get("tab", "active")]: step === 2,
                     })}
                 >
-                    <h2>Congratulations!</h2>
-                    <h5>You have already subscribed and when we launch our site you will find out about this one of the first.</h5>
-                    <ButtonComponent
-                        title={"Close (5 sec)"}
-                        className={buttonStyle.get(null, "green")}
-                        onClick={toggleModal.bind(toggleModal, false)}
-                    />
+                    <div className={modalStyle.get("third_screen")}>
+                        <h2 className={modalStyle.get("heading")}>Congratulations!</h2>
+                        <p className={modalStyle.get("text")}>You have already subscribed and when we launch our site you will find out about this one of the first.</p>
+                        <ButtonComponent
+                            title={"Close (5 sec)"}
+                            className={`${buttonStyle.get(null, "green")} ${modalStyle.get("button")}`}
+                            onClick={toggleModal.bind(toggleModal, false)}
+                        />
+                    </div>
                 </div>
             </ModalBlock>
         );
