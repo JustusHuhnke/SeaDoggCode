@@ -1,7 +1,7 @@
 import {IPhoto} from "_models";
 import {ICountryModel} from "_server/db/models/Country";
 import {capitalize, capitalizeOnlyFirst, clear} from "_utils/string";
-import { Document, Model, Schema, Types} from "mongoose";
+import { Document, Model, Schema} from "mongoose";
 import connection from "../dBase";
 
 const DEFAULT_USER_PICTURE = "/image/user.jpg";
