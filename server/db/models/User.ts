@@ -21,6 +21,7 @@ interface IUser {
         country: ICountryModel
     };
     avatar: IPhoto;
+    checkList: any[];
 }
 export interface IUserModel extends IUser, Document {
     fullName: () => string;
@@ -94,6 +95,7 @@ export const UserSchema: Schema = new Schema({
         description: String,
         default: {},
     },
+    checkList: [],
 }, {timestamps: true});
 
 UserSchema.methods.fullName = function(this: IUser): string {

@@ -9,12 +9,13 @@ const log = pino({...logConfig, name: "Socket Stream"}, config.pretty);
 export const socketInit = (io: ISocketServer) => {
     io.of("/socket_user").on("connection", (socket: ISocket) => {
         // console.log("socket_user", socket);
-        socket.on("saveEarly", async ({email, name, phone}, cb) => {
+        socket.on("saveEarly", async ({email, name, phone, checkList}: any, cb) => {
             try {
                 const user = new UserModel({
                     email,
                     firstName: name,
                     phoneNumber: phone,
+                    checkList,
                 });
 
                 await user.save();

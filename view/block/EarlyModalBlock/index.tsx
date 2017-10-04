@@ -34,7 +34,7 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
         this.selectType = this.selectType.bind(this);
         this.changeValue = this.changeValue.bind(this);
         this.state = {
-            step: 1,
+            step: 0,
             user: Map({
                 name: "",
                 email: "",
@@ -210,7 +210,10 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
     private sendUser() {
         if (process.env.BROWSER) {
             const {socket} = require("../../../client/socket");
-            socket.emit("saveEarly", this.state.user.toJS(), () => {
+            let user = this.state.user.toJS();
+            user = {...user, checkList: this.state.checkList.filter((e) => e.checked).map((e) => e.name).toArray()};
+
+            socket.emit("saveEarly", user, () => {
                 this.nextStep(2);
                 setTimeout(() => {
                     toggleModal(false);
