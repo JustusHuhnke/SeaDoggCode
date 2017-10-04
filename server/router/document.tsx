@@ -67,7 +67,7 @@ export const render: (ctx: any, location: string, context: any) => string = (ctx
             ctx.res.end();
         });
     } else {
-        stream += `<!doctype html><html manifest="/appcache/manifest.appcache">`;
+        stream += `<!doctype html><html>`;
         stream += renderToStaticMarkup(React.createElement(HTMLStart));
         stream += `<body><span id="svgContainer"></span><div id="application">`;
         stream += renderToStaticMarkup(ChildrenRender(context));

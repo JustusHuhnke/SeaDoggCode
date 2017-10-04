@@ -21,6 +21,7 @@ interface IUser {
         country: ICountryModel
     };
     avatar: IPhoto;
+    checkList: any[];
 }
 export interface IUserModel extends IUser, Document {
     fullName: () => string;
@@ -31,7 +32,7 @@ export const UserSchema: Schema = new Schema({
         type: String,
         index: { sparse: true, unique: true },
         lowercase: true,
-        unique: true,
+        // unique: true,
         trim: true,
         required : true,
     },
@@ -71,19 +72,20 @@ export const UserSchema: Schema = new Schema({
             trim: true,
             set: (v: string): string => clear(v),
         },
-        country: { type: Types.ObjectId, ref: "Country" },
+        // country: { type: Types.ObjectId, ref: "Country" },
         location: {
             type: { type: String, enum: ["Point", "Polygon", "LineString", "MultiLineString"], default: "Point" },
             coordinates: { type: [Number], default: [0, 0] },
         },
+        default: {},
     },
     avatar: {
-        src: {  type: String,  required: true, default: DEFAULT_USER_PICTURE  },
+        src: {  type: String, default: DEFAULT_USER_PICTURE  },
         width: {  type: Number,  integer: true  },
         height: {  type: Number,  integer: true  },
         size: {  type: Number,  integer: true  },
-        type: {  type: String,  required: true  },
-        name: {  type: String,  required: true  },
+        type: {  type: String },
+        name: {  type: String },
         title: {
             type: String,
             trim: true,
@@ -91,7 +93,9 @@ export const UserSchema: Schema = new Schema({
             set: (v: string): string => capitalize(clear(v)),
         },
         description: String,
+        default: {},
     },
+    checkList: [],
 }, {timestamps: true});
 
 UserSchema.methods.fullName = function(this: IUser): string {

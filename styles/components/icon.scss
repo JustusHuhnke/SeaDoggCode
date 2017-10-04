@@ -42,16 +42,56 @@
   }
 
   @include element('check') {
+    border: 2px solid $text-cloudy-blue;
+    border-radius: 50%;
     cursor: pointer;
     display: block;
+    height: 100px;
+    line-height: 90px;
+    margin-bottom: 10px;
+    width: 100px;
+
+    @include max-screen(370px) {
+      height: 85px;
+      line-height: 75px;
+      margin-bottom: 8px;
+      width: 85px;
+    }
 
     & svg {
+      display: inline-block;
       stroke: $blue-grey;
+      vertical-align: middle;
+      width: 42px;
     }
+
     @include modifier('active') {
+      border-color: $cerulean;
+
       & svg {
         stroke: $cerulean;
       }
+    }
+  }
+
+  @include element('check_circle') {
+    display: inline-block;
+    height: 20px;
+    opacity: 0;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    transition: opacity .1s ease;
+    width: 20px;
+
+    @include modifier('active') {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @include max-screen(370px) {
+      right: 2px;
+      top: 2px;
     }
   }
 

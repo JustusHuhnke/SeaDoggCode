@@ -14,6 +14,7 @@
       border-color: red;
     }
   }
+
   @include modifier('disabled') {
     color: black;
     opacity: .7;
@@ -23,11 +24,11 @@
   @include element('input') {
     border: 0;
     border-bottom: $input-border-size solid $input-border-color;
+    color: $input-text-color;
     font-size: 16px;
     outline: none;
     padding: 10px 8px;
-    width: 240px;
-    margin-bottom: 15px;
+    width: $input-width-default;
   }
 
   @include element('textarea') {
