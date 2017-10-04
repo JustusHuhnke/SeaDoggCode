@@ -133,6 +133,44 @@
     width: 100%;
   }
 
+  @include element('item') {
+    margin-bottom: 10px;
+    text-align: center;
+    height: 173px;
+
+    @include bem('icon') {
+      display: inline-block;
+      width: 40px;
+      margin-bottom: 20px;
+      height: 55px;
+      line-height: 55px;
+
+      & svg {
+        display: inline-block;
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  @include element('title') {
+    display: inline-block;
+    width: 100%;
+    font-family: $font-medium;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: $blue-dark-2;
+    margin-bottom: 10px;
+  }
+
+  @include element('descr') {
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $charcoal-grey;
+  }
+
   @include element('button') {
     display: block;
     margin: 30px auto;
@@ -144,6 +182,73 @@
 
   @include max-screen(515px) {
     padding: 45px 10px;
+  }
+}
+
+@include block('works') {
+  background: $section-background-white;
+  color: $text-black;
+  padding: 95px 15px 15px;
+  text-align: center;
+
+  @include element('text') {
+    color: $text-black;
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 20px auto;
+    width: 100%;
+  }
+
+  @include element('item') {
+    margin-bottom: 10px;
+    text-align: center;
+    height: 173px;
+
+    @include bem('icon') {
+      display: inline-block;
+      width: 40px;
+      margin-bottom: 20px;
+      height: 55px;
+      line-height: 55px;
+
+      & svg {
+        display: inline-block;
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  @include element('title') {
+    display: inline-block;
+    width: 100%;
+    font-family: $font-medium;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: $blue-dark-2;
+    margin-bottom: 10px;
+  }
+
+  @include element('descr') {
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $charcoal-grey;
+  }
+
+  @include element('button') {
+    display: block;
+    margin: 30px auto;
+  }
+
+  @include max-screen(992px) {
+    padding: 70px 15px 10px;
+  }
+
+  @include max-screen(515px) {
+    padding: 45px 10px 30px;
   }
 }
 

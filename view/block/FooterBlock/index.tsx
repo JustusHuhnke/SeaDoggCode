@@ -11,7 +11,7 @@ import * as React from "react";
 const footer = new Rbem(block, "footer");
 const icon = new Rbem(component, "icon");
 
-export class FooterBlock extends React.Component<{}, {}> {
+class FooterBlock extends React.Component<{}, {}> {
 
     public render() {
         return (
@@ -42,7 +42,7 @@ export class FooterBlock extends React.Component<{}, {}> {
 
                         <div className={footer.get("info")}>
                             <div className={footer.get("text")}><LogoComponent />Revolutionizing water experiences</div>
-                            <div className={footer.get("copyright")}>2017 © All rights reserved. Seadogg Inc.</div>
+                            <div className={footer.get("copyright")}>2017 © All rights reserved. Seadogg Inc. Made by <LinkComponent href="http://lanp.co" target="_blank">Lanp</LinkComponent></div>
                         </div>
                     </div>
                 </div>
