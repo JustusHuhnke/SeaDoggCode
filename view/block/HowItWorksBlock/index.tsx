@@ -46,7 +46,7 @@ class HowItWorksBlock extends React.Component<{}, {}> {
                                     <div className={`${section["col-lg-3"]} ${section["col-sm-12"]} ${worksStyle.get("item")}`}>
                                         <IconComponent name="ic_set_sail" viewBox="0 0 47 51" />
                                         <h3 className={worksStyle.get("title")}>Set sail</h3>
-                                        <p className={worksStyle.get("descr")}>Your SeaDogg adventure begins</p>
+                                        <p className={worksStyle.get("descr")}>Your SeaDogg adventure begins</p>
                                         <IconComponent className={iconStyle.get(null, "arrow")} name="arrow" viewBox="0 0 61 16" />
                                     </div>
                                 </div>

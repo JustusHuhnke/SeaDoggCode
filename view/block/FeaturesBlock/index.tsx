@@ -133,7 +133,7 @@ class FeaturesBlock extends React.Component<{}, {}> {
                                         <p className={featuresStyle.get("descr")}>Create your own personal experience</p>
                                     </div>
                                     <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${featuresStyle.get("item")}`}>
-                                        <IconComponent className={`${iconStyle.get(null, "blue")}`} name="ic_expirience_availability" viewBox="0 0 44 39" />
+                                        <IconComponent className={`${iconStyle.get(null, "blue")}`} name="ic_booking" viewBox="0 0 46 35" />
                                         <h3 className={featuresStyle.get("title")}>Availability</h3>
                                         <p className={featuresStyle.get("descr")}>Choose your own times</p>
                                     </div>
