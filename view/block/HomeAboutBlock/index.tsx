@@ -10,7 +10,7 @@ export class HomeAboutBlock extends React.Component<IHomeAbout, {}> {
             <PureComponent tag="section" className={styleList} {...this.props}>
                 <h2 className={section.section__name}>About</h2>
 
-                <p className={block.about__text}>We are SeaDogg — a dedicated team of adventurers seeking life’s most beautiful and thrilling experiences. Through unique features, largely focusing on connectivity, shareability, and safety, we enable boat owners, captains and ocean adventurers to access a set of new opportunities. Our focus is to provide the most breathtaking and exciting experiences that the ocean has to offer while remembering to appreciate and respect it’s nature.</p>
+                <p className={block.about__text}>We are SeaDogg — a dedicated team of adventurers seeking life’s most beautiful and thrilling experiences. Through unique features, focusing on connectivity, shareability, and safety, we enable boat owners, captains and ocean adventurers to build up mutually beneficial relationships. Our platform will provide the most breathtaking and exciting experiences that the ocean has to offer while appreciating and respecting it’s nature.</p>
             </PureComponent>
         );
     }

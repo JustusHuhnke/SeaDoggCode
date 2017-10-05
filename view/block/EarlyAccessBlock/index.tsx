@@ -22,7 +22,7 @@ export class EarlyAccessBlock extends React.Component<IEarlyAccess, {}> {
                 <div className={section["container-fluid"]}>
                     <div className={section.row}>
                         <h2 className={block.early__heading}>Connect, Embark and Experience</h2>
-                        <p className={block.early__text}>Our mission is to revolutionize the world of boating by providing a convenient, safe &amp; fun platform that encourages members of the boating community to take the opportunity to benefit from a service, that focuses on the interests of the user &amp; community.</p>
+                        <p className={block.early__text}>Our mission is to revolutionize ocean experiences while conserving marine life. We provide a safe, convenient &amp; fun platform that allows members of the local community to benefit from a service solely focused on it's users.</p>
                     </div>
                     <div className="row">
                         <ButtonComponent className={[block.early__button, buttonStyle.get(null, "green")]} title={"Get early access"} onClick={toggleModal.bind(toggleModal, true)} />
