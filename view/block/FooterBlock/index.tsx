@@ -22,19 +22,19 @@ class FooterBlock extends React.Component<{}, {}> {
                             <NavigationComponent />
                             <div className={footer.get("social")}>
                                 <p className={footer.get("text")}>Follow us:</p>
-                                <LinkComponent href="http://google.com" target="_blank">
+                                <LinkComponent href="https://www.facebook.com/Seadoggcrew-178444026046287" target="_blank">
                                     <IconComponent name="facebook" viewBox="0 0 12 24" />
                                 </LinkComponent>
-                                <LinkComponent href="http://google.com" target="_blank">
+                                <LinkComponent href="https://twitter.com/SeaDoggCrew" target="_blank">
                                     <IconComponent name="twitter" viewBox="0 0 25 20" />
                                 </LinkComponent>
-                                <LinkComponent href="http://google.com" target="_blank">
+                                <LinkComponent href="http://google.com/seadoggcrew" target="_blank">
                                     <IconComponent name="google_plus" viewBox="0 0 24 24" />
                                 </LinkComponent>
                                 <LinkComponent href="http://google.com" target="_blank">
                                     <IconComponent name="vine" viewBox="0 0 25 22" />
                                 </LinkComponent>
-                                <LinkComponent href="http://google.com" target="_blank">
+                                <LinkComponent href="https://www.youtube.com/channel/UCCMGpWy9xWsxXkDxhT3FeqA" target="_blank">
                                     <IconComponent name="youtube" viewBox="0 0 25 22" className={icon.get(null, "youtube")} />
                                 </LinkComponent>
                             </div>

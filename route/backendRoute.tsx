@@ -10,10 +10,10 @@ const Routes = () => (
        <Route path="/test" component={Test}/>
    </Switch>);
 
-const App: React.StatelessComponent<IApp> = (props: any) => {
+const App: React.StatelessComponent<IApp> = (props) => {
     return React.createElement(
         StaticRouter,
-        {context: props, location: props.routing.location},
+        props,
         React.createElement(Routes, null),
     );
 };

@@ -191,6 +191,10 @@
   padding: 95px 15px 15px;
   text-align: center;
 
+  @include element('row') {
+    justify-content: center;
+  }
+
   @include element('text') {
     color: $text-black;
     display: block;
@@ -201,22 +205,79 @@
   }
 
   @include element('item') {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: center;
-    height: 173px;
 
     @include bem('icon') {
+      background-color: $cerulean;
+      border-radius: 50%;
       display: inline-block;
-      width: 40px;
-      margin-bottom: 20px;
-      height: 55px;
-      line-height: 55px;
+      height: 120px;
+      line-height: 115px;
+      margin-bottom: 35px;
+      width: 120px;
 
       & svg {
         display: inline-block;
-        vertical-align: bottom;
+        stroke: $white;
+        fill: $white;
+        vertical-align: middle;
+        width: 40px;
       }
     }
+
+    @include bem('icon', null, 'relax') {
+      svg {
+        width: 33px;
+
+      }
+    }
+
+    @include bem('icon', null, 'qualify') {
+      svg {
+
+        width: 30px;
+      }
+    }
+
+    @include bem('icon', null, 'arrow') {
+      background-color: transparent;
+      border-radius: 0;
+      height: 13px;
+      right: -25px;
+      line-height: 0;
+      margin: 0;
+      position: absolute;
+      top: 60px;
+      width: 50px;
+
+      & svg {
+        display: inline-block;
+        width: 50px;
+      }
+    }
+
+    &:last-child {
+      @include bem('icon', null, 'arrow') {
+        display: none;
+      }
+    }
+
+    @include max-screen(992px) {
+      margin-bottom: 65px;
+
+      @include bem('icon', null, 'arrow') {
+        bottom: -30px;
+        right: calc(50% - 24px);
+        top: auto;
+        transform: rotate(90deg);
+      }
+
+      &:last-child {
+        margin-bottom: 10px;
+      }
+    }
+
   }
 
   @include element('title') {

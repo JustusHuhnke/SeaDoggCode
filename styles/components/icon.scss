@@ -50,9 +50,22 @@
 
   @include modifier('app') {
     display: inline-block;
+
     & svg {
       width: 25px;
     }
+  }
+
+  @include modifier('relax') {
+    display: inline-block;
+  }
+
+  @include modifier('qualify') {
+    display: inline-block;
+  }
+
+  @include modifier('arrow') {
+    display: inline-block;
   }
 
   @include element('check') {

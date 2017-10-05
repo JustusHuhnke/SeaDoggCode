@@ -71,6 +71,11 @@
           color: $tab-color-hover;
         }
 
+        @include max-screen('553px') {
+          font-size: 13px;
+          padding: 12px 15px;
+        }
+
         @include modifier('selected') {
           color: $tab-color-selected;
 
