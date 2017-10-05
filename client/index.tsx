@@ -1,14 +1,17 @@
 import App from "_route";
 import store, {history} from "_store";
-//import * as runtime from "offline-plugin/runtime";
+// import * as runtime from "offline-plugin/runtime";
 import * as React from "react";
 import {AppContainer} from "react-hot-loader";
 import {Provider} from "react-redux";
+import * as injectTapEventPlugin from "react-tap-event-plugin";
 
 const ReactDOM = require("react-dom");
 
 import {changeRoute} from "_actions";
 import "./socket";
+
+injectTapEventPlugin();
 
 /*if (process.env.NODE_ENV === "production") {
     runtime.install({

@@ -6,7 +6,7 @@ import connection from "../dBase";
 
 const DEFAULT_USER_PICTURE = "/image/user.jpg";
 
-interface IUser {
+export interface IUserModel extends Document {
     email: string;
     password: string;
     firstName?: string;
@@ -22,9 +22,9 @@ interface IUser {
     };
     avatar: IPhoto;
     checkList: any[];
-}
-export interface IUserModel extends IUser, Document {
+
     fullName: () => string;
+    count: (cond?: IUserModel) => Promise<number>;
 }
 
 export const UserSchema: Schema = new Schema({
@@ -98,7 +98,7 @@ export const UserSchema: Schema = new Schema({
     checkList: [],
 }, {timestamps: true});
 
-UserSchema.methods.fullName = function(this: IUser): string {
+UserSchema.methods.fullName = function(this: IUserModel): string {
     return this.firstName + " " + this.lastName;
 };
 
