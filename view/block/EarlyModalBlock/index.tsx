@@ -96,7 +96,7 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                     })}
                 >
                     <h2 className={modalStyle.get("heading")}>Get early access</h2>
-                    <p className={modalStyle.get("text")}>Select your experiences</p>
+                    <p className={modalStyle.get("text")}>Select your user type. We don't limit you to just one!</p>
                     <div className={modalStyle.get("first_screen")}>
                         {
                             checkList.map(({title, icon, viewBox, checked}: IEarlyCheck, key) => (
@@ -177,8 +177,8 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                     })}
                 >
                     <div className={modalStyle.get("third_screen")}>
-                        <h2 className={modalStyle.get("heading")}>Congratulations!</h2>
-                        <p className={modalStyle.get("text")}>You have already subscribed and when we launch our site you will find out about this one of the first.</p>
+                        <h2 className={modalStyle.get("heading")}>Welcome aboard!</h2>
+                        <p className={modalStyle.get("text")}>You have successfully subscribed to SeaDogg. Further updates and information will be provided through our Newsletter.</p>
                         <ButtonComponent
                             title={"Close (5 sec)"}
                             className={`${buttonStyle.get(null, "green")} ${modalStyle.get("button")}`}

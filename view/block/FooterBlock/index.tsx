@@ -28,11 +28,11 @@ class FooterBlock extends React.Component<{}, {}> {
                                 <LinkComponent href="https://twitter.com/SeaDoggCrew" target="_blank">
                                     <IconComponent name="twitter" viewBox="0 0 25 20" />
                                 </LinkComponent>
-                                <LinkComponent href="http://google.com/seadoggcrew" target="_blank">
-                                    <IconComponent name="google_plus" viewBox="0 0 24 24" />
+                                <LinkComponent href="https://www.instagram.com/seadoggcrew" target="_blank">
+                                    <IconComponent name="instagram" viewBox="0 0 97.395 97.395" />
                                 </LinkComponent>
-                                <LinkComponent href="http://google.com" target="_blank">
-                                    <IconComponent name="vine" viewBox="0 0 25 22" />
+                                <LinkComponent href="https://www.linkedin.com/company/18278786/" target="_blank">
+                                    <IconComponent name="linkedin" viewBox="0 0 430.117 430.117" />
                                 </LinkComponent>
                                 <LinkComponent href="https://www.youtube.com/channel/UCCMGpWy9xWsxXkDxhT3FeqA" target="_blank">
                                     <IconComponent name="youtube" viewBox="0 0 25 22" className={icon.get(null, "youtube")} />
@@ -42,7 +42,7 @@ class FooterBlock extends React.Component<{}, {}> {
 
                         <div className={footer.get("info")}>
                             <div className={footer.get("text")}><LogoComponent />Revolutionizing water experiences</div>
-                            <div className={footer.get("copyright")}>2017 © All rights reserved. Seadogg Inc. Made by <LinkComponent href="http://lanp.co" target="_blank">Lanp</LinkComponent></div>
+                            <div className={footer.get("copyright")}>2017 © All rights reserved. Seadogg Inc.</div>
                         </div>
                     </div>
                 </div>
