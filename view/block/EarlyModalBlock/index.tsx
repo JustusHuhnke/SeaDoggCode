@@ -1,5 +1,5 @@
 // import SelectComponent from "_components/SelectComponent";
-import {toggleModal} from "_actions";
+import {addErlyOne, toggleModal} from "_actions";
 import ButtonComponent from "_components/ButtonComponent";
 import IconComponent from "_components/IconComponent";
 import {InputComponent} from "_components/InputComponent";
@@ -215,6 +215,7 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
 
             socket.emit("saveEarly", user, () => {
                 this.nextStep(2);
+                addErlyOne();
                 setTimeout(() => {
                     toggleModal(false);
                 }, 5000);

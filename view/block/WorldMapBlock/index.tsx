@@ -38,7 +38,7 @@ class WorldMap extends React.Component<IWorldState, {}> {
 
     public render() {
         const styleList = [section.section, worldStyle.get()];
-        const {locations, dispatch, ...otherProps} = this.props;
+        const {locations, dispatch, user_count, ...otherProps} = this.props;
 
         return (
             <PureComponent tag="section" className={styleList} {...otherProps}>
@@ -76,7 +76,7 @@ class WorldMap extends React.Component<IWorldState, {}> {
                     )).toArray()}
                 </div>
                 <div className={worldStyle.get("info-us")}>
-                    <div className={worldStyle.get("count")}>0</div>
+                    <div className={worldStyle.get("count")}>{user_count}</div>
                     <span className={worldStyle.get("text")}>people have already subscribed</span>
                 </div>
             </PureComponent>
@@ -124,5 +124,6 @@ class WorldMap extends React.Component<IWorldState, {}> {
 
 export const WorldMapBlock: any = connect((state: IState) => ({
     locations: state.home.get("locations"),
+    user_count: state.user.get("count"),
 }))(WorldMap as any);
 export default WorldMapBlock;
