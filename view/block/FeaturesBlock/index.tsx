@@ -13,7 +13,7 @@ class FeaturesBlock extends React.Component<{}, {}> {
 
     public render() {
         return (
-            <PureComponent tag="section" className={`${section.section} ${featuresStyle.get()}`}>
+            <PureComponent tag="section" className={`${section.section} ${featuresStyle.get()}`} {...this.props}>
                 <div className={section.container}>
                     <div className={section.row}>
                         <h2 className={section.section__name}>Our Features</h2>

@@ -13,7 +13,7 @@ class HowItWorksBlock extends React.Component<{}, {}> {
 
     public render() {
         return (
-            <PureComponent tag="section" className={`${section.section} ${worksStyle.get()}`}>
+            <PureComponent tag="section" className={`${section.section} ${worksStyle.get()}`} {...this.props}>
                 <div className={section.container}>
                     <div className={section.row}>
                         <h2 className={section.section__name}>How it works</h2>
