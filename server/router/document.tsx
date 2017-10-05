@@ -51,7 +51,7 @@ export const render: (ctx: any, location: string, context: any) => string = (ctx
         ctx.set("Connection", "keep-alive");
         ctx.set("Transfer-Encoding", "gzip, chunked");
 
-        ctx.res.write(`<!doctype html><html manifest="/appcache/manifest.appcache">`);
+        ctx.res.write(`<!doctype html><html>`);
         ctx.res.write(renderToStaticMarkup(React.createElement(HTMLStart)));
         ctx.res.write(`<body><span id="svgContainer"></span><div id="application">`);
 

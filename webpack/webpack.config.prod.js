@@ -103,7 +103,7 @@ if (process.env.TEMP_NAME === undefined) {
 
     plugins.push(new WebpackErrorNotificationPlugin());
     plugins.push(new BellOnBundlerErrorPlugin());
-    plugins.push(new OfflinePlugin({
+    /*plugins.push(new OfflinePlugin({
         excludes: excludes_offline,
         responseStrategy: 'network-first',
         caches: true,
@@ -115,7 +115,7 @@ if (process.env.TEMP_NAME === undefined) {
         AppCache: {
             events: true
         }
-    }));
+    }));*/
     plugins.push(new ManifestPlugin({
         fileName: "../server/manifest.json"
     }),);

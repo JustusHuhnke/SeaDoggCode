@@ -10,7 +10,6 @@ export let store: any;
 if (process.env.BROWSER) {
     const epicMiddleware = createEpicMiddleware(rootEpic);
     const composeEnhancers = (process.env.NODE_ENV !== "production" && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-    const initialState = (window as any).__initialState__ || {};
 
     if (module.hot) {
         module.hot.accept("./epics", () => {
@@ -21,7 +20,6 @@ if (process.env.BROWSER) {
 
     store = createStore(
         reducers,
-        initialState,
         composeEnhancers(
             applyMiddleware(...middleArr),
         ),
