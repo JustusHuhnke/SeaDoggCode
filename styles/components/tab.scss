@@ -3,33 +3,110 @@
 @include block('tab') {
   display: block;
 
-  @include element(header) {
+  @include element('header') {
     display: inline-block;
     list-style: none;
 
-    @include element(link) {
+    @include element('link') {
       color: blue;
       display: inline-block;
       margin: 5px 10px;
       cursor: pointer;
 
-      @include modifier(selected) {
+      @include modifier('selected') {
         color: red;
       }
 
     }
   }
 
-  @include element(block) {
+  @include element('block') {
     display: block;
 
-    @include modifier(selected) {
+    @include modifier('selected') {
       color: green;
     }
 
-    @include element(panel) {
+    @include element('panel') {
       display: block;
 
+    }
+  }
+
+  @include modifier('menu') {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+
+    @include element('header') {
+      display: inline-block;
+      position: relative;
+      margin-bottom: 45px;
+      padding: 0;
+
+      &:after {
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        content: '';
+        height: 2px;
+        bottom: 1px;
+        left: 0;
+        background-color: $text-cloudy-blue;
+        border-radius: 1px;
+        z-index: 1;
+      }
+
+      @include element('link') {
+        color: $tab-color;
+        cursor: pointer;
+        font-family: $font-regular;
+        font-size: 16px;
+        margin: 0;
+        padding: 12px 25px;
+        position: relative;
+        user-select: none;
+
+        &:hover {
+          color: $tab-color-hover;
+        }
+
+        @include max-screen('553px') {
+          font-size: 13px;
+          padding: 12px 15px;
+        }
+
+        @include modifier('selected') {
+          color: $tab-color-selected;
+
+          &:after {
+            background-color: $tab-border-selected-color;
+            border-radius: 2px;
+            bottom: 0;
+            content: '';
+            display: inline-block;
+            height: 4px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 2;
+          }
+        }
+
+      }
+    }
+
+    @include element('block') {
+      display: block;
+
+      @include modifier('selected') {
+        color: green;
+      }
+
+      @include element('panel') {
+        display: block;
+
+      }
     }
   }
 

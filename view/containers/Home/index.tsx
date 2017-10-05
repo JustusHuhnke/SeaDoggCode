@@ -1,7 +1,6 @@
 import {setTransparent} from "_actions";
 import {
-    ContactBlock, EarlyAccessBlock, FooterBlock, HeaderBlock, HomeAboutBlock, SubscribeBlock,
-    WorldMapBlock,
+    ContactBlock, EarlyAccessBlock, FeaturesBlock, FooterBlock, HeaderBlock, HomeAboutBlock, HowItWorksBlock, SubscribeBlock, WorldMapBlock,
 } from "_blocks";
 import {PureComponent} from "_components/PureComponent";
 import {IState} from "_reducers";
@@ -44,6 +43,8 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
                 >
                     <EarlyAccessBlock/>
                     <HomeAboutBlock id={"about"}/>
+                    <FeaturesBlock id={"features"}/>
+                    <HowItWorksBlock id={"works"}/>
                     <WorldMapBlock id={"location"}/>
                     <SubscribeBlock/>
                     <ContactBlock id={"contact"}/>

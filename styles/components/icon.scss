@@ -18,6 +18,13 @@
     fill: $icon-color-red;
   }
 
+  @include modifier('blue') {
+    & svg {
+      stroke: $cerulean;
+      fill: $cerulean;
+    }
+  }
+
   @include element('logo') {
     vertical-align: middle;
     width: $icon-logo-width;
@@ -38,6 +45,26 @@
   }
 
   @include modifier('map_marker') {
+    display: inline-block;
+  }
+
+  @include modifier('app') {
+    display: inline-block;
+
+    & svg {
+      width: 25px;
+    }
+  }
+
+  @include modifier('relax') {
+    display: inline-block;
+  }
+
+  @include modifier('qualify') {
+    display: inline-block;
+  }
+
+  @include modifier('arrow') {
     display: inline-block;
   }
 

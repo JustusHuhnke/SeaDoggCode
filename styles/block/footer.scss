@@ -227,6 +227,15 @@
       margin-right: 15px;
       vertical-align: top;
 
+      @include bem('link') {
+        color: $green-accent;
+        text-decoration: none;
+
+        &:hover {
+          color: $green-accent-light-1;
+        }
+      }
+
       @include max-screen(991px) {
         float: none;
         font-size: 14px;

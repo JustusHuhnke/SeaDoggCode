@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="35" viewBox="0 0 46 35">
+    <g fill="none" fill-rule="evenodd" transform="translate(1)">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M36 32a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h32a2 2 0 0 1 2 2v8.033M28 1v5M18 1v5"/>
+        <rect width="4" height="2" x="7" y="16" fill="#0268CD" rx="1"/>
+        <rect width="4" height="2" x="16" y="16" fill="#0268CD" rx="1"/>
+        <rect width="4" height="2" x="25" y="16" fill="#0268CD" rx="1"/>
+        <rect width="4" height="2" x="7" y="22" fill="#0268CD" rx="1"/>
+        <rect width="4" height="2" x="7" y="28" fill="#0268CD" rx="1"/>
+        <rect width="4" height="2" x="16" y="22" fill="#0268CD" rx="1"/>
+        <rect width="4" height="2" x="25" y="22" fill="#0268CD" rx="1"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 1v5"/>
+        <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path d="M39.856 13.221l3.499 1.94-6.787 12.244-3.499-1.939zM32.394 30.809l.675-5.343 3.499 1.94z"/>
+        </g>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 28.5l1.333 1.5L20 27M25 28.5l1.333 1.5L29 27"/>
+        <path stroke-linecap="square" stroke-width="2" d="M0 12h36"/>
+    </g>
+</svg>
