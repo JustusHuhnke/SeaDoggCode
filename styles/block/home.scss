@@ -124,6 +124,12 @@
   padding: $section-paddding-big-screen;
   text-align: center;
 
+  @include element('row') {
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+  }
+
   @include element('text') {
     color: $text-black;
     display: block;
@@ -193,6 +199,8 @@
 
   @include element('row') {
     justify-content: center;
+    width: 100%;
+    margin: 0;
   }
 
   @include element('text') {
@@ -417,6 +425,7 @@
 
 @include block('world') {
   @extend .about;
+  overflow-x: hidden;
 
   @include element('icon', true) {
     bottom: 0;

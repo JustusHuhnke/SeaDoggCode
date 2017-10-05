@@ -24,7 +24,7 @@ class FeaturesBlock extends React.Component<{}, {}> {
                             <TabHeader forId={"adventurers-features"}>Adventurers</TabHeader>
 
                             <TabBlock idTab={"rentals-features"}>
-                                <div className={section.row}>
+                                <div className={`${section.row} ${featuresStyle.get("row")}`}>
                                     <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${featuresStyle.get("item")}`}>
                                         <IconComponent className={`${iconStyle.get(null, "blue")}`} name="boat" viewBox="0 0 40 40" />
                                         <h3 className={featuresStyle.get("title")}>Experiences with boat</h3>
@@ -58,7 +58,7 @@ class FeaturesBlock extends React.Component<{}, {}> {
                                 </div>
                             </TabBlock>
                             <TabBlock idTab={"owners-features"}>
-                                <div className={section.row}>
+                                <div className={`${section.row} ${featuresStyle.get("row")}`}>
                                     <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${featuresStyle.get("item")}`}>
                                         <IconComponent className={`${iconStyle.get(null, "blue")}`} name="ic_boat_rent" viewBox="0 0 40 45" />
                                         <h3 className={featuresStyle.get("title")}>Lease your Vessel</h3>
@@ -92,7 +92,7 @@ class FeaturesBlock extends React.Component<{}, {}> {
                                 </div>
                             </TabBlock>
                             <TabBlock idTab={"captains-features"}>
-                                <div className={section.row}>
+                                <div className={`${section.row} ${featuresStyle.get("row")}`}>
                                     <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${featuresStyle.get("item")}`}>
                                         <IconComponent className={`${iconStyle.get(null, "blue")}`} name="ic_catalogue" viewBox="0 0 42 40" />
                                         <h3 className={featuresStyle.get("title")}>Listing an Experience</h3>
@@ -126,7 +126,7 @@ class FeaturesBlock extends React.Component<{}, {}> {
                                 </div>
                             </TabBlock>
                             <TabBlock idTab={"adventurers-features"}>
-                                <div className={section.row}>
+                                <div className={`${section.row} ${featuresStyle.get("row")}`}>
                                     <div className={`${section["col-lg-4"]} ${section["col-sm-12"]} ${featuresStyle.get("item")}`}>
                                         <IconComponent className={`${iconStyle.get(null, "blue")}`} name="ic_catalogue" viewBox="0 0 42 40" />
                                         <h3 className={featuresStyle.get("title")}>Listing an Experience</h3>

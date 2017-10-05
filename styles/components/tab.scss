@@ -76,6 +76,15 @@
           padding: 12px 15px;
         }
 
+        @include max-screen('410px') {
+          padding: 12px 10px;
+        }
+
+        @include max-screen('363px') {
+          font-size: 12px;
+          padding: 10px 7px;
+        }
+
         @include modifier('selected') {
           color: $tab-color-selected;
 
