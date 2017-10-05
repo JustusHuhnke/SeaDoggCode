@@ -32,5 +32,6 @@
 }
 
 .ReactModal__Content {
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }

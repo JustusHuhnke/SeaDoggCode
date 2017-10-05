@@ -15,13 +15,13 @@ export class ContactBlock extends React.Component<IContact, {}> {
         const styleList = [section.section, block.contact];
 
         const mapPosition = Map({
-            lat: 37.318562,
-            lng: -121.942482,
+            lat: 37.368886,
+            lng: -122.096887,
         });
 
         const markersPosition = [{
-            lat: 37.318562,
-            lng: -121.942482,
+            lat: 37.368886,
+            lng: -122.096887,
         }];
 
         return (
