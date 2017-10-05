@@ -29,6 +29,7 @@
     outline: none;
     padding: 10px 8px;
     width: $input-width-default;
+    appearance: none;
   }
 
   @include element('textarea') {

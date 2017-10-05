@@ -145,7 +145,7 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
                     })}
                 >
                     <h2 className={modalStyle.get("heading")}>Get early access</h2>
-                    <p className={modalStyle.get("text")}>Fill in this short form, please</p>
+                    <p className={modalStyle.get("text")}>Please, fill in this short form</p>
                     <div className={modalStyle.get("second_screen")}>
                         <div className={modalStyle.get("input-field")}>
                             <InputComponent placeholder={"Your name"} type="input" onChange={this.changeValue.bind(this, "name")} value={user.get("name")} />
