@@ -33,7 +33,7 @@ export class Tab extends React.Component<ITabComponent, ITabComponentState> {
         const activeTab = (idTab || selected);
         const classes = classnames(tabStyle.get(), className);
         const tabsHeader: React.ReactNode[] = (Array.isArray(children) && children || [children]).filter((element: React.ReactNode) => !!(element as any).props.forId);
-        const tabsBlock: React.ReactNode[] = (Array.isArray(children) && children || [children]).filter((element: React.ReactNode) => !!(element as any).props.idTab && activeTab === (element as any).props.idTab);
+        const tabsBlock: React.ReactNode[] = (Array.isArray(children) && children || [children]).filter((element: React.ReactNode) => !!(element as any).props.idTab);
 
         return (
             <div className={classes}>
@@ -41,7 +41,7 @@ export class Tab extends React.Component<ITabComponent, ITabComponentState> {
                     {tabsHeader.map(({props}: any, key) => <TabHeader key={key} {...props} isActive={activeTab === props.forId} changeActive={this.changeActive}/>)}
                 </ul>
                 <div className={tabStyle.get("block")}>
-                    {tabsBlock.map(({props}: any, key) => <TabBlock key={key} {...props}/>)}
+                    {tabsBlock.map(({props}: any, key) => <TabBlock key={key} {...props} isActive={activeTab === props.idTab}/>)}
                 </div>
             </div>
         );
@@ -59,7 +59,10 @@ export const TabHeader: React.SFC<ITabHeader> = (props: ITabHeader) => {
 };
 
 export const TabBlock: React.SFC<ITabBlock> = (props: ITabBlock) => {
-    const {className, children, idTab, ...otherProps} = props;
-    const classes = classnames(tabStyle.get("panel"), className);
+    const {className, children, idTab, isActive, ...otherProps} = props;
+    const classes = classnames({
+        [tabStyle.get("panel")]: true,
+        [tabStyle.get("panel", "selected")]: isActive,
+    }, className);
     return (<div className={classes} children={children} {...otherProps} />);
 };

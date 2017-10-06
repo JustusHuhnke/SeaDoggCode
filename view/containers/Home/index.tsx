@@ -8,6 +8,7 @@ import {section} from "_style";
 import AnimationScroll from "_utils/AnimationScroll";
 import * as React from "react";
 import * as Scrollbar from "react-custom-scrollbars";
+import {Helmet} from "react-helmet";
 import {connect} from "react-redux";
 import {IHelloProps} from "./interface";
 
@@ -32,6 +33,9 @@ class HomeComponent extends React.Component<IHelloProps, {}> {
     public render() {
         return (
             <PureComponent tag={"main"}>
+                <Helmet>
+                    <title>We are SeaDogg</title>
+                </Helmet>
                 <HeaderBlock/>
                 <CustomScrol
                     className={section.scroll}

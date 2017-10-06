@@ -77,7 +77,7 @@ export class EarlyModal extends React.Component<IEarlyModal | any, IEarlyState> 
         const {earlyModal, ...otherProps} = this.props;
         const {checkList, step, user} = this.state;
         const firstButton = !(checkList as any).filter(({checked}: IEarlyCheck) => checked).size;
-        const secondButton = !(user.get("name").length > 2 && emailRegexp.test(user.get("email")) && user.get("phone").replace(/\D/ig, "").length >= 11);
+        const secondButton = !(user.get("name").length > 1 && emailRegexp.test(user.get("email")));
 
         return ModalBlock && (
             <ModalBlock

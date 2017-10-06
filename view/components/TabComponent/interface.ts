@@ -25,6 +25,7 @@ export interface ITabHeader {
 export interface ITabBlock {
     children?: ReactNode[] | ReactNode;
     className?: classNames;
+    isActive?: boolean;
 
     idTab: string | number;
 }
