@@ -77,7 +77,7 @@ class WorldMap extends React.Component<IWorldState, {}> {
                 </div>
                 <div className={worldStyle.get("info-us")}>
                     <div className={worldStyle.get("count")}>{user_count}</div>
-                    <span className={worldStyle.get("text")}>people have already subscribed</span>
+                    <span className={worldStyle.get("text")}>people have already joined us</span>
                 </div>
             </PureComponent>
         );
