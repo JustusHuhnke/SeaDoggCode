@@ -53,6 +53,7 @@ export const socketInit = (io: ISocketServer) => {
 
             } catch (err) {
                 log.error(err);
+                cb();
             }
         });
     });

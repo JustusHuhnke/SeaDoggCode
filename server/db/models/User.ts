@@ -30,7 +30,7 @@ export interface IUserModel extends Document {
 export const UserSchema: Schema = new Schema({
     email: {
         type: String,
-        index: { sparse: true, unique: true },
+        index: true,
         lowercase: true,
         // unique: true,
         trim: true,
