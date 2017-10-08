@@ -42,7 +42,7 @@ export const socketInit = (io: ISocketServer) => {
                     html: "<p>You have successfully subscribed to SeaDogg. Further updates and information will be provided through our Newsletter.</p>",
                 };
 
-                transporter.sendMail(mailOptions, (err, info) => {
+                transporter.sendMail(mailOptions, (err: any, info: any) => {
                     if (err) {
                         log.error("Email send error: ", err);
                     } else {
