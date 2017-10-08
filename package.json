@@ -104,6 +104,7 @@
     "moize": "^4.0.0",
     "mongoosastic": "^4.3.0",
     "mongoose": "^4.12.0",
+    "nodemailer": "^4.1.3",
     "picturefill": "^3.0.2",
     "pino": "^4.7.2",
     "react": "^16.0.0",
