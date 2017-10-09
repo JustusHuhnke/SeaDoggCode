@@ -415,6 +415,7 @@ gulp.task('------Production------');
 
 gulp.task('prebuild', ['autoTypedStyle', 'routeGenerate', 'blockGenerate'], function () {
     const exit_path = resolve('./static/images');
+
     gulp.src('./static/original_images/**/*.{png,jpg,jpeg}')
         .pipe(tinypng({
             apiKeys: ['RsN84oBjmXxPkCB5s_ZlfA1fRS1U32LY', 'bN4uZbaI06-ESRiKhD6yS3P4NF9zle7W', 'durCxw2lwQgJmxvwOnpyLrMdEsNEImOY'],
@@ -510,5 +511,10 @@ gulp.task('cssnano', ['svgo'], () => {
         .pipe(gulp.dest('./dist/public/style'));
 });
 
-gulp.task('build', ['svgo']);
+gulp.task('only_copy_images', ['cssnano'], () => {
+    return gulp.src('./static/only_copy/**/*.{png,jpg,jpeg}')
+        .pipe(gulp.dest('./dist/public/images'));
+});
+
+gulp.task('build', ['only_copy_images']);
 
