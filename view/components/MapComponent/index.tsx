@@ -37,6 +37,7 @@ export class MapComponent extends React.Component<IMapComponent, {}> {
                 className={classes}
                 scrollWheelZoom={false}
                 {...otherProps}
+                zoom={9}
             >
                 <TileLayer
                     url="https://api.mapbox.com/styles/v1/alexavakarchuk/cj835fiywa8ap2srylgqwgyy6/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWxleGF2YWthcmNodWsiLCJhIjoiY2oyYXp5cWQ3MDAxNzMzcGplZG0wMXRzYSJ9.6gYWnhlH0Zg5sHLIFqpm4Q"
