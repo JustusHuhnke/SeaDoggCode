@@ -390,7 +390,7 @@
     @include bem('icon') {
       color: $blue;
       display: inline-block;
-      float: left;
+      //float: left;
       vertical-align: top;
       width: 25px;
 
@@ -403,13 +403,13 @@
     @include element('descr') {
       color: $charcoal-grey;
       display: inline-block;
-      float: right;
+      //float: right;
       font-size: 16px;
       line-height: 1.5;
       padding: 5px 12px;
       text-align: left;
       vertical-align: top;
-      width: calc(100% - 32px);
+      //width: calc(100% - 32px);
     }
   }
 
