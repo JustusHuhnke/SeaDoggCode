@@ -18,7 +18,7 @@ class HowItWorksBlock extends React.Component<{}, {}> {
                     <div className={section.row}>
                         <h2 className={section.section__name}>How it works</h2>
                         <Tab className={tabStyle.get(null, "menu")} selected={"rentals-works"}>
-                            <TabHeader forId={"rentals-works"}>Rentals</TabHeader>
+                            <TabHeader forId={"rentals-works"}>Renters</TabHeader>
                             <TabHeader forId={"owners-works"}>Boat owners</TabHeader>
                             <TabHeader forId={"captains-works"}>Captains</TabHeader>
                             <TabHeader forId={"adventurers-works"}>Adventurers</TabHeader>
