@@ -1,21 +1,21 @@
-
 import config, {logConfig} from "_config";
 import UserModel from "_server/db/models/User";
 import {ISocket, ISocketServer} from "_server/socket/interface";
 import * as pino from "pino";
 import {initStraem} from "./stream";
+
 const nodemailer = require("nodemailer");
 const log = pino({...logConfig, name: "Socket Stream"}, config.pretty);
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "seadogg2017@gmail.com",
-        pass: "uKsn3DRaPp9HCxyG",
+        user: "connect@seadogg.com",
+        pass: "Craveseadogg",
     },
     debug: true,
 }, {
-    from: "SeaDogg <info@seadogg.com>",
+    from: "SeaDogg Crew <connect@seadogg.com>",
     headers: {
         "X-Laziness-level": 1000,
     },
@@ -38,7 +38,7 @@ export const socketInit = (io: ISocketServer) => {
                 await user.save();
 
                 const mailOptions = {
-                    from: "SeaDogg <info@seadogg.com>",
+                    from: "SeaDogg Crew <connect@seadogg.com>",
                     to: `${name} <${email}>`,
                     subject: "Welcome aboard!",
                     html: inviteHtml,
