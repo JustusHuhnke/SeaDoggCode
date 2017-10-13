@@ -18,7 +18,7 @@ class FeaturesBlock extends React.Component<{}, {}> {
                     <div className={section.row}>
                         <h2 className={section.section__name}>Our Features</h2>
                         <Tab className={tabStyle.get(null, "menu")} selected={"rentals-features"}>
-                            <TabHeader forId={"rentals-features"}>Rentals</TabHeader>
+                            <TabHeader forId={"rentals-features"}>Renters</TabHeader>
                             <TabHeader forId={"owners-features"}>Boat owners</TabHeader>
                             <TabHeader forId={"captains-features"}>Captains</TabHeader>
                             <TabHeader forId={"adventurers-features"}>Adventurers</TabHeader>
