@@ -4,7 +4,9 @@ import {Helmet} from "react-helmet";
 import {Provider} from "react-redux";
 import * as serialize from "serialize-javascript";
 import Routes from "./../../route/backendRoute";
-const { renderToNodeStream, renderToStaticMarkup } = require("react-dom/server");
+
+const {renderToNodeStream, renderToStaticMarkup} = require("react-dom/server");
+
 //
 interface IpropertyRender {
     location: string;
@@ -21,10 +23,21 @@ export const HTMLStart = (): React.ReactElement<{}> => {
             {helmet.title.toComponent()}
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
             {helmet.meta.toComponent()}
-            <link href={`/${ASSETS["base.css"] || "style/base.css"}`} media="all" rel="stylesheet" />
-            <link href={`/${ASSETS["section.css"] || "style/section.css"}`} media="all" rel="stylesheet" />
-            <link href={`/${ASSETS["block.css"] || "style/block.css"}`} media="all" rel="stylesheet" />
-            <link href={`/${ASSETS["components.css"] || "style/components.css"}`} media="all" rel="stylesheet" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png"/>
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png"/>
+            <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png"/>
+            <link rel="manifest" href="/images/favicon/manifest.json"/>
+            <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#3772ff"/>
+            <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-icon-192x192.png"/>
+            <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png"/>
+            <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png"/>
+            <meta name="msapplication-TileColor" content="#ffffff"/>
+            <meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png"/>
+            <meta name="theme-color" content="#0268cd"/>
+            <link href={`/${ASSETS["base.css"] || "style/base.css"}`} media="all" rel="stylesheet"/>
+            <link href={`/${ASSETS["section.css"] || "style/section.css"}`} media="all" rel="stylesheet"/>
+            <link href={`/${ASSETS["block.css"] || "style/block.css"}`} media="all" rel="stylesheet"/>
+            <link href={`/${ASSETS["components.css"] || "style/components.css"}`} media="all" rel="stylesheet"/>
             {helmet.link.toComponent()}
         </head>
     );

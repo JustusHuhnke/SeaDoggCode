@@ -512,7 +512,7 @@ gulp.task('cssnano', ['svgo'], () => {
 });
 
 gulp.task('only_copy_images', ['cssnano'], () => {
-    return gulp.src('./static/only_copy/**/*.{png,jpg,jpeg}')
+    return gulp.src('./static/only_copy/**/*')
         .pipe(gulp.dest('./dist/public/images'));
 });
 

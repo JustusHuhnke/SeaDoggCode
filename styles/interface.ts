@@ -138,6 +138,7 @@ export interface IComponents {
   readonly "tab__block": string;
   readonly "tab__block--selected": string;
   readonly "tab__panel": string;
+  readonly "tab__panel--selected": string;
   readonly "tab--menu": string;
 }
 export interface ISection {
